@@ -13,6 +13,8 @@ import UpriseReport from './UpriseReport'
 import Heading from './Heading'
 import Seo from './Seo'
 import Header from './Header'
+import SupportCard from './SupportCard'
+import ContactBanner from './ContactBanner'
 import {SECTION_TYPES} from '../constants'
 
 const ComponentList = {
@@ -27,10 +29,12 @@ const ComponentList = {
   [SECTION_TYPES.MULTIPLE_MEDIA_WITH_CAPTION]: MultipleMediaWithCaption,
   [SECTION_TYPES.SINGLE_MEDIA_WITH_CAPTION_AND_PARAGRAPH]: SingleMediaWithCaptionAndParagraph,
   [SECTION_TYPES.HEADING_WITH_SINGLE_MEDIA_AND_BUTTON]: HeadingWithSingleMediaAndButton,
+  [SECTION_TYPES.SUPPORT_CARD]: SupportCard,
+  [SECTION_TYPES.CONTACT_BANNER]: ContactBanner,
   report: UpriseReport,
   heading: Heading,
   seo: Seo,
-  header: Header
+  header: Header,
 }
 
 const Components = (type) => {
