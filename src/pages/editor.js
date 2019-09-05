@@ -2,7 +2,7 @@ import React from 'react'
 import Components from '../components/components.js'
 import SbEditable from 'storyblok-react'
 import config from '../../gatsby-config'
-import Navi from '../components/navi.js'
+// import Navi from '../components/navi.js'
 
 const loadStoryblokBridge = function(cb) {
   let sbConfigs = config.plugins.filter(item => {

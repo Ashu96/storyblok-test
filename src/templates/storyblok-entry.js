@@ -1,6 +1,5 @@
 import React from 'react'
 import Components from '../components/components.js'
-import Navi from '../components/navi.js'
 
 class StoryblokEntry extends React.Component {
   static getDerivedStateFromProps(props, state) {
