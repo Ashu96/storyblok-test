@@ -14,6 +14,7 @@ import Seo from './Seo'
 import Header from './Header'
 import SupportCard from './SupportCard'
 import ContactBanner from './ContactBanner'
+import BlogPost from './Blog'
 import {SECTION_TYPES} from '../constants'
 
 const ComponentList = {
@@ -29,6 +30,7 @@ const ComponentList = {
   [SECTION_TYPES.HEADING_WITH_SINGLE_MEDIA_AND_BUTTON]: HeadingWithSingleMediaAndButton,
   [SECTION_TYPES.SUPPORT_CARD]: SupportCard,
   [SECTION_TYPES.CONTACT_BANNER]: ContactBanner,
+  [SECTION_TYPES.BLOG_POST]: BlogPost,
   report: UpriseReport,
   heading: Heading,
   seo: Seo,
