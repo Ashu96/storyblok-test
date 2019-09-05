@@ -2,7 +2,6 @@ import Page from './page'
 import Grid from './grid'
 import Teaser from './teaser'
 import Feature from './feature'
-import NavItem from './nav_item'
 import ComponentNotFound from './component_not_found'
 import HeroBanner from './HeroBanner'
 import MultipleMediaWithCaption from './MultipleMediaWithCaption'
@@ -23,7 +22,6 @@ const ComponentList = {
   Grid: Grid,
   teaser: Teaser,
   feature: Feature,
-  nav_item: NavItem,
   'Hero Banner': HeroBanner,
   'media': Media,
   [SECTION_TYPES.MULTIPLE_MEDIA_WITH_CAPTION]: MultipleMediaWithCaption,
