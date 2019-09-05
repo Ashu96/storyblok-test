@@ -7,8 +7,8 @@ import { backgrounds, extended } from '../constants/colors'
 function Grid(props) {
   console.log({ grid: props })
   console.log('********************************************')
-
-  const cols = `col-${12 / props.blok.columns_in_row}`
+  const splitScreen = props.blok.columns_in_row * 1 === 2
+  const cols = `col-md-${12 / props.blok.columns_in_row}`
   const {
     paddingTop,
     paddingBottom,
@@ -43,7 +43,8 @@ function Grid(props) {
             <Col className={cols}>
               {React.createElement(Components(blok.component), {
                 key: blok._uid,
-                blok: blok
+                blok: blok,
+                splitScreen
               })}
             </Col>
           ))}

@@ -7,17 +7,30 @@ import ComponentNotFound from './component_not_found'
 import HeroBanner from './HeroBanner'
 import MultipleMediaWithCaption from './MultipleMediaWithCaption'
 import SingleMediaWithCaptionAndParagraph from './SingleMediaWithCaptionAndParagraph'
+import HeadingWithSingleMediaAndButton from './HeadingWithSingleMediaAndButton'
+import Media from './Media'
+import UpriseReport from './UpriseReport'
+import Heading from './Heading'
+import Seo from './Seo'
+import Header from './Header'
 import {SECTION_TYPES} from '../constants'
 
 const ComponentList = {
   page: Page,
   grid: Grid,
+  Grid: Grid,
   teaser: Teaser,
   feature: Feature,
   nav_item: NavItem,
   'Hero Banner': HeroBanner,
+  'media': Media,
   [SECTION_TYPES.MULTIPLE_MEDIA_WITH_CAPTION]: MultipleMediaWithCaption,
-  [SECTION_TYPES.SINGLE_MEDIA_WITH_CAPTION_AND_PARAGRAPH]: SingleMediaWithCaptionAndParagraph
+  [SECTION_TYPES.SINGLE_MEDIA_WITH_CAPTION_AND_PARAGRAPH]: SingleMediaWithCaptionAndParagraph,
+  [SECTION_TYPES.HEADING_WITH_SINGLE_MEDIA_AND_BUTTON]: HeadingWithSingleMediaAndButton,
+  report: UpriseReport,
+  heading: Heading,
+  seo: Seo,
+  header: Header
 }
 
 const Components = (type) => {

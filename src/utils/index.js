@@ -13,12 +13,12 @@ import { PrimaryButton, LinkButton, OutLineButton } from '../styles/buttons'
 // import SingleMediaWithParagraphAndLink from '../components/SingleMediaWithParagraphAndLink'
 // import Reports from '../components/Reports'
 // import SectionWithCards from '../components/SectionWithCards'
-// import {
-// 	NavLogo,
-// 	NavLink,
-// 	NavButton,
-// 	NavDropDown
-// } from '../components/Header/NavItems'
+import {
+	NavLogo,
+	NavLink,
+	NavButton,
+	NavDropDown
+} from '../components/Header/NavItems'
 // import FeaturedCard from '../components/FeatureCard'
 // import SupportCard from '../components/SupportCard'
 // import ContactBanner from '../components/ContactBanner'
@@ -96,18 +96,18 @@ export function getButton(type) {
 // 		.replace(/ +/g, '-')
 // }
 
-// export function getNavItem(item) {
-// 	switch (item.type) {
-// 	case NAV_ITEM_TYPES.LOGO:
-// 		return NavLogo
-// 	case NAV_ITEM_TYPES.BUTTON:
-// 		return NavButton
-// 	case NAV_ITEM_TYPES.DROP_DOWN:
-// 		return NavDropDown
-// 	default:
-// 		return NavLink
-// 	}
-// }
+export function getNavItem(item) {
+	switch (item.type) {
+	case NAV_ITEM_TYPES.LOGO:
+		return NavLogo
+	case NAV_ITEM_TYPES.BUTTON:
+		return NavButton
+	case NAV_ITEM_TYPES.DROP_DOWN:
+		return NavDropDown
+	default:
+		return NavLink
+	}
+}
 
 // export function getCard(type) {
 // 	switch (type) {

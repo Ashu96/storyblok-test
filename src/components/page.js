@@ -1,5 +1,6 @@
 import React from 'react'
 import Components from './components.js';
+import './layout.css'
 
 const Page = (props) => (
   <div>
