@@ -2,7 +2,7 @@ import React from 'react'
 import { navigate, Link } from 'gatsby'
 import Img from 'gatsby-image'
 import Styled from 'styled-components'
-import { getButton } from '../../utils'
+import { getButton, isExternal } from '../../utils'
 import Icon from '../Icon'
 import { backgrounds, primary, extended } from '../../constants/colors'
 
@@ -55,7 +55,13 @@ export function NavLogo({ item }) {
 export function NavLink({ item, classNames }) {
 	return (
 		<li className={classNames ? classNames : 'header__nav-item'}>
-			<Link to={item.link} activeClassName="active">
+			<Link to={item.link}  onClick={(event) => {
+        if (isExternal(item.link)) {
+          // 
+          event.preventDefault()
+          window.open(item.link, '_blank')
+        }
+      }} activeClassName="active">
 				{item.image && <Img fixed={item.image.childImageSharp.fixed} alt="" />}
 				{!item.image && item.title}
 			</Link>

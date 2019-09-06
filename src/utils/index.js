@@ -119,3 +119,9 @@ export function getNavItem(item) {
 // 		return FeaturedCard
 // 	}
 // }
+
+
+export function isExternal(url) {
+  console.log(`URL: ${url}`)
+  return url.includes('http')
+}
