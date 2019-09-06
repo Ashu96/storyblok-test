@@ -1,6 +1,8 @@
 import React from 'react'
 import Components from '../components/components.js'
-
+import Footer from '../components/footer'
+import '../fonts/proxima-nova-web-fonts/fonts.css'
+import '../components/layout.css'
 class StoryblokEntry extends React.Component {
   static getDerivedStateFromProps(props, state) {
     if (state.story.uuid === props.pageContext.story.uuid) {
@@ -38,6 +40,7 @@ class StoryblokEntry extends React.Component {
       <div>
         {/* <Navi blok={globalNavi}></Navi> */}
         {React.createElement(Components(content.component), {key: content._uid, blok: content, ...content})}
+        <Footer />
       </div>
     )
   }
