@@ -77,6 +77,7 @@ const HeaderContainer = Styled.header`
 
     & button {
       height: 40px;
+      padding: 6px 16px;
     }
 
     /* & button:first-child {
