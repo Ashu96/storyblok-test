@@ -1,6 +1,6 @@
 const SEND_IN_BLUE_API = `https://api.sendinblue.com/v3/contacts`
 
-const SB_API_KEY = `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`
+const SB_API_KEY = ``
 
 const GOOGLE_SHEET_URL = `https://script.google.com/macros/s/AKfycbx3N8BregQYEq3CkBC1_IC59BVAg0HWiE6GtUOKRQgTFF-pTtk/exec`
 
