@@ -16,6 +16,7 @@ import SupportCard from './SupportCard'
 import ContactBanner from './ContactBanner'
 import BlogPost from './Blog'
 import FeaturePricingCard  from './FeaturePricingCard'
+import FAQs  from './FAQs'
 import {SECTION_TYPES} from '../constants'
 
 const ComponentList = {
@@ -36,7 +37,8 @@ const ComponentList = {
   heading: Heading,
   seo: Seo,
   header: Header,
-  [SECTION_TYPES.FEATURE_PRICING_CARD]: FeaturePricingCard
+  [SECTION_TYPES.FEATURE_PRICING_CARD]: FeaturePricingCard,
+  [SECTION_TYPES.WITH_ACCORDION]: FAQs
 }
 
 const Components = (type) => {
