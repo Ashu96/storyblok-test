@@ -19,6 +19,8 @@ import FeaturePricingCard  from './FeaturePricingCard'
 import FAQs  from './FAQs'
 import FeatureCard from './FeatureCard'
 import StaffMemberCard from './StaffMemberCard'
+import Subscribe from './Subscribe'
+import ContactForm from './ContactForm'
 import {SECTION_TYPES} from '../constants'
 
 const ComponentList = {
@@ -39,6 +41,8 @@ const ComponentList = {
   heading: Heading,
   seo: Seo,
   header: Header,
+  Subscribe: Subscribe,
+  [SECTION_TYPES.CONTACT_FORM]: ContactForm,
   [SECTION_TYPES.FEATURE_PRICING_CARD]: FeaturePricingCard,
   [SECTION_TYPES.WITH_ACCORDION]: FAQs,
   [SECTION_TYPES.FEATURE_CARD]: FeatureCard,
