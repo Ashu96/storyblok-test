@@ -33,9 +33,8 @@ class StoryblokEntry extends React.Component {
   render() {
     let content = this.state.story.content
     // let globalNavi = this.state.globalNavi.content
-    console.count('render')
+    console.count('Render template')
     console.log({ content })
-
     return (
       <div>
         {/* <Navi blok={globalNavi}></Navi> */}
