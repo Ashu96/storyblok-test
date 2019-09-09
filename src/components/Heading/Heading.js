@@ -22,6 +22,7 @@ const HEADINGS = {
   Label: Label
 }
 
+const BASE_SPACING = 16
 const getTextComponent = type => HEADINGS[type]
 
 const getColorValue = color => {
@@ -31,16 +32,16 @@ const getColorValue = color => {
   return extended.charcoal[color]
 }
 
-const HeadingWrapper = Styled.div``
+const HeadingWrapper = Styled.div`
+  margin-bottom: ${props => `${BASE_SPACING * props.marginBottom}px`};
+`
 
 function Heading({ blok }) {
-  console.log({ blok })
-  console.log('********************************************')
-  
-  const { size, color, text, center, bold } = blok
+    
+  const { size, color, text, center, bold, marginBottom } = blok
   const Text = getTextComponent(size)
   return (
-    <HeadingWrapper>
+    <HeadingWrapper marginBottom={marginBottom}>
       <Text color={getColorValue(color)} textCenter={center} bold={bold}>
         {text}
       </Text>
