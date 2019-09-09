@@ -40,7 +40,7 @@ export const Heading3 = Styled.h3`
 export const Heading4 = Styled.h4`
   font-family: 'Proxima Nova';
   font-size: 20px;
-  font-weight: normal;
+  font-weight: ${props => (props.bold ? 600 : 'normal')};
   font-style: normal;
   font-stretch: normal;
   line-height: 1.5;

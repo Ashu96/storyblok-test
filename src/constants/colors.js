@@ -34,7 +34,7 @@ export const extended = {
 		one: 'rgb(150,127,254)',
 		two: 'rgb(175,158,253)',
 		three: 'rgb(187,172,252)',
-		four: 'rgb(212,203,251)',
+		four: 'rgb(212,203,251)', // #d4cbfb
 		five: 'rgb(237,234,250)'
 	},
 
