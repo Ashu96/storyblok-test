@@ -6,7 +6,7 @@ import { Heading3, BodyText } from '../../styles/text'
 
 const FeatureCardWrapper = Styled.div`
   width: auto;
-  height: 590px;
+  height: ${props => props.shortContent ? '490px' : '590px'};
   background-color: ${backgrounds.fadedPurple};
   padding: 40px;
   text-align: center;
@@ -29,19 +29,21 @@ const FeatureCardWrapper = Styled.div`
 
   @media (min-width: 768px) {
     min-width: 300px;
-    height: 620px;
+    height: ${props => props.shortContent ? '447px' : '590px'};
   }
 
   @media (min-width: 1220px) {
     width: 345px;
-    height: 590px;
+    height: ${props => props.shortContent ? '447px' : '590px'};
   }
 `
 
 function FeatureCard({ blok }) {
   const {title, media, body} = blok
+  const shortContent = body.length < 100
+
 	return (
-		<FeatureCardWrapper>
+		<FeatureCardWrapper shortContent={shortContent}>
       <Heading3>{title}</Heading3>
 			<div className="image-container">
 				{media && <img src={media} alt={title} />}
