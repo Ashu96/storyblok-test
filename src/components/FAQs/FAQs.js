@@ -13,10 +13,14 @@ const FAQsWrapper = Styled.div`
   box-shadow: 0 2px 4px 0 rgba(219, 221, 227, 0.5);
   background-color: #ffffff;
 
-  padding: 24px;
+  padding: 12px;
 
   & hr {
     border-color: ${extended.purple.four};
+  }
+
+  @media (min-width: 768px) {
+    padding: 24px;
   }
 `
 

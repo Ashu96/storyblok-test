@@ -9,6 +9,7 @@ const AccordionWrapper = Styled.div`
   /* width: 770px; */
   /* margin: auto; */
   /* height: 440px; */
+  --height: 120px;
 
   & .question-container {
     position: relative;
@@ -37,6 +38,10 @@ const AccordionWrapper = Styled.div`
     margin-bottom: 24px;
   }
 
+  @media (min-width: 768px) {
+    --height: 50px;
+  }
+
   @keyframes fadeIn {
     from {
       opacity: 0;
@@ -45,14 +50,14 @@ const AccordionWrapper = Styled.div`
     }
     to {
       opacity: 1;
-      height: 50px;
+      height: var(--height);
       /* transform: scaleY(1); */
     }
   }
   @keyframes fadeOut {
     from {
       opacity: 1;
-      height: 50px;
+      height: var(--height);
       /* transform: scaleY(1); */
     }
     to {
