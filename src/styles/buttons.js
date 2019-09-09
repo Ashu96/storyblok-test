@@ -34,9 +34,8 @@ export const PrimaryButton = Styled(Button)`
   background-color: ${props =>
 		props.secondary ? secondary.electricBlue : primary.purple};
   color: ${backgrounds.white};
-  width: ${props => (props.large ? '100%' : 'auto')}
-  height: ${props => (props.large ? '60px' : '')}
-
+  width: ${props => (props.large ? '100%' : 'auto')};
+  height: ${props => (props.large ? '60px' : '')};
 `
 export const RoundButton = Styled(Button)`
   font-size: 16px;
@@ -57,4 +56,10 @@ export const RoundButton = Styled(Button)`
   &:hover {
     box-shadow: 10px 10px 10px 0 rgba(219, 221, 227, 0.8);
   }
+`
+
+export const TertiaryButton = Styled(PrimaryButton)`
+  color: ${primary.purple};
+  background-color: ${backgrounds.fadedPurple};
+  border: none;
 `

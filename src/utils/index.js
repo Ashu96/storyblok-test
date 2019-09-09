@@ -1,11 +1,16 @@
 import React from 'react'
 import {
-	BUTTON_TYPES,
-	NAV_ITEM_TYPES,
-	SECTION_TYPES,
-	CARD_TYPES
+  BUTTON_TYPES,
+  NAV_ITEM_TYPES,
+  SECTION_TYPES,
+  CARD_TYPES
 } from '../constants'
-import { PrimaryButton, LinkButton, OutLineButton } from '../styles/buttons'
+import {
+  PrimaryButton,
+  TertiaryButton,
+  LinkButton,
+  OutLineButton
+} from '../styles/buttons'
 // import HeroSection from '../components/HeroSection'
 // import ContentWithImageList from '../components/ContentWithImageList'
 // import TourSection from '../components/tourSection'
@@ -14,10 +19,10 @@ import { PrimaryButton, LinkButton, OutLineButton } from '../styles/buttons'
 // import Reports from '../components/Reports'
 // import SectionWithCards from '../components/SectionWithCards'
 import {
-	NavLogo,
-	NavLink,
-	NavButton,
-	NavDropDown
+  NavLogo,
+  NavLink,
+  NavButton,
+  NavDropDown
 } from '../components/Header/NavItems'
 // import FeaturedCard from '../components/FeatureCard'
 // import SupportCard from '../components/SupportCard'
@@ -47,16 +52,18 @@ import {
 // }
 
 export function getButton(type) {
-	switch (type) {
-	case BUTTON_TYPES.LINK:
-		return LinkButton
-	case BUTTON_TYPES.PRIMARY:
-		return PrimaryButton
-	case BUTTON_TYPES.OUTLINE:
-		return OutLineButton
-	default:
-		return props => <PrimaryButton {...props} secondary />
-	}
+  switch (type) {
+    case BUTTON_TYPES.LINK:
+      return LinkButton
+    case BUTTON_TYPES.PRIMARY:
+      return PrimaryButton
+    case BUTTON_TYPES.TERTIARY:
+      return TertiaryButton
+    case BUTTON_TYPES.OUTLINE:
+      return OutLineButton
+    default:
+      return props => <PrimaryButton {...props} secondary />
+  }
 }
 
 // function getStrapiURL() {
@@ -97,16 +104,16 @@ export function getButton(type) {
 // }
 
 export function getNavItem(item) {
-	switch (item.type) {
-	case NAV_ITEM_TYPES.LOGO:
-		return NavLogo
-	case NAV_ITEM_TYPES.BUTTON:
-		return NavButton
-	case NAV_ITEM_TYPES.DROP_DOWN:
-		return NavDropDown
-	default:
-		return NavLink
-	}
+  switch (item.type) {
+    case NAV_ITEM_TYPES.LOGO:
+      return NavLogo
+    case NAV_ITEM_TYPES.BUTTON:
+      return NavButton
+    case NAV_ITEM_TYPES.DROP_DOWN:
+      return NavDropDown
+    default:
+      return NavLink
+  }
 }
 
 // export function getCard(type) {
@@ -119,7 +126,6 @@ export function getNavItem(item) {
 // 		return FeaturedCard
 // 	}
 // }
-
 
 export function isExternal(url) {
   console.log(`URL: ${url}`)

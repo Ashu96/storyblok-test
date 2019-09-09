@@ -1,7 +1,9 @@
 export const BUTTON_TYPES = {
 	PRIMARY: 'PRIMARY',
+  SECONDARY: 'SECONDARY',
+  TERTIARY: 'TERTIARY',
 	OUTLINE: 'OUTLINE',
-	LINK: 'LINK'
+  LINK: 'LINK',
 }
 
 export const NAV_ITEM_TYPES = {
