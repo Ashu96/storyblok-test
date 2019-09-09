@@ -53,6 +53,20 @@ label {
   color: ${primary.purple};
 }
 
+.floating-input:placeholder-shown ~ label {
+  /* top: -14px;
+  font-size: 12px;
+  color: red; */
+  opacity: 0;
+}
+
+.floating-input:not(:placeholder-shown) ~ label {
+  opacity: 1;
+  top: -14px;
+  font-size: 12px;
+  color: ${primary.purple};
+}
+
 /* active state */
 .floating-input:focus ~ .bar:before,
 .floating-input:focus ~ .bar:after,
@@ -128,15 +142,18 @@ label {
 
 `
 
-export function TextInput({ id, label, isRequired }) {
+export function TextInput({ id, label, isRequired, value,  ...restProps }) {
 	return (
 		<TextInputContainer>
 			<div className="floating-label">
 				<input
+          placeholder={label}
 					className="floating-input"
 					type="text"
 					id={id}
-					required={isRequired}
+          required={isRequired}
+          value={value}
+          {...restProps}
 				/>
 				<span className="highlight" />
 				<label htmlFor={id}>{label}</label>
