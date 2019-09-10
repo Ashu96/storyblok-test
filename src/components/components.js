@@ -22,6 +22,7 @@ import StaffMemberCard from './StaffMemberCard'
 import Subscribe from './Subscribe'
 import ContactForm from './ContactForm'
 import Static from './Static'
+import Plugin from './Plugin'
 import {SECTION_TYPES} from '../constants'
 
 const ComponentList = {
@@ -48,7 +49,8 @@ const ComponentList = {
   [SECTION_TYPES.WITH_ACCORDION]: FAQs,
   [SECTION_TYPES.FEATURE_CARD]: FeatureCard,
   [SECTION_TYPES.STAFF_MEMBER]: StaffMemberCard,
-  [SECTION_TYPES.STATIC]: Static
+  [SECTION_TYPES.STATIC]: Static,
+  [SECTION_TYPES.PLUGIN]: Plugin
 }
 
 const Components = (type) => {
