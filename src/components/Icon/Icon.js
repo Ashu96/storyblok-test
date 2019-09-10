@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Styled from 'styled-components'
+// import Styled from 'styled-components'
 
 import ICON_LIST from './IconList'
 

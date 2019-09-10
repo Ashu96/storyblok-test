@@ -12,7 +12,7 @@ const PluginWrapper = Styled.div`
 function Plugin({ blok }) {
   const { url } = blok
 
-  const loadCalendar = () => {
+  React.useEffect(() => {
     // eslint-disable-next-line
     Calendly.initInlineWidget({
       url,
@@ -20,11 +20,7 @@ function Plugin({ blok }) {
       prefill: {},
       utm: {}
      });
-  }
-
-  React.useEffect(() => {
-    loadCalendar()
-  }, [])
+  }, [url])
 
   return (
     <PluginWrapper>

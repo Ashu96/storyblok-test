@@ -2,8 +2,8 @@ import React from 'react'
 import {
   BUTTON_TYPES,
   NAV_ITEM_TYPES,
-  SECTION_TYPES,
-  CARD_TYPES
+  // SECTION_TYPES,
+  // CARD_TYPES
 } from '../constants'
 import {
   PrimaryButton,

@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Styled from 'styled-components'
-import Img from 'gatsby-image'
-import { OutLineButton, PrimaryButton } from '../../styles/buttons'
+// import Img from 'gatsby-image'
+// import { OutLineButton, PrimaryButton } from '../../styles/buttons'
 import { Col } from '../../styles/grid'
 import { Heading2, BodyText, Note } from '../../styles/text'
-import { backgrounds } from '../../constants/colors'
+// import { backgrounds } from '../../constants/colors'
 
 const SingleMediaWithCaptionAndParagraphWrapper = Styled.div`
   flex-direction: ${props => props.imageFirst ? 'row-reverse' : 'row'};

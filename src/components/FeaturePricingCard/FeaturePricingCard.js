@@ -3,8 +3,7 @@ import PropTypes from 'prop-types'
 import Styled from 'styled-components'
 import Icon from '../Icon'
 import Heading from '../Heading'
-import { Heading2, Note, BodyText } from '../../styles/text'
-import { PrimaryButton } from '../../styles/buttons'
+import { Heading2, Note } from '../../styles/text'
 import { primary, extended, backgrounds } from '../../constants/colors'
 import { getButton } from '../../utils'
 
@@ -78,10 +77,7 @@ function FeaturePricingCard({ blok }) {
           console.log({ feature })
           return (
             <div className="feature">
-              <img
-                src={require('../../images/icons/tick.svg')}
-               
-              />
+              <img src={require('../../images/icons/tick.svg')} alt="" />
               <Heading blok={feature} />
             </div>
           )

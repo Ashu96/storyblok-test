@@ -103,7 +103,7 @@ class StoryblokEntry extends React.Component {
     }
 
     let content = this.state.story.content
-    let globalNavi = this.state.globalNavi.content
+    // let globalNavi = this.state.globalNavi.content
 
     return (
       <SbEditable content={content}>

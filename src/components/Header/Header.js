@@ -1,8 +1,12 @@
-import { Helmet } from 'react-helmet'
+// import { Helmet } from 'react-helmet'
 import PropTypes from 'prop-types'
 import React from 'react'
 import Styled from 'styled-components'
-import { backgrounds, primary, extended } from '../../constants/colors'
+import { 
+  // backgrounds,
+  primary,
+  extended
+} from '../../constants/colors'
 import { SectionWrapper, Row, Col } from '../../styles/grid'
 import { getNavItem } from '../../utils'
 
@@ -156,57 +160,57 @@ Header.defaultProps = {
 
 export default Header
 
-const MenuContainer = Styled.div`
-  /* color: black; */
-  /* position: relative; */
-  & button {
-    margin: 0px;
-    padding: 0px;
-    background: none;
-    border: none;
-  }
+// const MenuContainer = Styled.div`
+//   /* color: black; */
+//   /* position: relative; */
+//   & button {
+//     margin: 0px;
+//     padding: 0px;
+//     background: none;
+//     border: none;
+//   }
 
-  & .menu-icon {
-    position: absolute;
-    top: 27px;
-    right: 20px;
-    width: 24px;
-    height: 24px;
-  }
+//   & .menu-icon {
+//     position: absolute;
+//     top: 27px;
+//     right: 20px;
+//     width: 24px;
+//     height: 24px;
+//   }
 
-  & .menu__container {
-    position: fixed;
-    z-index: 20;
-    background-color: ${primary.purple};
-    color: ${backgrounds.white};
-    width: 100%;
-    height: 100vh;
-    top: 70px;
-    left: 0px;
-  }
+//   & .menu__container {
+//     position: fixed;
+//     z-index: 20;
+//     background-color: ${primary.purple};
+//     color: ${backgrounds.white};
+//     width: 100%;
+//     height: 100vh;
+//     top: 70px;
+//     left: 0px;
+//   }
 
-  & .menu__list {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: left;
+//   & .menu__list {
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: center;
+//     text-align: left;
 
-    & li {
-      margin: 0px;
-      margin-top: 49px;
+//     & li {
+//       margin: 0px;
+//       margin-top: 49px;
 
-      & a {
-        color: ${backgrounds.white};
-        text-decoration: none;
-        font-size: 18px;
-      }
-    }
-  }
+//       & a {
+//         color: ${backgrounds.white};
+//         text-decoration: none;
+//         font-size: 18px;
+//       }
+//     }
+//   }
 
-  @media (min-width: 768px) {
-    display: none;
-  }
-`
+//   @media (min-width: 768px) {
+//     display: none;
+//   }
+// `
 
 // function Menu() {
 //   const [open, toggleOpen] = React.useState(false)

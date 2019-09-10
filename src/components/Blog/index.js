@@ -1,11 +1,11 @@
 import React from 'react'
 import Styled from 'styled-components'
-import Img from 'gatsby-image'
+// import Img from 'gatsby-image'
 import ReactMarkdown from 'react-markdown'
 import format from 'date-fns/format'
 // import RelatedPosts from '../components/Blog/RelatedPosts'
 import { Heading1, BodyText } from '../../styles/text'
-import { SectionWrapper, Row, Col } from '../../styles/grid'
+import { Row, Col } from '../../styles/grid'
 import { backgrounds, primary, extended } from '../../constants/colors'
 
 const BlogContentContainer = Styled.div`

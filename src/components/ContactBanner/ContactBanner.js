@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Styled from 'styled-components'
-import Img from 'gatsby-image'
+// import Img from 'gatsby-image'
 import { Row, Col } from '../../styles/grid'
 import { Heading2, BodyText } from '../../styles/text'
 import { primary } from '../../constants/colors'

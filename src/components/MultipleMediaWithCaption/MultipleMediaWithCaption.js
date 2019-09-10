@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Styled from 'styled-components'
-import { getPublicURL } from '../../utils'
+// import { getPublicURL } from '../../utils'
 import { Heading2 } from '../../styles/text'
 
 const MultipleMediaWithCaptionWrapper = Styled.div`

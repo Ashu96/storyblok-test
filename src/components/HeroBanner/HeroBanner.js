@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import Styled from 'styled-components'
 import Img from 'gatsby-image'
 import { navigate } from 'gatsby'
-import { OutLineButton, PrimaryButton } from '../../styles/buttons'
-import { SectionWrapper, Row, Col } from '../../styles/grid'
+// import { OutLineButton, PrimaryButton } from '../../styles/buttons'
+// import { SectionWrapper, Row, Col } from '../../styles/grid'
+// import { backgrounds } from '../../constants/colors'
 import { Heading1, Heading4, BodyText } from '../../styles/text'
-import { backgrounds } from '../../constants/colors'
 import { getButton } from '../../utils'
 
 const HeroBannerWrapper = Styled.div`

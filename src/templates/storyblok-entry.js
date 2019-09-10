@@ -3,6 +3,7 @@ import Components from '../components/components.js'
 import Footer from '../components/footer'
 import '../fonts/proxima-nova-web-fonts/fonts.css'
 import '../components/layout.css'
+import '../styles/bootstrap-grid-utils.css'
 class StoryblokEntry extends React.Component {
   static getDerivedStateFromProps(props, state) {
     if (state.story.uuid === props.pageContext.story.uuid) {
