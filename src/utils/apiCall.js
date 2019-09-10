@@ -3,6 +3,7 @@ const SEND_IN_BLUE_API = `https://api.sendinblue.com/v3/contacts`
 const GOOGLE_SHEET_URL = `https://script.google.com/macros/s/AKfycbx3N8BregQYEq3CkBC1_IC59BVAg0HWiE6GtUOKRQgTFF-pTtk/exec`
 
 export default function apiCall(url, method = 'GET', body = {}) {
+  console.log(`Key: ${process.env.SB_API_KEY}`)
   return fetch(url, {
     method,
     headers: {
