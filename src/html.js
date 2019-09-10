@@ -1,20 +1,22 @@
-import React from 'react';
+import React from 'react'
 
 export default class HTML extends React.Component {
   render() {
     return (
       <html lang="en">
         <head>
+          <title>Uprise Employee Assistance</title>
+          <meta
+            name="description"
+            content="Uprise is a proactive and science-based Employee Assistance Program (EAP) 
+provider in Australia."
+          />
           <meta charSet="utf-8" />
           <meta
             name="viewport"
             content="width=device-width, initial-scale=1.0"
           />
           {this.props.headComponents}
-          <link
-            rel="stylesheet"
-            href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
-          />
         </head>
         <body>
           <div
@@ -24,6 +26,6 @@ export default class HTML extends React.Component {
           {this.props.postBodyComponents}
         </body>
       </html>
-    );
+    )
   }
 }
