@@ -23,6 +23,10 @@ import Subscribe from './Subscribe'
 import ContactForm from './ContactForm'
 import Static from './Static'
 import Plugin from './Plugin'
+import Path from './Path'
+import CollateralCard from './CollateralCard'
+import Carousel from './Carousel'
+import CalendarCard from './CalendarCard'
 import {SECTION_TYPES} from '../constants'
 
 const ComponentList = {
@@ -44,16 +48,21 @@ const ComponentList = {
   seo: Seo,
   header: Header,
   Subscribe: Subscribe,
+  path: Path,
+  Carousel: Carousel,
   [SECTION_TYPES.CONTACT_FORM]: ContactForm,
   [SECTION_TYPES.FEATURE_PRICING_CARD]: FeaturePricingCard,
   [SECTION_TYPES.WITH_ACCORDION]: FAQs,
   [SECTION_TYPES.FEATURE_CARD]: FeatureCard,
   [SECTION_TYPES.STAFF_MEMBER]: StaffMemberCard,
   [SECTION_TYPES.STATIC]: Static,
-  [SECTION_TYPES.PLUGIN]: Plugin
+  [SECTION_TYPES.PLUGIN]: Plugin,
+  [SECTION_TYPES.COLLATERAL_CARD]: CollateralCard,
+  [SECTION_TYPES.CALENDAR_CARD]: CalendarCard
 }
 
 const Components = (type) => {
+  console.log(`type: ${type}`)
   if (typeof ComponentList[type] === 'undefined') {
     return ComponentNotFound
   }
