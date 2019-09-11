@@ -7,7 +7,7 @@ import { extended } from '../constants/colors'
 function Grid(props) {
   const hasPath = props.blok.columns.some(col => col.component === 'path')
   const splitScreen = props.blok.columns_in_row * 1 === 2
-  const cols = `col-md-${12 / props.blok.columns_in_row}`
+  const cols = `col-lg-${12 / props.blok.columns_in_row}`
   const {
     paddingTop,
     paddingBottom,

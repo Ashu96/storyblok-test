@@ -22,8 +22,8 @@ const SingleMediaWithCaptionAndParagraphWrapper = Styled.div`
   }
 
   & .info:before {
+    display: none;
     content: '';
-    display: ${props => props.timeline ? 'block' : 'none'};
     width: 16px;
     height: 16px;
     background-color: ${primary.purple};
@@ -32,6 +32,10 @@ const SingleMediaWithCaptionAndParagraphWrapper = Styled.div`
     left: ${props => !props.imageFirst ? '-16px' : 'inherit'};
     right: ${props => props.imageFirst ? '0' : 'inherit'};
     top: 10px;
+
+    @media (min-width: 768px) {
+      display: ${props => props.timeline ? 'block' : 'none'};
+    }
   }
 
   & .info {

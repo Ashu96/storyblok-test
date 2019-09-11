@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import Styled from 'styled-components'
 
 const PathWrapper = Styled.div`
+  display: none;
+  
   position: absolute;
   top: 0;
   left: 49%;
@@ -10,6 +12,10 @@ const PathWrapper = Styled.div`
 
   & img {
     height: 100%;
+  }
+
+  @media (min-width: 1024px) {
+    display: block;
   }
 `
 

@@ -14,10 +14,18 @@ const StaffMemberCardWrapper = Styled.div`
   padding: 73px 77px 24px 79px;
   text-align: center;
 
+  margin: auto;
+  margin-bottom: 24px;
+
   & img {
-    width: : 220px;
+    width: 220px;
     height: 220px;
     margin-bottom: 36px;
+  }
+
+  @media (min-width: 999px) and (max-width: 1200px) {
+    width: 300px;
+    padding: 40px;
   }
 `
 
