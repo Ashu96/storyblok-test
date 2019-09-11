@@ -2,9 +2,10 @@ import React from 'react'
 import Components from './components.js'
 import SbEditable from 'storyblok-react'
 import { SectionWrapper, Row, Col } from '../styles/grid'
-import { backgrounds, extended } from '../constants/colors'
+import { extended } from '../constants/colors'
 
 function Grid(props) {
+  const hasPath = props.blok.columns.some(col => col.component === 'path')
   const splitScreen = props.blok.columns_in_row * 1 === 2
   const cols = `col-md-${12 / props.blok.columns_in_row}`
   const {
@@ -38,9 +39,12 @@ function Grid(props) {
           }
         }}
       >
-        <Row>
+        <Row style={hasPath ? { position: 'relative' } : {}}>
           {props.blok.columns.map(blok => (
-            <Col className={cols}>
+            <Col
+              className={cols}
+              style={blok.component === 'path' ? { position: 'static' } : {}}
+            >
               {React.createElement(Components(blok.component), {
                 key: blok._uid,
                 blok: blok,
