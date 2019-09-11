@@ -9,10 +9,9 @@ import { addContact } from '../../utils/apiCall'
 const SubscribeWrapper = Styled.div`
   max-width: 570px;
   margin: auto;
-  margin-top: 80px;
 `
 
-function Subscribe() {
+function Subscribe({ blok }) {
   const [firstName, setFirstName] = React.useState('')
   const [lastName, setLastName] = React.useState('')
   const [email, setEmail] = React.useState('')
@@ -20,7 +19,7 @@ function Subscribe() {
     <SubscribeWrapper>
       <form onSubmit={event => event.preventDefault()}>
         <Row>
-          <Col className="col-md-6">
+          {blok.firstName && <Col className="col-md-6">
             <TextInput
               value={firstName}
               onChange={({ target: { value } }) => setFirstName(value)}
@@ -28,8 +27,8 @@ function Subscribe() {
               label="First Name"
               isRequired
             />
-          </Col>
-          <Col className="col-md-6">
+          </Col>}
+          {blok.lastName && <Col className="col-md-6">
             <TextInput
               value={lastName}
               onChange={({ target: { value } }) => setLastName(value)}
@@ -37,7 +36,7 @@ function Subscribe() {
               label="Last Name"
               isRequired
             />
-          </Col>
+          </Col>}
         </Row>
         <Row>
           <Col className="col-6">

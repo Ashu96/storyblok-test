@@ -44,11 +44,6 @@ export function SectionWrapper({
 	containerFluidProps,
 	containerProps
 }) {
-  console.log('********************************************')
-  
-  console.log({ bgPrimary })
-  console.log('********************************************')
-
 	return (
 		<div
 			className="container-fluid"

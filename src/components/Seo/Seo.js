@@ -9,7 +9,6 @@ function Seo({ blok }) {
     og_description = 'Uprise is a proactive and science-based Employee Assistance Program (EAP) provider in Australia.',
     og_image = '//a.storyblok.com/f/65490/600x170/de9faa5018/upriselogo.jpg',
     og_title = 'Uprise Employee Assistance',
-    plugin = 'seo_metatags',
     title = 'Uprise Employee Assistance',
     twitter_description = 'Uprise is a proactive and science-based Employee Assistance Program (EAP) provider in Australia.',
     twitter_image = '//a.storyblok.com/f/65490/600x170/de9faa5018/upriselogo.jpg',

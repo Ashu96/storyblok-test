@@ -5,8 +5,6 @@ import { SectionWrapper, Row, Col } from '../styles/grid'
 import { backgrounds, extended } from '../constants/colors'
 
 function Grid(props) {
-  console.log({ grid: props })
-  console.log('********************************************')
   const splitScreen = props.blok.columns_in_row * 1 === 2
   const cols = `col-md-${12 / props.blok.columns_in_row}`
   const {
@@ -14,16 +12,20 @@ function Grid(props) {
     paddingBottom,
     borderTop,
     borderBottom,
-    bgPrimary
+    isPaddingHorizontal,
+    paddingHorizontal,
+    paddingVertical,
+    backgroundColor
   } = props.blok
   return (
     <SbEditable content={props.blok}>
       <SectionWrapper
-        bgPrimary={bgPrimary}
         containerProps={{
           style: {
-            paddingTop: paddingTop ? 100 : 0,
-            paddingBottom: paddingBottom ? 100 : 0
+            paddingTop: paddingTop ? paddingVertical : 0,
+            paddingBottom: paddingBottom ? paddingVertical : 0,
+            paddingLeft: isPaddingHorizontal ? paddingHorizontal : 0,
+            paddingRight: isPaddingHorizontal ? paddingHorizontal : 0
           }
         }}
         containerFluidProps={{
@@ -32,9 +34,7 @@ function Grid(props) {
             borderBottom: borderBottom
               ? `1px solid ${extended.purple.five}`
               : 'none',
-            backgroundColor: bgPrimary
-              ? backgrounds.fadedPurple
-              : backgrounds.white
+            backgroundColor: backgroundColor && backgroundColor.trim()
           }
         }}
       >
