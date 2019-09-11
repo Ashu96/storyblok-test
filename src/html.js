@@ -17,6 +17,11 @@ provider in Australia."
             content="width=device-width, initial-scale=1.0"
           />
           {this.props.headComponents}
+          <script
+            type="text/javascript"
+            async
+            src="https://assets.calendly.com/assets/external/widget.js"
+          ></script>
         </head>
         <body>
           <div
