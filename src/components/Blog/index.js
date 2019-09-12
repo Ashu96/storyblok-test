@@ -111,7 +111,7 @@ function Blog({ blok }) {
             className="mgn-t-100 mgn-b-40"
             alt="nesting"
           /> */}
-          <img src={media} className="mgn-t-100 mgn-b-40 media" alt="nesting" />
+          <img loading='lazy' src={media} className="mgn-t-100 mgn-b-40 media" alt="nesting" />
           <ContentWrapper>
             <ReactMarkdown source={content.original} />
           </ContentWrapper>

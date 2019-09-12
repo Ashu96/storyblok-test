@@ -39,7 +39,7 @@ function CollateralCard({ blok }) {
   return (
     <CollateralCardWrapper>
       <div className="media">
-        <img src={media} alt="" />
+        <img loading='lazy' src={media} alt="" />
       </div>
       <div className="content">
         <Heading4 bold className="title">

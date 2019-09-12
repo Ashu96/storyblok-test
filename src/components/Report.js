@@ -60,7 +60,7 @@
 // 				<div>
 // 					<Heading4>Before</Heading4>
 // 					{before_image.publicURL && (
-// 						<img alt="chart" src={before_image.publicURL} />
+// 						<img loading='lazy' alt="chart" src={before_image.publicURL} />
 // 					)}
 // 					{/* TODO: Replace svg image assets */}
 // 					{before_image.childImageSharp && (
@@ -70,7 +70,7 @@
 // 				<div>
 // 					<Heading4>After</Heading4>
 // 					{after_image.publicURL && (
-// 						<img alt="chart" src={after_image.publicURL} />
+// 						<img loading='lazy' alt="chart" src={after_image.publicURL} />
 // 					)}
 // 					{after_image.childImageSharp && (
 // 						<Img alt="chart" fixed={after_image.childImageSharp.fixed} />

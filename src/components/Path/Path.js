@@ -24,7 +24,7 @@ function Path({ blok }) {
   const { media } = blok
   return (
     <PathWrapper>
-      <img src={media} alt="" />
+      <img loading='lazy' src={media} alt="" />
     </PathWrapper>
   )
 }

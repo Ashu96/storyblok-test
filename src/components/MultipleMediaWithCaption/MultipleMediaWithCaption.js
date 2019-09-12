@@ -75,7 +75,7 @@ function List({ images }) {
 		<ListContainer>
 			{images.map(image => (
 				<ListItem key={image.name}>
-					<img
+					<img loading='lazy'
             src={image.filename}
 						// src={getPublicURL(image.url || image.publicURL)}
 						alt="featured in"

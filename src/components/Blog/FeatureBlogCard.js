@@ -46,7 +46,7 @@ function FeaturedBlogCard({ title, media, body, date, category }) {
 	return (
 		<FeaturedBlogContainer className="row">
 			<Col className="col-lg-6">
-				<img src={media} alt="featured" />
+				<img loading='lazy' src={media} alt="featured" />
 			</Col>
 			<Col className="col-lg-6">
 				<div className="content">

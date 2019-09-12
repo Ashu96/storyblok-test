@@ -17,7 +17,7 @@ function Media({ blok }) {
   const { image, description } = blok
   return (
     <ImageWrapper>
-      <img src={image} alt={description} />
+      <img loading='lazy' src={image} alt={description} />
     </ImageWrapper>
   )
 }

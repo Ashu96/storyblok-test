@@ -70,7 +70,7 @@ function SingleMediaWithCaptionAndParagraph({
     >
       <Col className="col-12 col-lg-6 align-self-center">
         <div className="media">
-          {media && <img src={media} alt={title} />}
+          {media && <img loading='lazy' src={media} alt={title} />}
           {/* {image && <Img fluid={image} alt={title} />} */}
         </div>
       </Col>

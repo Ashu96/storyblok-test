@@ -46,7 +46,7 @@ function FeatureCard({ blok }) {
 		<FeatureCardWrapper shortContent={shortContent}>
       <Heading3>{title}</Heading3>
 			<div className="image-container">
-				{media && <img src={media} alt={title} />}
+				{media && <img loading='lazy' src={media} alt={title} />}
 				{/* {media && <Img fluid={media} alt={title} />} */}
 			</div>
 			<BodyText>{body}</BodyText>

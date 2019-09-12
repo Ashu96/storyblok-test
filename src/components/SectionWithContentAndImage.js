@@ -64,7 +64,7 @@
 // 				<Row>
 // 					<Col className="col-lg-6">
 // 						<div className="media">
-// 							<img alt="" src={imageSrc} />
+// 							<img loading='lazy' alt="" src={imageSrc} />
 // 						</div>
 // 					</Col>
 // 					<Col className="col-lg-6">

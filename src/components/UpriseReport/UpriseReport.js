@@ -67,7 +67,7 @@ function UpriseReport({ blok }) {
         <div>
           <Heading4>Before</Heading4>
           {before_image && (
-            <img alt="chart" src={before_image} />
+            <img loading='lazy' alt="chart" src={before_image} />
           )}
           {/* TODO: Replace svg image assets */}
           {before_image.childImageSharp && (
@@ -77,7 +77,7 @@ function UpriseReport({ blok }) {
         <div>
           <Heading4>After</Heading4>
           {after_image && (
-            <img alt="chart" src={after_image} />
+            <img loading='lazy' alt="chart" src={after_image} />
           )}
           {after_image.childImageSharp && (
             <Img alt="chart" fixed={after_image.childImageSharp.fixed} />

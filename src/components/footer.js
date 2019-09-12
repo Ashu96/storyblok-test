@@ -184,7 +184,7 @@ function Footer() {
 									aria-label={link.key}
 									rel="noopener noreferrer"
 								>
-									<img src={link.label} alt={link.key} />
+									<img loading='lazy' src={link.label} alt={link.key} />
 								</a>
 							))}
 						</div>

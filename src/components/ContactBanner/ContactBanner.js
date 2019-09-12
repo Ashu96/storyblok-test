@@ -75,7 +75,7 @@ function ContactBanner({ blok }) {
     <ContactBannerWrapper>
       <Row>
         <Col className="col-md-6 media">
-          <img src={media} alt="" />
+          <img loading='lazy' src={media} alt="" />
           {/* <Img fluid={media} alt="" /> */}
         </Col>
         <Col className="col-md-6 content">
@@ -83,13 +83,13 @@ function ContactBanner({ blok }) {
           <ul className="list">
             <li>
               {/* <Img fixed={phoneIcon} alt="" /> */}
-              <img src={phoneIcon} alt="" />
+              <img loading='lazy' src={phoneIcon} alt="" />
               <BodyText color={primary.charcoal} bold>
                 {phone}
               </BodyText>
             </li>
             <li>
-              <img src={emailIcon} alt="" />
+              <img loading='lazy' src={emailIcon} alt="" />
               {/* <Img fixed={emailIcon} alt="" /> */}
               <BodyText color={primary.charcoal} bold>
                 {email}
@@ -97,7 +97,7 @@ function ContactBanner({ blok }) {
             </li>
             <li>
               {/* <Img fixed={chatIcon} alt="" /> */}
-              <img src={chatIcon} alt="" />              
+              <img loading='lazy' src={chatIcon} alt="" />              
               <BodyText color={primary.charcoal} bold>
                 {chat}
               </BodyText>

@@ -45,7 +45,7 @@ export function NavLogo({ item }) {
 		<li className="header__logo">
 			<Link to={item.link}>
 				{/* {item.image && <Img fixed={item.image.childImageSharp.fixed} alt="" />} */}
-				{item.image && <img src={item.image} alt="" />}
+				{item.image && <img loading='lazy' src={item.image} alt="" />}
 				{!item.image && item.title}
 			</Link>
 		</li>

@@ -65,7 +65,7 @@ function HeadingWithSingleMediaAndButton({ blok, splitScreen }) {
         <Heading2 className="mgn-b-20">{title}</Heading2>
         {image && (
           <div className="media">
-            <img src={image} alt="" />
+            <img loading='lazy' src={image} alt="" />
             {/* <Img fluid={image.childImageSharp.fluid} /> */}
           </div>
         )}

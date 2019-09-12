@@ -33,7 +33,7 @@ function StaffMemberCard({ blok }) {
   const {name, title, media } = blok
 	return (
 		<StaffMemberCardWrapper>
-      <img src={media} alt={name}/>
+      <img loading='lazy' src={media} alt={name}/>
       <Heading3>{name}</Heading3>
       <BodyText>{title}</BodyText>
 		</StaffMemberCardWrapper>

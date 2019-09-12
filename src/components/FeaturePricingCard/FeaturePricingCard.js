@@ -66,7 +66,7 @@ function FeaturePricingCard({ blok }) {
   return (
     <FeaturePricingCardWrapper>
       <div className="media">
-        <img src={media} alt="" />
+        <img loading='lazy' src={media} alt="" />
       </div>
       <Heading2 className="title">{title}</Heading2>
       <Note className="body" color={extended.charcoal.one}>
@@ -77,7 +77,7 @@ function FeaturePricingCard({ blok }) {
           console.log({ feature })
           return (
             <div className="feature">
-              <img src={require('../../images/icons/tick.svg')} alt="" />
+              <img loading='lazy' src={require('../../images/icons/tick.svg')} alt="" />
               <Heading blok={feature} />
             </div>
           )

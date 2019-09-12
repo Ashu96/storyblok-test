@@ -44,7 +44,7 @@
 // 		<StepContainer className="row">
 // 			<div className="col-12 col-lg-6">
 // 				<StepImage>
-// 					{imageSrc && <img src={imageSrc} alt={title} />}
+// 					{imageSrc && <img loading='lazy' src={imageSrc} alt={title} />}
 // 					{image && <Img fluid={image} alt={title} />}
 // 				</StepImage>
 // 			</div>

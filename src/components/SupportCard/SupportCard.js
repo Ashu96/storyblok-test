@@ -51,7 +51,7 @@ function SupportCard({ blok }) {
 
   return (
     <SupportCardWrapper isContentShort={content.length < 270} large={large}>
-      {media && <img className="media" src={media} alt="" />}
+      {media && <img loading='lazy' className="media" src={media} alt="" />}
       {/* {media && <Img className="media" fluid={media} alt="" />} */}
       <Heading3 className="title">{title}</Heading3>
       <Note className="content" color={extended.charcoal.one}>

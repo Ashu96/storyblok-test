@@ -219,13 +219,13 @@ export default Header
 //     <MenuContainer>
 //       <button aria-label="navigation-menu" onClick={() => toggleOpen(!open)}>
 //         {!open ? (
-//           <img
+//           <img loading='lazy'
 //             alt="burger"
 //             className="menu-icon"
 //             src={require('../../images/menu.svg')}
 //           />
 //         ) : (
-//           <img
+//           <img loading='lazy'
 //             alt="close"
 //             className="menu-icon close"
 //             src={require('../../images/close.svg')}

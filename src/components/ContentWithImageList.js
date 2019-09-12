@@ -99,7 +99,7 @@
 // 		<ListContainer>
 // 			{images.map(image => (
 // 				<ListItem key={image.id}>
-// 					<img
+// 					<img loading='lazy'
 // 						src={getPublicURL(image.url || image.publicURL)}
 // 						alt="featured in"
 // 					/>
