@@ -22,8 +22,22 @@ provider in Australia."
             async
             src="https://assets.calendly.com/assets/external/widget.js"
           ></script>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+              function setup() {
+                const body = document.querySelector('body')
+                if (body) {
+                  body.style.visibility = 'visible'
+                }
+              }
+              
+              window.onload = setup
+        `
+            }}
+          />
         </head>
-        <body>
+        <body style={{ visibility: 'hidden' }}>
           <div
             id="___gatsby"
             dangerouslySetInnerHTML={{ __html: this.props.body }}
