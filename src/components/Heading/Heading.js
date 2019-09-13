@@ -34,15 +34,32 @@ const getColorValue = color => {
 
 const HeadingWrapper = Styled.div`
   margin-bottom: ${props => `${BASE_SPACING * props.marginBottom}px`};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & .point {
+    width: 6px;
+    border-radius: 50%;
+    height: 6px;
+    background-color: #7d60ff;
+    margin-right: 16px;
+  }
+
 `
 
 function Heading({ blok }) {
-    
-  const { size, color, text, center, bold, marginBottom } = blok
+  const { size, color, text, center, bold, marginBottom, withPoint } = blok
   const Text = getTextComponent(size)
   return (
-    <HeadingWrapper marginBottom={marginBottom}>
-      <Text color={getColorValue(color)} textCenter={center} bold={bold}>
+    <HeadingWrapper marginBottom={marginBottom} showPoint={withPoint}>
+      {withPoint && <span className="point"></span>}
+      <Text
+        className="text"
+        color={getColorValue(color)}
+        textCenter={center}
+        bold={bold}
+      >
         {text}
       </Text>
     </HeadingWrapper>

@@ -12,6 +12,7 @@ function HeroBannerWrapper({ blok }) {
       splitScreen={blok.splitScreen}
       action={blok.action}
       media={blok.image}
+      body={blok.body}
     />
   )
 }

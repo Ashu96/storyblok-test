@@ -27,6 +27,8 @@ import Path from './Path'
 import CollateralCard from './CollateralCard'
 import Carousel from './Carousel'
 import CalendarCard from './CalendarCard'
+import BlogHome from './Blog/BlogHome'
+import {RequestAccessCode} from './Forms'
 import {SECTION_TYPES} from '../constants'
 
 const ComponentList = {
@@ -58,7 +60,9 @@ const ComponentList = {
   [SECTION_TYPES.STATIC]: Static,
   [SECTION_TYPES.PLUGIN]: Plugin,
   [SECTION_TYPES.COLLATERAL_CARD]: CollateralCard,
-  [SECTION_TYPES.CALENDAR_CARD]: CalendarCard
+  [SECTION_TYPES.CALENDAR_CARD]: CalendarCard,
+  [SECTION_TYPES.BLOG_HOME]: BlogHome,
+  [SECTION_TYPES.REQUEST_ACCESS_CODE]: RequestAccessCode
 }
 
 const Components = (type) => {

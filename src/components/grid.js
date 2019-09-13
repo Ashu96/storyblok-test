@@ -11,9 +11,11 @@ function Grid(props) {
   const {
     paddingTop,
     paddingBottom,
+    paddingLeft,
+    paddingRight,
     borderTop,
     borderBottom,
-    isPaddingHorizontal,
+    // isPaddingHorizontal,
     paddingHorizontal,
     paddingVertical,
     backgroundColor
@@ -25,8 +27,8 @@ function Grid(props) {
           style: {
             paddingTop: paddingTop ? paddingVertical : 0,
             paddingBottom: paddingBottom ? paddingVertical : 0,
-            paddingLeft: isPaddingHorizontal ? paddingHorizontal : 0,
-            paddingRight: isPaddingHorizontal ? paddingHorizontal : 0
+            paddingLeft: paddingLeft ? paddingHorizontal : 0,
+            paddingRight: paddingRight ? paddingHorizontal : 0
           }
         }}
         containerFluidProps={{
