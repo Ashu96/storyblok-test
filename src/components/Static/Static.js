@@ -75,6 +75,20 @@ const StaticWrapper = Styled.div`
     color: ${primary.charcoal};Z
   }
 
+  & table {
+    font-family: 'Proxima Nova';
+    text-align: left;
+    & th {
+      padding: 16px;
+      color: ${primary.charcoal};
+    }
+    & td {
+      padding: 16px;
+      color: ${extended.charcoal.one};
+      /* border-top: 1px solid ${extended.charcoal.three}; */
+    }
+  }
+
 `
 
 function Static({ blok }) {
