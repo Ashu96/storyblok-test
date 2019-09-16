@@ -4,14 +4,19 @@ import Styled from 'styled-components'
 import { primary, extended } from '../constants/colors'
 
 const TextInputContainer = Styled.div`
-/****  floating-Lable style start ****/
+/**  floating-Label style start **/
 .floating-label {
+  font-family: ${props =>
+      props.bold ? 'Proxima Nova Semibold' : 'Proxima Nova'};
   position: relative;
   margin-bottom: 20px;
 }
 .floating-input,
 .floating-select {
-  font-size: 14px;
+  font-family: ${props =>
+      props.bold ? 'Proxima Nova Semibold' : 'Proxima Nova'};
+  font-size: 16px;
+  line-height: 20px;
   padding: 4px 4px;
   display: block;
   width: 100%;
@@ -28,6 +33,8 @@ const TextInputContainer = Styled.div`
 }
 
 label {
+  font-family: ${props =>
+      props.bold ? 'Proxima Nova Semibold' : 'Proxima Nova'};
   color: ${extended.charcoal.three};
   font-size: 14px;
   font-weight: normal;
@@ -38,6 +45,13 @@ label {
   transition: 0.2s ease all;
   -moz-transition: 0.2s ease all;
   -webkit-transition: 0.2s ease all;
+}
+
+.floating-input::placeholder {
+  font-family: ${props =>
+      props.bold ? 'Proxima Nova Semibold' : 'Proxima Nova'};
+  font-size: 16px;
+  color: ${extended.charcoal.three};
 }
 
 .floating-input:focus ~ label {
