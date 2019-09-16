@@ -28,7 +28,7 @@ import CollateralCard from './CollateralCard'
 import Carousel from './Carousel'
 import CalendarCard from './CalendarCard'
 import BlogHome from './Blog/BlogHome'
-import {RequestAccessCode} from './Forms'
+import {RequestAccessCode, EapSupport} from './Forms'
 import {SECTION_TYPES} from '../constants'
 
 const ComponentList = {
@@ -62,7 +62,8 @@ const ComponentList = {
   [SECTION_TYPES.COLLATERAL_CARD]: CollateralCard,
   [SECTION_TYPES.CALENDAR_CARD]: CalendarCard,
   [SECTION_TYPES.BLOG_HOME]: BlogHome,
-  [SECTION_TYPES.REQUEST_ACCESS_CODE]: RequestAccessCode
+  [SECTION_TYPES.REQUEST_ACCESS_CODE]: RequestAccessCode,
+  [SECTION_TYPES.EAP_SUPPORT]: EapSupport
 }
 
 const Components = (type) => {
