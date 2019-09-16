@@ -70,7 +70,7 @@ FeaturedBlogCard.propTypes = {
 }
 
 FeaturedBlogCard.defaultProps = {
-	media: require('../../images/learn-what-hr.jpg'),
+	media: require('../../images/learn-what-hr.svg'),
 	title: `Learn what HR Managers think is the best EAP Strategy`,
 	body: `Uprise recently surveyed a group of 47 HR and WHS managers and asked about their views on mental health and EAP strategy. Those surveyed were from mostly whi…`,
 	date: 'June 13, 2019',

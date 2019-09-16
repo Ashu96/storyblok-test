@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Styled from 'styled-components'
-import Img from 'gatsby-image'
+// import Img from 'gatsby-image'
+import format from 'date-fns/format'
 import { navigate } from 'gatsby'
 import { backgrounds, extended, primary } from '../../constants/colors'
 import { BodyText, Note } from '../../styles/text'
@@ -16,10 +17,14 @@ const BlogCardContainer = Styled.div`
   &:hover {
     box-shadow: 8px 12px 10px 0 rgba(219,221,227,0.8);
   }
-
-  & img {
+  & .media {
     width: 100%;
-    height: 100%;
+    /* max-width: 370px; */
+    height: 247px;
+    & img {
+      width: 100%;
+      height: 100%;
+    }
   }
 
   & .content {
@@ -53,7 +58,8 @@ function BlogCard({ title, media, body, date, category, slug }) {
 			tabIndex="0"
 			onClick={() => navigate(`/blog/${slug}`)}
 		>
-			<div className="media">{media && <Img fluid={media} alt="" />}</div>
+			<div className="media">{media && <img src={media} alt="" />}</div>
+			{/* <div className="media">{media && <Img fluid={media} alt="" />}</div> */}
 			<div className="content">
 				<BodyText className="title" bold color={primary.charcoal}>
 					{title}
@@ -63,7 +69,7 @@ function BlogCard({ title, media, body, date, category, slug }) {
 				</Note>
 				<div className="meta">
 					<Note color={extended.charcoal.three}>
-						{date} | {category}
+          {format(new Date(date), 'MMMM dd, yyyy')} | {category}
 					</Note>
 				</div>
 			</div>

@@ -25,9 +25,15 @@ const CategoryMenuContainer = Styled.div`
 `
 
 function CategoryMenu({ categories, activeCategory }) {
-	const menu = categories.edges.map(({ node }) => ({
-		...node,
-		isActive: node.strapiId === activeCategory
+	// const menu = categories.edges.map(({ node }) => ({
+	// 	...node,
+	// 	isActive: node.strapiId === activeCategory
+  // }))
+  const menu = categories.map((cat, index) => ({
+    id: index,
+    slug: cat,
+    title: cat,
+		isActive: cat === activeCategory
 	}))
 
 	return (
@@ -37,7 +43,7 @@ function CategoryMenu({ categories, activeCategory }) {
 					<div className="content">
 						{menu.map(category => (
 							<RoundButton
-								key={category.strapiId}
+								key={category.id}
 								isActive={category.isActive}
 								onClick={() => navigate(`/blog/category/${category.slug}`)}
 							>

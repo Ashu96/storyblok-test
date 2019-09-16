@@ -24,17 +24,17 @@ function CategorySection({ Heading, title, blogs, showAll }) {
 			</Row>
 			<Row>
 				{blogs.map(blog => {
-					const categoryName =
-						(blog.blogcategories && blog.blogcategories[0].title) || title
+					const categoryName = title
 					return (
-						<Col key={blog.id} className="col-md-6 col-xl-4 mgn-b-30">
+						<Col key={blog._uid} className="col-md-6 col-xl-4 mgn-b-30">
 							<BlogCard
 								slug={blog.slug}
 								title={blog.title}
 								body={blog.body}
 								date={blog.date}
 								category={categoryName}
-								media={blog.image.childImageSharp.fluid}
+								media={blog.media}
+								// media={blog.image.childImageSharp.fluid}
 							/>
 						</Col>
 					)
