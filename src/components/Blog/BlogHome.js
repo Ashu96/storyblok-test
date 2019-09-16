@@ -30,6 +30,7 @@ function BlogHome() {
     JSON.parse(node.content)
   )
   const categoryMap = {}
+  let featuredBlog
 
   contents.forEach(content => {
     const { body } = content
@@ -38,12 +39,17 @@ function BlogHome() {
         const blog =
           item.columns && item.columns.find(el => el.component === 'BLOG_POST')
         if (blog) {
+          // Save featured blog
+          if(blog.featured) {
+            featuredBlog = blog
+          }
+          // Arrange blogs in categories
           blog.category.forEach(cat => {
             if (categoryMap[cat]) {
-              // Add to map
+              // Add to list
               categoryMap[cat] = [...categoryMap[cat], blog]
             } else {
-              // Add to map
+              // Create list
               categoryMap[cat] = [blog]
             }
           })
@@ -53,11 +59,13 @@ function BlogHome() {
   })
 
   const categories = Object.keys(categoryMap)
-  console.log({ categories, categoryMap })
+  console.log({ categories, categoryMap, featuredBlog })
 
   return (
     <React.Fragment>
-      <FeaturedBlogCard />
+      <FeaturedBlogCard
+        {...featuredBlog}
+      />
       <CategoryMenu
         categories={['All categories', ...categories]}
         activeCategory={'All categories'}

@@ -96,12 +96,12 @@ export function getButton(type) {
 // 	return node
 // }
 
-// export function getSlugFromTitle(title) {
-// 	return title
-// 		.toLowerCase()
-// 		.replace(/[^\w ]+/g, '')
-// 		.replace(/ +/g, '-')
-// }
+export function getSlugFromTitle(title) {
+	return title
+		.toLowerCase()
+		.replace(/[^\w ]+/g, '')
+		.replace(/ +/g, '-')
+}
 
 export function getNavItem(item) {
   switch (item.type) {

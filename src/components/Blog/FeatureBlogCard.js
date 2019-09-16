@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Styled from 'styled-components'
+import {navigate} from 'gatsby'
+import format from 'date-fns/format'
 import { backgrounds, extended } from '../../constants/colors'
 import { Col } from '../../styles/grid'
 import { Heading1, BodyText } from '../../styles/text'
@@ -19,7 +21,7 @@ const FeaturedBlogContainer = Styled.div`
   }
 
   & img {
-    margin-left: -15px;    
+    margin-left: -15px;
     width: 100%;
     height: 100%;
   }
@@ -31,7 +33,12 @@ const FeaturedBlogContainer = Styled.div`
       margin-bottom: 24px;
     }
 
-    & p {
+    & .body {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      
       margin-bottom: 32px;
     }
 
@@ -42,37 +49,42 @@ const FeaturedBlogContainer = Styled.div`
   }
 `
 
-function FeaturedBlogCard({ title, media, body, date, category }) {
-	return (
-		<FeaturedBlogContainer className="row">
-			<Col className="col-lg-6">
-				<img loading='lazy' src={media} alt="featured" />
-			</Col>
-			<Col className="col-lg-6">
-				<div className="content">
-					<Heading1>{title}</Heading1>
-					<BodyText>{body}</BodyText>
-					<div className="meta">
-						<BodyText color={extended.charcoal.two}>
-							{date} | {category}
-						</BodyText>
-					</div>
-				</div>
-			</Col>
-		</FeaturedBlogContainer>
-	)
+function FeaturedBlogCard({ title, media, body, date, category, slug }) {
+  return (
+    <FeaturedBlogContainer
+      className="row"
+      role="button"
+      tabIndex="0"
+      onClick={() => navigate(`/blog/${slug}`)}
+    >
+      <Col className="col-lg-6">
+        <img loading="lazy" src={media} alt="featured" />
+      </Col>
+      <Col className="col-lg-6">
+        <div className="content">
+          <Heading1>{title}</Heading1>
+          <BodyText className='body'>{body}</BodyText>
+          <div className="meta">
+            <BodyText color={extended.charcoal.two}>
+              {format(new Date(date), 'MMMM dd, yyyy')} | {category}
+            </BodyText>
+          </div>
+        </div>
+      </Col>
+    </FeaturedBlogContainer>
+  )
 }
 
 export default FeaturedBlogCard
 
 FeaturedBlogCard.propTypes = {
-	title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired
 }
 
 FeaturedBlogCard.defaultProps = {
-	media: require('../../images/learn-what-hr.svg'),
-	title: `Learn what HR Managers think is the best EAP Strategy`,
-	body: `Uprise recently surveyed a group of 47 HR and WHS managers and asked about their views on mental health and EAP strategy. Those surveyed were from mostly whi…`,
-	date: 'June 13, 2019',
-	category: 'Wellbeing'
+  media: require('../../images/learn-what-hr.svg'),
+  title: `Learn what HR Managers think is the best EAP Strategy`,
+  body: `Uprise recently surveyed a group of 47 HR and WHS managers and asked about their views on mental health and EAP strategy. Those surveyed were from mostly whi…`,
+  date: 'June 13, 2019',
+  category: 'Wellbeing'
 }

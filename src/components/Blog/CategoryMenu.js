@@ -4,6 +4,7 @@ import Styled from 'styled-components'
 import { navigate } from 'gatsby'
 import { Row, Col } from '../../styles/grid'
 import { RoundButton } from '../../styles/buttons'
+import { getSlugFromTitle } from '../../utils'
 
 const CategoryMenuContainer = Styled.div`
 
@@ -31,7 +32,7 @@ function CategoryMenu({ categories, activeCategory }) {
   // }))
   const menu = categories.map((cat, index) => ({
     id: index,
-    slug: cat,
+    slug: getSlugFromTitle(cat),
     title: cat,
 		isActive: cat === activeCategory
 	}))

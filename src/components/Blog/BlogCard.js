@@ -11,7 +11,7 @@ const BlogCardContainer = Styled.div`
   background-color: ${backgrounds.white}; 
   border-radius: 10px;
   box-shadow: 0 2px 4px 0 rgba(219, 221, 227, 0.8);
-  width: 370px;
+  /* width: 370px; */
   margin: auto;
 
   &:hover {
@@ -42,6 +42,10 @@ const BlogCardContainer = Styled.div`
       -webkit-box-orient: vertical;
       overflow: hidden;
 
+    }
+
+    & .meta {
+      min-height: 48px;
     }
 
     @media (min-width: 768px) {
