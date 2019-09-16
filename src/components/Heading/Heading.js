@@ -36,7 +36,7 @@ const HeadingWrapper = Styled.div`
   margin-bottom: ${props => `${BASE_SPACING * props.marginBottom}px`};
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: ${props => props.alignHorizontal};
 
   & .point {
     width: 6px;
@@ -49,10 +49,23 @@ const HeadingWrapper = Styled.div`
 `
 
 function Heading({ blok }) {
-  const { size, color, text, center, bold, marginBottom, withPoint } = blok
+  const {
+    size,
+    color,
+    text,
+    center,
+    bold,
+    marginBottom,
+    withPoint,
+    alignHorizontal
+  } = blok
   const Text = getTextComponent(size)
   return (
-    <HeadingWrapper marginBottom={marginBottom} showPoint={withPoint}>
+    <HeadingWrapper
+      marginBottom={marginBottom}
+      showPoint={withPoint}
+      alignHorizontal={alignHorizontal}
+    >
       {withPoint && <span className="point"></span>}
       <Text
         className="text"

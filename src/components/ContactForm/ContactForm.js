@@ -10,19 +10,26 @@ import { saveToGoogleSheet } from '../../utils/apiCall'
 const ContactFormWrapper = Styled.div`
   width: 100%;
   max-width: 570px;
-  /* border-radius: 10px; */
-  /* box-shadow: 0 2px 4px 0 rgba(219, 221, 227, 0.5); */
-  /* background-color: ${backgrounds.white}; */
+  
   margin: auto;
-  padding: 16px;
-  margin-top: 72px;
+
+  & .fields {
+    padding: 16px;
+    border-radius: ${props => (props.whiteBox ? '10px' : '0px')};
+    box-shadow: ${props =>
+      props.whiteBox ? '0 2px 4px 0 rgba(219, 221, 227, 0.5)' : 'none'};
+    background-color: ${props => props.whiteBox ? backgrounds.white : 'inherit'};
+    margin-bottom: 24px;
+  }
 
   & button {
     margin-top: 36px;
   }
 `
 
-function ContactForm() {
+function ContactForm({ blok }) {
+  console.log({ blok })
+  const { whiteBox } = blok
   const [contactInfo, setContactInfo] = React.useState({
     firstName: '',
     lastName: '',
@@ -38,91 +45,98 @@ function ContactForm() {
   }
 
   return (
-    <ContactFormWrapper>
+    <ContactFormWrapper whiteBox={whiteBox}>
       <form onSubmit={event => event.preventDefault()}>
-        <Row>
-          <Col className="col-md-6">
-            <TextInput
-              onChange={handleOnChange}
-              value={contactInfo.firstName}
-              id="firstName"
-              label="First Name"
-              isRequired
-            />
-          </Col>
-          <Col className="col-md-6">
-            <TextInput
-              onChange={handleOnChange}
-              value={contactInfo.lastName}
-              id="lastName"
-              label="Last Name"
-              isRequired
-            />
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <TextInput
-              onChange={handleOnChange}
-              value={contactInfo.company}
-              id="company"
-              label="Company"
-              isRequired
-            />
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <TextInput
-              onChange={handleOnChange}
-              value={contactInfo.email}
-              id="email"
-              label="Email Address"
-              isRequired
-              type="email"
-            />
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <TextInput
-              onChange={handleOnChange}
-              value={contactInfo.phone}
-              id="phone"
-              label="Phone Number"
-              isRequired
-            />
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <TextInput
-              onChange={handleOnChange}
-              value={contactInfo.employees}
-              id="employees"
-              label="Number of Employees"
-              isRequired
-            />
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <TextInput
-              onChange={handleOnChange}
-              value={contactInfo.referrer}
-              id="referrer"
-              label="How did you hear about Uprise?"
-            />
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <PrimaryButton large onClick={() => saveToGoogleSheet(contactInfo)}>
-              {' '}
-              Submit
-            </PrimaryButton>
-          </Col>
-        </Row>
+        <div className="fields">
+          <Row>
+            <Col className="col-md-6">
+              <TextInput
+                onChange={handleOnChange}
+                value={contactInfo.firstName}
+                id="firstName"
+                label="First Name"
+                isRequired
+              />
+            </Col>
+            <Col className="col-md-6">
+              <TextInput
+                onChange={handleOnChange}
+                value={contactInfo.lastName}
+                id="lastName"
+                label="Last Name"
+                isRequired
+              />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <TextInput
+                onChange={handleOnChange}
+                value={contactInfo.company}
+                id="company"
+                label="Company"
+                isRequired
+              />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <TextInput
+                onChange={handleOnChange}
+                value={contactInfo.email}
+                id="email"
+                label="Email Address"
+                isRequired
+                type="email"
+              />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <TextInput
+                onChange={handleOnChange}
+                value={contactInfo.phone}
+                id="phone"
+                label="Phone Number"
+                isRequired
+              />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <TextInput
+                onChange={handleOnChange}
+                value={contactInfo.employees}
+                id="employees"
+                label="Number of Employees"
+                isRequired
+              />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <TextInput
+                onChange={handleOnChange}
+                value={contactInfo.referrer}
+                id="referrer"
+                label="How did you hear about Uprise?"
+              />
+            </Col>
+          </Row>
+        </div>
+        <div className="action">
+          <Row>
+            <Col>
+              <PrimaryButton
+                large
+                onClick={() => saveToGoogleSheet(contactInfo)}
+              >
+                {' '}
+                Submit
+              </PrimaryButton>
+            </Col>
+          </Row>
+        </div>
       </form>
     </ContactFormWrapper>
   )
