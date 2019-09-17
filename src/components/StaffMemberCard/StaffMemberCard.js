@@ -6,12 +6,13 @@ import {Heading3, BodyText} from '../../styles/text'
 
 const StaffMemberCardWrapper = Styled.div`
   width: 350px;
-  height: 431px;
+  min-height: 431px;
   border-radius: 10px;
   box-shadow: 0 4px 10px 0 rgba(219, 221, 227, 0.5);
   background-color: ${backgrounds.white};
 
-  padding: 73px 77px 24px 79px;
+  /* padding: 73px 77px 24px 79px; */
+  padding: 35px;
   text-align: center;
 
   margin: auto;
@@ -21,6 +22,14 @@ const StaffMemberCardWrapper = Styled.div`
     width: 220px;
     height: 220px;
     margin-bottom: 36px;
+  }
+
+  & .name {
+    margin-bottom: 8px;
+  }
+
+  & .title {
+    height: 84px;
   }
 
   @media (min-width: 999px) and (max-width: 1200px) {
@@ -34,8 +43,8 @@ function StaffMemberCard({ blok }) {
 	return (
 		<StaffMemberCardWrapper>
       <img loading='lazy' src={media} alt={name}/>
-      <Heading3>{name}</Heading3>
-      <BodyText>{title}</BodyText>
+      <Heading3 className='name'>{name}</Heading3>
+      <BodyText className='title'>{title}</BodyText>
 		</StaffMemberCardWrapper>
 	)
 }

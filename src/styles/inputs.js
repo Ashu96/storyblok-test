@@ -152,8 +152,7 @@ label {
   }
 }
 
-/****  floating-Lable style end ****/
-
+/**  floating-Label style start **/
 `
 
 export function TextInput({ id, label, isRequired, value,  ...restProps }) {
@@ -169,7 +168,6 @@ export function TextInput({ id, label, isRequired, value,  ...restProps }) {
           value={value}
           {...restProps}
 				/>
-				<span className="highlight" />
 				<label htmlFor={id}>{label}</label>
 			</div>
 		</TextInputContainer>
