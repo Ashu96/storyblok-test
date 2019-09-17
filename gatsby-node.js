@@ -47,7 +47,10 @@ exports.createPages = ({ graphql, actions }) => {
           return entry.node.field_component != 'global_navi'
         })
         contents.forEach((entry, index) => {
-          const fullSlug = entry.node.full_slug.replace('/', '')
+          let fullSlug = entry.node.full_slug
+          if (entry.node.full_slug === 'blog/') {
+            fullSlug = 'blog'
+          }
           const pagePath =
             entry.node.full_slug == 'home' ? '' : `${fullSlug}/`
 
