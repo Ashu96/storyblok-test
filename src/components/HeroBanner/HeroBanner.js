@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Styled from 'styled-components'
 import Img from 'gatsby-image'
 import { navigate } from 'gatsby'
+import Icon from '../Icon'
 // import { OutLineButton, PrimaryButton } from '../../styles/buttons'
 // import { SectionWrapper, Row, Col } from '../../styles/grid'
 // import { backgrounds } from '../../constants/colors'
@@ -32,6 +33,16 @@ const HeroBannerWrapper = Styled.div`
       @media (min-width: 768px) {
         padding: ${props =>
           props.splitScreen ? '0px 25% 0px 0px' : '0px 20%'};
+      }
+    }
+
+    & .point {
+      display: flex;
+      align-items: baseline;
+
+      & p {
+        margin-left: 16px;
+        padding-right: 10%;
       }
     }
 
@@ -73,16 +84,17 @@ const HeroBannerWrapper = Styled.div`
   }
 
   & .hero__image-container {
-    margin-top: 50px;
-    margin-bottom: 20px;
+    margin: ${props => (props.splitScreen ? '0px' : '50px 0 20px')};
+    /* margin-top: 50px;
+    margin-bottom: 20px; */
+    width: 100%;
     & > div {
       /* min-height: 300px; */
     }
-    img {
+    & img {
       max-width: 100%;
-      /* min-height: 300px; */
+      min-height: 446px;
     }
-    width: 100%;
     @media (min-width: 768px) {
       flex: ${props => (props.splitScreen ? '0 0 50%' : '0 0 100%')};
       max-width: ${props => (props.splitScreen ? '50%' : '100%')};
@@ -98,7 +110,8 @@ function HeroBanner({
   image,
   bgPrimary,
   splitScreen,
-  media
+  media,
+  points
 }) {
   const noMedia = !image && !media
   return (
@@ -108,6 +121,17 @@ function HeroBanner({
           <Heading1 className="text--semi-bold mgn-b-10">{title}</Heading1>
           <Heading4 className="text--brand mgn-b-20">{subTitle}</Heading4>
           <BodyText>{body}</BodyText>
+          {
+            points &&
+            points.split(',').map(point => {
+              return (
+                <div className='point'>
+                  <Icon name='tick'/>
+                  <BodyText>{point}</BodyText>
+                </div>
+              )
+            })
+          }
           <div className="hero__cta-container">
             {action.map(item => {
               const Button = getButton(item.type)
@@ -137,8 +161,9 @@ function HeroBanner({
 export default HeroBanner
 
 HeroBanner.propTypes = {
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  points: PropTypes.string
 }
 HeroBanner.defaultProps = {
-  title: 'Uprise'
+  title: 'Uprise',
 }

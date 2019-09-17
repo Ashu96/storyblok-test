@@ -13,6 +13,7 @@ function HeroBannerWrapper({ blok }) {
       action={blok.action}
       media={blok.image}
       body={blok.body}
+      points={blok.points}
     />
   )
 }
