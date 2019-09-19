@@ -101,7 +101,10 @@ const HeaderContainer = Styled.header`
 function Header({ bgPrimary, navItems }) {
   const leftHSNavItems = navItems.filter(item => !item.RHS)
   const rightHSNavItems = navItems.filter(item => item.RHS)
-  const isMobile = window.innerWidth < 1024
+  let isMobile = false
+  if (window) {
+    isMobile = window.innerWidth < 1024
+  }
 
   return (
     <SectionWrapper
