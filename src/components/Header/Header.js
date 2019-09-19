@@ -99,12 +99,14 @@ const HeaderContainer = Styled.header`
 `
 
 function Header({ bgPrimary, navItems }) {
+  const [isMobile, toggleIsMobile] = React.useState(false)
+
+  React.useEffect(() => {
+    toggleIsMobile(window.innerWidth < 1024)
+  }, [])
+
   const leftHSNavItems = navItems.filter(item => !item.RHS)
   const rightHSNavItems = navItems.filter(item => item.RHS)
-  let isMobile = false
-  if (window) {
-    isMobile = window.innerWidth < 1024
-  }
 
   return (
     <SectionWrapper
