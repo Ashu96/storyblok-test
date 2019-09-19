@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Styled from 'styled-components'
+import Icon from '../Icon'
 import {
   Heading1,
   Heading2,
@@ -38,11 +39,11 @@ const HeadingWrapper = Styled.div`
   align-items: center;
   justify-content: ${props => props.alignHorizontal};
 
-  & .point {
-    width: 6px;
+  & .icon {
+    /* width: 6px;
     border-radius: 50%;
     height: 6px;
-    background-color: #7d60ff;
+    background-color: #7d60ff; */
     margin-right: 16px;
   }
 
@@ -57,6 +58,7 @@ function Heading({ blok }) {
     bold,
     marginBottom,
     withPoint,
+    icon,
     alignHorizontal
   } = blok
   const Text = getTextComponent(size)
@@ -66,7 +68,7 @@ function Heading({ blok }) {
       showPoint={withPoint}
       alignHorizontal={alignHorizontal}
     >
-      {withPoint && <span className="point"></span>}
+      {withPoint && <Icon name={icon} className='icon'/>}
       <Text
         className="text"
         color={getColorValue(color)}

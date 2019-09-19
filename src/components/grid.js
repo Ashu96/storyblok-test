@@ -45,7 +45,7 @@ function Grid(props) {
           {props.blok.columns.map(blok => (
             <Col
               className={cols}
-              style={blok.component === 'path' ? { position: 'static' } : {}}
+              style={blok.component === 'path' ? { position: 'static' } : { alignSelf: 'center' }}
             >
               {React.createElement(Components(blok.component), {
                 key: blok._uid,

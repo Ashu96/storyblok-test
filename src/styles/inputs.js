@@ -24,7 +24,7 @@ const TextInputContainer = Styled.div`
   height: 42px;
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid ${extended.charcoal.three};
+  border-bottom: 1px solid ${extended.purple.five};
 }
 
 .floating-input:focus,

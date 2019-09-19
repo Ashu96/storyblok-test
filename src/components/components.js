@@ -30,6 +30,7 @@ import CalendarCard from './CalendarCard'
 import BlogHome from './Blog/BlogHome'
 import {RequestAccessCode, EapSupport, LegalSupport} from './Forms'
 import Button from './Button'
+import PricingTable from './PricingTable'
 import {SECTION_TYPES} from '../constants'
 
 const ComponentList = {
@@ -66,7 +67,8 @@ const ComponentList = {
   [SECTION_TYPES.REQUEST_ACCESS_CODE]: RequestAccessCode,
   [SECTION_TYPES.EAP_SUPPORT]: EapSupport,
   [SECTION_TYPES.LEGAL_SUPPORT]: LegalSupport,
-  [SECTION_TYPES.BUTTON]: Button
+  [SECTION_TYPES.BUTTON]: Button,
+  [SECTION_TYPES.PRICING_TABLE]: PricingTable
 }
 
 const Components = (type) => {

@@ -1,20 +1,18 @@
-// import { Helmet } from 'react-helmet'
 import PropTypes from 'prop-types'
 import React from 'react'
 import Styled from 'styled-components'
-import { 
-  // backgrounds,
-  primary,
-  extended
-} from '../../constants/colors'
+import Icon from '../Icon'
+import { backgrounds, primary, extended } from '../../constants/colors'
 import { SectionWrapper, Row, Col } from '../../styles/grid'
 import { getNavItem } from '../../utils'
 
 const HeaderContainer = Styled.header`
   height: 70px;
+  display: none;
 
   & .row {
     padding: 15px 0px;
+    width: 100%;
   }
 
   & .col-12 {
@@ -37,7 +35,7 @@ const HeaderContainer = Styled.header`
 
     & li {
       margin: 0px;
-      margin-right: 49px;
+      margin-right: 30px;
 
       & a {
         display: flex;
@@ -91,168 +89,248 @@ const HeaderContainer = Styled.header`
 
     @media (min-width: 768px) {
       display: flex;
-
     }
+  }
+
+  @media (min-width: 1024px) {
+    display: flex;
   }
 
 `
 
-function Header({ bgPrimary, siteTitle, navItems, allNavItems }) {
-	const leftHSNavItems = navItems.filter(item => !item.RHS)
-	const rightHSNavItems = navItems.filter(item => item.RHS)
+function Header({ bgPrimary, navItems }) {
+  const leftHSNavItems = navItems.filter(item => !item.RHS)
+  const rightHSNavItems = navItems.filter(item => item.RHS)
+  const isMobile = window.innerWidth < 1024
 
-	return (
-		<SectionWrapper className="container-fluid" bgPrimary={bgPrimary}>
-			{/* <Helmet htmlAttributes={{ lang: 'en' }}>
-				<meta charSet="utf-8" />
-				<meta
-					name="description"
-					content={`Uprise is a proactive and science-based Employee Assistance Program (EAP)
-provider in Australia.`}
-				/>
-				<title>{siteTitle}</title>
-			</Helmet> */}
-			<HeaderContainer>
-				<Row>
-					<Col className="col-md-8">
-						<ul>
-							{leftHSNavItems.map(item => {
+  return (
+    <SectionWrapper
+      className="container-fluid"
+      bgPrimary={bgPrimary}
+      containerFluidProps={{
+        style: {
+          borderBottom: isMobile ? `1px solid ${extended.purple.five}` : 'none'
+        }
+      }}
+    >
+      <HeaderContainer>
+        <Row>
+          <Col className="col-md-8">
+            <ul>
+              {leftHSNavItems.map(item => {
                 console.log({ item })
-								const NavItem = getNavItem(item)
-								return (
-									<NavItem
-										key={item.id || item._uid}
-										item={item}
-										navItems={item.items}
-									/>
-								)
-							})}
-						</ul>
-					</Col>
-					<Col className="col-md-4">
-						<ul>
-							{rightHSNavItems.map(item => {
-								const NavItem = getNavItem(item)
-								return (
-									<NavItem
-										key={item.id || item._uid}
-										item={item}
-										navItems={item.items}
-									/>
-								)
-							})}
-						</ul>
-					</Col>
-				</Row>
-			</HeaderContainer>
-		</SectionWrapper>
-	)
+                const NavItem = getNavItem(item)
+                return (
+                  <NavItem
+                    key={item.id || item._uid}
+                    item={item}
+                    navItems={item.items}
+                  />
+                )
+              })}
+            </ul>
+          </Col>
+          <Col className="col-md-4">
+            <ul>
+              {rightHSNavItems.map(item => {
+                const NavItem = getNavItem(item)
+                return (
+                  <NavItem
+                    key={item.id || item._uid}
+                    item={item}
+                    navItems={item.items}
+                  />
+                )
+              })}
+            </ul>
+          </Col>
+        </Row>
+      </HeaderContainer>
+      <Menu leftHSNavItems={leftHSNavItems} rightHSNavItems={rightHSNavItems} />
+    </SectionWrapper>
+  )
 }
 
 Header.propTypes = {
-	siteTitle: PropTypes.string,
-	bgPrimary: PropTypes.bool
+  siteTitle: PropTypes.string,
+  bgPrimary: PropTypes.bool
 }
 
 Header.defaultProps = {
-	siteTitle: ``,
-	bgPrimary: true
+  siteTitle: ``,
+  bgPrimary: true
 }
 
 export default Header
 
-// const MenuContainer = Styled.div`
-//   /* color: black; */
-//   /* position: relative; */
-//   & button {
-//     margin: 0px;
-//     padding: 0px;
-//     background: none;
-//     border: none;
-//   }
+const MenuContainer = Styled.div`
+  /* color: black; */
+  /* position: relative; */
+  height: 52px;
+  padding: 15px 0px;
 
-//   & .menu-icon {
-//     position: absolute;
-//     top: 27px;
-//     right: 20px;
-//     width: 24px;
-//     height: 24px;
-//   }
+  & nav {
+    display: flex;
+  }
 
-//   & .menu__container {
-//     position: fixed;
-//     z-index: 20;
-//     background-color: ${primary.purple};
-//     color: ${backgrounds.white};
-//     width: 100%;
-//     height: 100vh;
-//     top: 70px;
-//     left: 0px;
-//   }
+  & .button {
+    margin: 0px;
+    padding: 0px;
+    background: none;
+    border: none;
+  }
 
-//   & .menu__list {
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: center;
-//     text-align: left;
+  & .menu-icon {
+    list-style: none;
+    margin: auto;
+    & img {
+      width: 84px;
+      height: 24px;
+    }
+    /* position: absolute;
+    top: 27px;
+    right: 20px;
+    width: 24px;
+    height: 24px; */
+  }
 
-//     & li {
-//       margin: 0px;
-//       margin-top: 49px;
+  & .menu__container {
+    position: fixed;
+    z-index: 10;
+    background-color: ${backgrounds.white};
+    color: ${primary.purple};
+    width: 75%;
+    height: 100vh;
+    top: 0px;
+    left: 0px;
+    padding: 24px;
+  }
 
-//       & a {
-//         color: ${backgrounds.white};
-//         text-decoration: none;
-//         font-size: 18px;
-//       }
-//     }
-//   }
+  & .menu__overlay {
+    position: fixed;
+    z-index: 5;
+    background-color: ${primary.charcoal};
+    opacity: 0.6;
+    width: 100vw;
+    height: 100vh;
+    top: 0px
+  }
 
-//   @media (min-width: 768px) {
-//     display: none;
-//   }
-// `
+  & .list-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 95%;
+  }
 
-// function Menu() {
-//   const [open, toggleOpen] = React.useState(false)
+  & .menu__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    list-style: none;
+    padding: 0px;
 
-//   return (
-//     <MenuContainer>
-//       <button aria-label="navigation-menu" onClick={() => toggleOpen(!open)}>
-//         {!open ? (
-//           <img loading='lazy'
-//             alt="burger"
-//             className="menu-icon"
-//             src={require('../../images/menu.svg')}
-//           />
-//         ) : (
-//           <img loading='lazy'
-//             alt="close"
-//             className="menu-icon close"
-//             src={require('../../images/close.svg')}
-//           />
-//         )}
-//       </button>
-//       {open && (
-//         <div className="menu__container">
-//           <ul className="menu__list">
-//             <li>
-//               <Link to="/">For Employers</Link>
-//             </li>
-//             <li>
-//               <Link to="/">For Employees</Link>
-//             </li>
-//             <li>
-//               <Link to="/">Pricing</Link>
-//             </li>
-//             <li>
-//               <Link to="/">Help</Link>
-//             </li>
-//           </ul>
-//         </div>
-//       )}
-//     </MenuContainer>
-//   )
-// }
+    & li {
+      margin: 0px;
+      margin-top: 24px;
+
+      & a {
+        color: ${extended.charcoal.one};
+        text-decoration: none;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      & button {
+        width: 100%;
+      }
+    }
+  }
+
+  @media (min-width: 1024px) {
+    display: none;
+  }
+`
+
+function Menu({ leftHSNavItems, rightHSNavItems }) {
+  const [open, toggleOpen] = React.useState(false)
+  console.log({
+    leftHSNavItems,
+    rightHSNavItems
+  })
+  const logo = leftHSNavItems.find(item => item.type === 'LOGO')
+  const NavItem = getNavItem(logo)
+  return (
+    <MenuContainer>
+      <nav>
+        <button
+          className="button"
+          aria-label="navigation-menu"
+          onClick={() => toggleOpen(!open)}
+        >
+          {!open ? (
+            <Icon name="menu" fill={primary.purple} />
+          ) : (
+            <Icon name="close" fill={primary.purple} />
+          )}
+        </button>
+        <NavItem classNames="menu-icon" item={logo} />
+      </nav>
+      {open && (
+        <React.Fragment>
+          <div className="menu__overlay" onClick={() => toggleOpen(!open)} />
+          <div className="menu__container">
+            <button
+              className="button"
+              aria-label="navigation-menu"
+              onClick={() => toggleOpen(!open)}
+            >
+              {!open ? (
+                <Icon name="menu" fill={primary.purple} />
+              ) : (
+                <Icon name="close" fill={primary.purple} />
+              )}
+            </button>
+            <div className="list-container">
+              <ul className="menu__list">
+                {leftHSNavItems.map(item => {
+                  if (item.type !== 'LOGO') {
+                    const NavItem = getNavItem(item)
+                    return (
+                      <NavItem
+                        classNames="menu__list-item"
+                        key={item.id || item._uid}
+                        item={item}
+                        navItems={item.items}
+                      />
+                    )
+                  }
+                })}
+              </ul>
+              <ul className="menu__list menu__list--bottom">
+                {rightHSNavItems.map(item => {
+                  if (item.type !== 'LOGO') {
+                    const NavItem = getNavItem(item)
+
+                    return (
+                      <NavItem
+                        classNames={`menu__list-item`}
+                        key={item.id || item._uid}
+                        item={item}
+                        navItems={item.items}
+                      />
+                    )
+                  }
+                })}
+              </ul>
+            </div>
+          </div>
+        </React.Fragment>
+      )}
+    </MenuContainer>
+  )
+}
 
 // export default Menu;
