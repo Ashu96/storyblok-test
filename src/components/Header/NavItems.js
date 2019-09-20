@@ -19,6 +19,7 @@ const DropDown = Styled.div`
   & .menu-item {
     padding: 12px 16px;
     margin-top: 12px !important;
+    margin-right: 0px;
     
     &:hover {
       background-color: ${backgrounds.fadedPurple};
