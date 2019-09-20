@@ -11,10 +11,6 @@ import Components from '../components.js'
 import { primary, extended } from '../../constants/colors'
 
 const CarouselWrapper = Styled.div`
-  /* .slick-slide {
-    padding: 0 8px;
-    box-sizing: border-box;
-  } */
   & .item {
     width: 320px;
     height: 320px;
@@ -32,19 +28,59 @@ const CarouselWrapper = Styled.div`
     opacity: 1;
   }
 
+  .slick-dots {
+    width: 70%;
+    left: 15%;
+    bottom: -40px;
+
+    @media (min-width: 768px) {
+      width: 50%;
+      left: 25%;
+      bottom: -40px;
+    }
+    @media (min-width: 1024px) {
+      width: 50%;
+      left: 25%;
+      bottom: -40px;
+    }
+  }
+
   .slick-prev {
     top: 110% !important;
-    left: 30%;
+    left: 5%;
+
+    @media (min-width: 768px) {
+      top: 110% !important;
+      left: 20%;
+    }
+    @media (min-width: 1024px) {
+      top: 110% !important;
+      left: 20%;
+    }
+  }
+
+  & .slick-next {
+    top: 110% !important;
+    right: 5% !important;
+
+    @media (min-width: 768px) {
+      top: 110% !important;
+      right: 20% !important;
+    }
+    @media (min-width: 1024px) {
+      top: 110% !important;
+      right: 20% !important;
+    }
   }
 `
 
 const settings = {
   dots: true,
   className: 'center',
-  centerMode: true,
+  centerMode: false,
   infinite: true,
   slidesToScroll: 1,
-  slidesToShow: 1.8,
+  slidesToShow: 2.7,
   speed: 500,
   dotsClass: 'slick-dots uprise-dots',
   easing: 'fade-in',
@@ -61,7 +97,7 @@ const settings = {
       }
     },
     {
-      breakpoint: 600,
+      breakpoint: 768,
       settings: {
         slidesToShow: 1,
         slidesToScroll: 1,

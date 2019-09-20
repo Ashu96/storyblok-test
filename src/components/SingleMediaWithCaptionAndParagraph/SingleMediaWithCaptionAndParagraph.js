@@ -7,7 +7,7 @@ import { Heading2, BodyText, Note, ContentWrapper } from '../../styles/text'
 import { primary } from '../../constants/colors'
 
 const SingleMediaWithCaptionAndParagraphWrapper = Styled.div`
-  flex-direction: ${props => (props.imageFirst ? 'row-reverse' : 'row')};
+  flex-direction: ${props => (props.textFirst ? 'row-reverse' : 'row')};
 
   & img {
     width: 100%;
@@ -16,9 +16,15 @@ const SingleMediaWithCaptionAndParagraphWrapper = Styled.div`
   }
 
   & .media {
-    width: 100%;
+    width: 80%;
     display: flex;
     justify-content: center;
+    margin: auto;
+    margin-bottom: 32px;
+
+    @media (min-width: 1024px) {
+      margin-bottom: 0px;
+    }
   }
 
   & .info:before {
@@ -29,8 +35,8 @@ const SingleMediaWithCaptionAndParagraphWrapper = Styled.div`
     background-color: ${primary.purple};
     position: absolute;
     border-radius: 50%;
-    left: ${props => !props.imageFirst ? '-16px' : 'inherit'};
-    right: ${props => props.imageFirst ? '0' : 'inherit'};
+    left: ${props => !props.textFirst ? '-16px' : 'inherit'};
+    right: ${props => props.textFirst ? '0' : 'inherit'};
     top: 10px;
 
     @media (min-width: 768px) {
@@ -41,6 +47,7 @@ const SingleMediaWithCaptionAndParagraphWrapper = Styled.div`
   & .info {
     position: relative;
     margin-top: 16px;
+    padding-left: ${props => props.textFirst ? '0px' : '50px'};
 
     & p {
       margin-bottom: 10px;
@@ -65,7 +72,7 @@ function SingleMediaWithCaptionAndParagraph({
   return (
     <SingleMediaWithCaptionAndParagraphWrapper
       className="row"
-      imageFirst={stepNumber % 2 === 0}
+      textFirst={stepNumber % 2 === 0}
       timeline={timeline}
     >
       <Col className="col-12 col-lg-6 align-self-center">
@@ -79,7 +86,7 @@ function SingleMediaWithCaptionAndParagraph({
         <Heading2>{title}</Heading2>
         <BodyText>{body}</BodyText>
         {content && (
-          <ContentWrapper>
+          <ContentWrapper contained>
             <ReactMarkdown source={content} />
           </ContentWrapper>
         )}

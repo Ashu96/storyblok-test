@@ -19,9 +19,9 @@ const HeadingWithSingleMediaAndButtonWrapper = Styled.div`
     }
 
     & h2 {
-      padding: 0 ${props => props.paddingHorizontal};
-      padding: ${props =>
-        props.splitScreen ? '0px' : `0px ${props.paddingHorizontal}`};
+      /* padding: 0 ${props => props.paddingHorizontal}; */
+      /* padding: ${props =>
+        props.splitScreen ? '0px' : `0px ${props.paddingHorizontal}`}; */
       text-align: ${props => (props.splitScreen ? 'left' : 'center')};
       margin-bottom: 24px;
     }
@@ -37,12 +37,29 @@ const HeadingWithSingleMediaAndButtonWrapper = Styled.div`
 
     & .action {
       margin-top: 50px
+      width: 100%;
     }
 
     & .with-padding {
-      padding: 0px ${props => props.paddingHorizontal};
-      padding: ${props =>
-        props.splitScreen ? '0px' : `0px ${props.paddingHorizontal}`};
+      /* padding: 0px ${props => props.paddingHorizontal}; */
+      /* padding: ${props =>
+        props.splitScreen ? '0px' : `0px ${props.paddingHorizontal}`}; */
+    }
+
+    @media (min-width: 768px) {
+      & h2 {
+        padding: ${props =>
+          props.splitScreen ? '0px' : `0px ${props.paddingHorizontal}`};
+      }
+
+      & .with-padding {
+        padding: ${props =>
+          props.splitScreen ? '0px' : `0px ${props.paddingHorizontal}`};
+      }
+
+      & .action {
+        width: auto;
+      }
     }
   }
 
@@ -65,7 +82,7 @@ function HeadingWithSingleMediaAndButton({ blok, splitScreen }) {
         <Heading2 className="mgn-b-20">{title}</Heading2>
         {image && (
           <div className="media">
-            <img loading='lazy' src={image} alt="" />
+            <img loading="lazy" src={image} alt="" />
             {/* <Img fluid={image.childImageSharp.fluid} /> */}
           </div>
         )}

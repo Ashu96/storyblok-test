@@ -161,7 +161,7 @@ export function TextInput({ id, label, isRequired, value, ...restProps }) {
     <TextInputContainer>
       <div className="floating-label">
         <input
-          placeholder={label}
+          placeholder={`${label} ${isRequired ? '*' : ''}`}
           className="floating-input"
           type="text"
           id={id}
@@ -169,7 +169,7 @@ export function TextInput({ id, label, isRequired, value, ...restProps }) {
           value={value}
           {...restProps}
         />
-        <label htmlFor={id}>{label}</label>
+        <label htmlFor={id}>{label} {isRequired ? ' * ' : ''}</label>
       </div>
     </TextInputContainer>
   )

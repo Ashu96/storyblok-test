@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Styled from 'styled-components'
-import {navigate} from 'gatsby'
+import { navigate } from 'gatsby'
 import format from 'date-fns/format'
 import { backgrounds, extended } from '../../constants/colors'
 import { Col } from '../../styles/grid'
@@ -21,9 +21,12 @@ const FeaturedBlogContainer = Styled.div`
   }
 
   & img {
-    margin-left: -15px;
     width: 100%;
     height: 100%;
+
+    @media (min-width: 768px) {
+      margin-left: -15px;
+    }
   }
 
   & .content {
@@ -44,7 +47,6 @@ const FeaturedBlogContainer = Styled.div`
 
     @media (min-width: 768px) {
       padding: 60px 70px;
-
     }
   }
 `
@@ -63,7 +65,7 @@ function FeaturedBlogCard({ title, media, body, date, category, slug }) {
       <Col className="col-lg-6">
         <div className="content">
           <Heading1>{title}</Heading1>
-          <BodyText className='body'>{body}</BodyText>
+          <BodyText className="body">{body}</BodyText>
           <div className="meta">
             <BodyText color={extended.charcoal.two}>
               {format(new Date(date), 'MMMM dd, yyyy')} | {category}

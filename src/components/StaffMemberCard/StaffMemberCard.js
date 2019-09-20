@@ -27,7 +27,7 @@ const StaffMemberCardWrapper = Styled.div`
   & img {
     width: 100%;
     max-width: 220px;
-    height: 150px;
+    height: ${props => (props.largeMedia ? '220px' : '150px')};
     margin-bottom: 36px;
   }
 
@@ -37,7 +37,7 @@ const StaffMemberCardWrapper = Styled.div`
   }
 
   & .title {
-    min-height: 84px;
+    min-height: ${props => props.largeMedia ? '0px' : '84px'};
   }
 
   @media (min-width: 999px) and (max-width: 1200px) {
@@ -47,9 +47,10 @@ const StaffMemberCardWrapper = Styled.div`
 `
 
 function StaffMemberCard({ blok }) {
-  const { name, title, media, bgPrimary, alignHorizontal } = blok
+  const { name, title, media, bgPrimary, alignHorizontal, largeMedia } = blok
   return (
     <StaffMemberCardWrapper
+      largeMedia={largeMedia}
       bgPrimary={bgPrimary}
       alignHorizontal={alignHorizontal}
     >

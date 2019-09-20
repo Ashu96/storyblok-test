@@ -85,19 +85,23 @@ const HeroBannerWrapper = Styled.div`
 
   & .hero__image-container {
     margin: ${props => (props.splitScreen ? '0px' : '50px 0 20px')};
-    /* margin-top: 50px;
-    margin-bottom: 20px; */
     width: 100%;
+    
     & > div {
       /* min-height: 300px; */
     }
+    
     & img {
       max-width: 100%;
-      min-height: 446px;
     }
+
     @media (min-width: 768px) {
       flex: ${props => (props.splitScreen ? '0 0 50%' : '0 0 100%')};
       max-width: ${props => (props.splitScreen ? '50%' : '100%')};
+
+      & img {
+        min-height: 446px;
+      }
     }
   }
 `

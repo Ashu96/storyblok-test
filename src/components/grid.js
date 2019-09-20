@@ -20,10 +20,16 @@ function Grid(props) {
     paddingVertical,
     backgroundColor
   } = props.blok
+
+  const containerFluid = props.blok.columns.some(
+    blok => blok.component === 'Carousel'
+  )
+
   return (
     <SbEditable content={props.blok}>
       <SectionWrapper
         containerProps={{
+          className: containerFluid ? 'container-fluid' : 'container',
           style: {
             paddingTop: paddingTop ? paddingVertical : 0,
             paddingBottom: paddingBottom ? paddingVertical : 0,
@@ -45,7 +51,11 @@ function Grid(props) {
           {props.blok.columns.map(blok => (
             <Col
               className={cols}
-              style={blok.component === 'path' ? { position: 'static' } : { alignSelf: 'center' }}
+              style={
+                blok.component === 'path'
+                  ? { position: 'static' }
+                  : { alignSelf: 'center' }
+              }
             >
               {React.createElement(Components(blok.component), {
                 key: blok._uid,

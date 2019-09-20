@@ -88,6 +88,9 @@ export const ContentWrapper = Styled.div`
   & img {
     width: 100%;
   }
+  & ul {
+    max-width: ${props => props.contained ? '370px' : 'inherit'};
+  }
 
   & li {
     font-family: ${props =>

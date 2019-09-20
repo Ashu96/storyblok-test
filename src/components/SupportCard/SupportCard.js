@@ -15,7 +15,7 @@ const SupportCardWrapper = Styled.div`
   border-radius: 10px;
   box-shadow: 0 4px 10px 0 rgba(219, 221, 227, 0.5);
   background-color: ${backgrounds.white};
-  margin-bottom: 24px;
+  margin-bottom: 32px;
 
   padding: ${props => (props.large ? '30px 50px' : '15px 25px')};
   /* padding: 35px 45px; */
@@ -40,7 +40,7 @@ const SupportCardWrapper = Styled.div`
 
   @media (min-width: 768px) {
     width: ${props => (props.large ? '540px' : '350px')};
-    padding: ${props => (props.large ? '60px 100px' : '35px 45px')};
+    padding: ${props => (props.large ? '60px 80px' : '35px 45px')};
   }
 `
 
@@ -50,7 +50,7 @@ function SupportCard({ blok }) {
   const Button = getButton(button.type)
 
   return (
-    <SupportCardWrapper isContentShort={content.length < 270} large={large}>
+    <SupportCardWrapper isContentShort={content.length < 300} large={large}>
       {media && <img loading='lazy' className="media" src={media} alt="" />}
       {/* {media && <Img className="media" fluid={media} alt="" />} */}
       <Heading3 className="title">{title}</Heading3>

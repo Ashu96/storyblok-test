@@ -5,6 +5,7 @@ import { Heading3, Heading4, Note } from '../../styles/text'
 import { primary, extended, backgrounds } from '../../constants/colors'
 
 const CalendarCardWrapper = Styled.div`
+  margin: auto;
   max-width: 469px;
   height: 278px;
   border-radius: 10px;
