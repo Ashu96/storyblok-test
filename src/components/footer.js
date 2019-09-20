@@ -82,7 +82,7 @@ const footerMenu = [
 	{
 		label: 'contact us',
 		key: 'contact',
-		link: '/contact'
+		link: '/contact-us'
 	},
 	{
 		label: 'blog',
@@ -92,7 +92,7 @@ const footerMenu = [
 	{
 		label: 'Legal information',
 		key: 'legal',
-		link: '/legal'
+		link: '/legal-information'
 	},
 	{
 		label: 'log in',
@@ -102,7 +102,7 @@ const footerMenu = [
 	{
 		label: 'book a demo',
 		key: 'demo',
-		link: '/demo'
+		link: '/book-demo'
 	},
 	{
 		label: 'careers',
