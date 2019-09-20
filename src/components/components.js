@@ -22,7 +22,7 @@ import StaffMemberCard from './StaffMemberCard'
 import Subscribe from './Subscribe'
 import ContactForm from './ContactForm'
 import Static from './Static'
-import Plugin from './Plugin'
+import Plugin, { PaperForm } from './Plugin'
 import Path from './Path'
 import CollateralCard from './CollateralCard'
 import Carousel from './Carousel'
@@ -54,6 +54,7 @@ const ComponentList = {
   Subscribe: Subscribe,
   path: Path,
   Carousel: Carousel,
+  PaperForm: PaperForm,
   [SECTION_TYPES.CONTACT_FORM]: ContactForm,
   [SECTION_TYPES.FEATURE_PRICING_CARD]: FeaturePricingCard,
   [SECTION_TYPES.WITH_ACCORDION]: FAQs,

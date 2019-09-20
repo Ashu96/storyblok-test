@@ -10,6 +10,12 @@ import { PLAN_TYPES, PLANS } from '../../constants/pricingPlans'
 const types = Object.keys(PLAN_TYPES)
 
 const PricingTableWrapper = Styled.div`
+  overflow: scroll;
+
+  tr, td {
+    box-sizing: border-box;
+  }
+
   & table {
     width: 100%;
   }
@@ -25,8 +31,8 @@ const PricingTableWrapper = Styled.div`
   }
 
   & td {
+    width: 310px;
     padding: 16px 30px;
-    max-width: 310px;
 
     font-family: ${props =>
       props.bold ? 'Proxima Nova Semibold' : 'Proxima Nova'};
@@ -44,10 +50,12 @@ const PricingTableWrapper = Styled.div`
   & td.feature-name {
     font-weight: 600;
     text-align: left;
+    display: inline-block;
   }
 
   & td.feature-value {
     text-align: center;
+    min-width: 186px;
   }
 
 `
@@ -116,7 +124,7 @@ const PricingTableHeadWrapper = Styled.div`
     justify-content: center;
 
     & img {
-      width: 100%;
+      /* width: 100%; */
     }
 
     & .name {
@@ -130,10 +138,13 @@ const PricingTableHeadWrapper = Styled.div`
     & p {
       margin-bottom: 20px;
     }
+    & button {
+      min-width: 124px;
+    }
   }
 
   & .card:first-child {
-    flex-grow: 1;
+    width: 310px;
   }
 `
 
