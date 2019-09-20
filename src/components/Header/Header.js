@@ -117,6 +117,9 @@ function Header({ bgPrimary, navItems }) {
           borderBottom: isMobile ? `1px solid ${extended.purple.five}` : 'none'
         }
       }}
+      containerProps={{
+        className: 'container'
+      }}
     >
       <HeaderContainer>
         <Row>
