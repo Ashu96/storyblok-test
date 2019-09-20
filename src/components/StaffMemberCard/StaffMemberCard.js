@@ -5,7 +5,7 @@ import { backgrounds } from '../../constants/colors'
 import { Heading3, BodyText } from '../../styles/text'
 
 const StaffMemberCardWrapper = Styled.div`
-  width: 350px;
+  width: 320px;
   min-height: 431px;
   border-radius: 10px;
   box-shadow: ${props =>
@@ -43,6 +43,7 @@ const StaffMemberCardWrapper = Styled.div`
   @media (min-width: 999px) and (max-width: 1200px) {
     width: 300px;
     padding: 40px;
+    min-height: 470px;
   }
 `
 

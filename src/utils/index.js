@@ -131,3 +131,14 @@ export function isExternal(url) {
   console.log(`URL: ${url}`)
   return url.includes('http')
 }
+
+
+export function useMobile() {
+  const [isMobile, toggleIsMobile] = React.useState(false)
+
+  React.useEffect(() => {
+    toggleIsMobile(window.innerWidth < 1024)
+  }, [])
+
+  return isMobile
+}

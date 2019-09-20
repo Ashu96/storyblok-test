@@ -39,10 +39,11 @@ const HeroBannerWrapper = Styled.div`
     & .point {
       display: flex;
       align-items: baseline;
+      margin-bottom: 8px;
 
       & p {
         margin-left: 16px;
-        padding-right: 10%;
+        padding-right: 0%;
       }
     }
 

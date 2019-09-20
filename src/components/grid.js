@@ -3,6 +3,7 @@ import Components from './components.js'
 import SbEditable from 'storyblok-react'
 import { SectionWrapper, Row, Col } from '../styles/grid'
 import { extended } from '../constants/colors'
+import {useMobile} from '../utils'
 
 function Grid(props) {
   const hasPath = props.blok.columns.some(col => col.component === 'path')
@@ -24,6 +25,7 @@ function Grid(props) {
   const containerFluid = props.blok.columns.some(
     blok => blok.component === 'Carousel'
   )
+  const isMobile = useMobile()
 
   return (
     <SbEditable content={props.blok}>
@@ -33,8 +35,8 @@ function Grid(props) {
           style: {
             paddingTop: paddingTop ? paddingVertical : 0,
             paddingBottom: paddingBottom ? paddingVertical : 0,
-            paddingLeft: paddingLeft ? paddingHorizontal : 0,
-            paddingRight: paddingRight ? paddingHorizontal : 0
+            paddingLeft: paddingLeft ? isMobile ? 24: paddingHorizontal : 0,
+            paddingRight: paddingRight ? isMobile ? 24: paddingHorizontal : 0
           }
         }}
         containerFluidProps={{

@@ -47,7 +47,6 @@ const SingleMediaWithCaptionAndParagraphWrapper = Styled.div`
   & .info {
     position: relative;
     margin-top: 16px;
-    padding-left: ${props => props.textFirst ? '0px' : '50px'};
 
     & p {
       margin-bottom: 10px;
@@ -56,6 +55,9 @@ const SingleMediaWithCaptionAndParagraphWrapper = Styled.div`
     & h2 {
       text-align: left;
       margin-bottom: 20px;
+    }
+    @media (min-width: 768px) {
+      padding-left: ${props => props.textFirst ? '0px' : '50px'};
     }
   }
 `
