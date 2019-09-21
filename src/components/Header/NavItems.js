@@ -2,17 +2,14 @@ import React from 'react'
 import { navigate, Link } from 'gatsby'
 import Img from 'gatsby-image'
 import Styled from 'styled-components'
-import { getButton, isExternal } from '../../utils'
+import { getButton, isExternal, getSlugFromTitle } from '../../utils'
 import Icon from '../Icon'
 import { backgrounds, primary, extended } from '../../constants/colors'
 
 const DropDown = Styled.div`
   opacity: 1;
-  min-width: 144px;
-  min-height: 80px;
   border-radius: 5px;
   background-color: ${backgrounds.white};
-  display: ${props => (props.open ? 'block' : 'none')};
   transition: opacity 150ms ease-in;
   transition: transform 200ms ease-in;
 
@@ -33,11 +30,9 @@ const DropDown = Styled.div`
   }
 
   @media (min-width: 1024px) {
-    opacity: 0;
     position: absolute;
     top: 32px;
     box-shadow: 0 8px 20px 0 rgba(152, 152, 187, 0.15);
-    border: solid 1px ${backgrounds.fadedPurple};
   }
 `
 
@@ -81,7 +76,7 @@ export function NavDropDown({ item, navItems, classNames }) {
       className={`header__nav-dropdown ${classNames}`}
       onClick={() => toggleOpen(!open)}
     >
-      <Link to={item.link}>
+      <a>
         {/* {item.image && <Img fixed={item.image.childImageSharp.fixed} alt="" />} */}
         {!item.image && item.title}
         {item.type === 'DROP_DOWN' && (
@@ -92,8 +87,12 @@ export function NavDropDown({ item, navItems, classNames }) {
             className="header__nav-item--icon"
           />
         )}
-      </Link>
-      <DropDownMenu items={navItems} open={open} />
+      </a>
+      <DropDownMenu
+        items={navItems}
+        open={open}
+        id={getSlugFromTitle(item.title)}
+      />
     </li>
   )
 }
@@ -110,12 +109,30 @@ export function NavButton({ item, classNames }) {
   )
 }
 
-export function DropDownMenu({ items, open }) {
-  console.log({ items })
+export function DropDownMenu({ id, items, open }) {
+  React.useEffect(() => {
+    if (open && window && window.TimelineMax) {
+      const tl = new window.TimelineMax({})
+      tl.to(`#${id}`, 0.2, { height: 180 })
+      tl.staggerTo(`.menu-item--${id}`, 0.25, { opacity: 1 }, 0.1)
+    }
+    if (!open && window && window.TimelineMax) {
+      const tl = new window.TimelineMax({})
+
+      tl.staggerTo(`.menu-item--${id}`, 0.25, { opacity: 0 }, 0.1)
+      tl.to(`#${id}`, 0.2, {
+        height: 0
+      })
+    }
+  }, [open, id])
   return (
-    <DropDown className="dropdown" open={open}>
+    <DropDown id={id} className="dropdown" open={open}>
       {items.map(item => (
-        <NavLink classNames="menu-item" key={item.key} item={item} />
+        <NavLink
+          classNames={`menu-item menu-item--${id}`}
+          key={item.key}
+          item={item}
+        />
       ))}
     </DropDown>
   )

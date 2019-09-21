@@ -62,15 +62,12 @@ const HeaderContainer = Styled.header`
     & .header__nav-item--icon {
       transform: rotate(90deg);
     }
-    &:hover .header__nav-item--icon {
+    /* &:hover .header__nav-item--icon {
       transform: rotate(-90deg);
     }
     &:hover > .dropdown {
       opacity: 1;
-      /* z-index: 1; */
-      /* transform: scale(1); */
-      /* transform: translateY(0px); */
-    }
+    } */
   }
 
   & .header__nav-cta {
@@ -186,6 +183,14 @@ const MenuContainer = Styled.div`
     padding: 0px;
     background: none;
     border: none;
+    position: relative;
+
+    & .action {
+      position: absolute;
+      z-index: 11;
+      top: 0;
+      left: 0;
+    }
   }
 
   & .menu-icon {
@@ -195,11 +200,6 @@ const MenuContainer = Styled.div`
       width: 84px;
       height: 24px;
     }
-    /* position: absolute;
-    top: 27px;
-    right: 20px;
-    width: 24px;
-    height: 24px; */
   }
 
   & .menu__container {
@@ -212,16 +212,22 @@ const MenuContainer = Styled.div`
     top: 0px;
     left: 0px;
     padding: 24px;
+    transform: ${props =>
+      props.open ? `translateX(0px)` : `translateX(-300px)`};
+    transition: 250ms all ease-in;
   }
 
   & .menu__overlay {
     position: fixed;
-    z-index: 5;
     background-color: ${primary.charcoal};
-    opacity: 0.6;
     width: 100vw;
     height: 100vh;
     top: 0px
+    opacity: ${props => (props.open ? 0.6 : 0)};
+    z-index: ${props => (props.open ? 5 : 0)};
+    transform: ${props =>
+      props.open ? `translateX(0px)` : `translateX(-300px)`};
+    transition: 250ms opacity ease-in;
   }
 
   & .list-container {
@@ -264,14 +270,10 @@ const MenuContainer = Styled.div`
 
 function Menu({ leftHSNavItems, rightHSNavItems }) {
   const [open, toggleOpen] = React.useState(false)
-  console.log({
-    leftHSNavItems,
-    rightHSNavItems
-  })
   const logo = leftHSNavItems.find(item => item.type === 'LOGO')
   const NavItem = getNavItem(logo)
   return (
-    <MenuContainer>
+    <MenuContainer open={open}>
       <nav>
         <button
           className="button"
@@ -279,64 +281,57 @@ function Menu({ leftHSNavItems, rightHSNavItems }) {
           onClick={() => toggleOpen(!open)}
         >
           {!open ? (
-            <Icon name="menu" fill={primary.purple} />
+            <Icon className="action" name="menu" fill={primary.purple} />
           ) : (
-            <Icon name="close" fill={primary.purple} />
+            <Icon className="action" name="close" fill={primary.purple} />
           )}
         </button>
         <NavItem classNames="menu-icon" item={logo} />
       </nav>
-      {open && (
-        <React.Fragment>
-          <div className="menu__overlay" onClick={() => toggleOpen(!open)} />
-          <div className="menu__container">
-            <button
-              className="button"
-              aria-label="navigation-menu"
-              onClick={() => toggleOpen(!open)}
-            >
-              {!open ? (
-                <Icon name="menu" fill={primary.purple} />
-              ) : (
-                <Icon name="close" fill={primary.purple} />
-              )}
-            </button>
-            <div className="list-container">
-              <ul className="menu__list">
-                {leftHSNavItems.map(item => {
-                  if (item.type !== 'LOGO') {
-                    const NavItem = getNavItem(item)
-                    return (
-                      <NavItem
-                        classNames="menu__list-item"
-                        key={item.id || item._uid}
-                        item={item}
-                        navItems={item.items}
-                      />
-                    )
-                  }
-                })}
-              </ul>
-              <ul className="menu__list menu__list--bottom">
-                {rightHSNavItems.map(item => {
-                  if (item.type !== 'LOGO') {
-                    const NavItem = getNavItem(item)
+      <React.Fragment>
+        <div className="menu__overlay" onClick={() => toggleOpen(!open)} />
+        <div className="menu__container">
+          <button
+            className="button"
+            aria-label="navigation-menu"
+            onClick={() => toggleOpen(!open)}
+          >
+          </button>
+          <div className="list-container">
+            <ul className="menu__list">
+              {leftHSNavItems.map(item => {
+                if (item.type !== 'LOGO') {
+                  const NavItem = getNavItem(item)
+                  return (
+                    <NavItem
+                      classNames="menu__list-item"
+                      key={item.id || item._uid}
+                      item={item}
+                      navItems={item.items}
+                    />
+                  )
+                }
+              })}
+            </ul>
+            <ul className="menu__list menu__list--bottom">
+              {rightHSNavItems.map(item => {
+                if (item.type !== 'LOGO') {
+                  const NavItem = getNavItem(item)
 
-                    return (
-                      <NavItem
-                        classNames={`menu__list-item`}
-                        key={item.id || item._uid}
-                        item={item}
-                        navItems={item.items}
-                      />
-                    )
-                  }
-                })}
-              </ul>
-            </div>
+                  return (
+                    <NavItem
+                      classNames={`menu__list-item`}
+                      key={item.id || item._uid}
+                      item={item}
+                      navItems={item.items}
+                    />
+                  )
+                }
+              })}
+            </ul>
           </div>
-        </React.Fragment>
-      )}
+        </div>
+      </React.Fragment>
     </MenuContainer>
   )
 }
