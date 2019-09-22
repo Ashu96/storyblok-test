@@ -1,4 +1,5 @@
 import React from 'react'
+import { navigate } from 'gatsby'
 import {
   BUTTON_TYPES,
   NAV_ITEM_TYPES,
@@ -128,10 +129,16 @@ export function getNavItem(item) {
 // }
 
 export function isExternal(url) {
-  console.log(`URL: ${url}`)
   return url.includes('http')
 }
 
+export function navigateTo(link) {
+  if (isExternal(link)) {
+    window.open(link, "_blank")
+  } else {
+    navigate(link)
+  }
+}
 
 export function useMobile() {
   const [isMobile, toggleIsMobile] = React.useState(false)
