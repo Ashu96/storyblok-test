@@ -1,9 +1,9 @@
 import React from 'react'
-import { navigate, Link } from 'gatsby'
 import Img from 'gatsby-image'
 import Styled from 'styled-components'
-import { getButton, isExternal, getSlugFromTitle } from '../../utils'
+import {Anchor} from '../Generic'
 import Icon from '../Icon'
+import { getButton, getSlugFromTitle, navigateTo } from '../../utils'
 import { backgrounds, primary, extended } from '../../constants/colors'
 
 const DropDown = Styled.div`
@@ -39,11 +39,10 @@ const DropDown = Styled.div`
 export function NavLogo({ item, classNames }) {
   return (
     <li className={`header__logo ${classNames}`}>
-      <Link to={item.link}>
-        {/* {item.image && <Img fixed={item.image.childImageSharp.fixed} alt="" />} */}
+      <Anchor to={item.link}>
         {item.image && <img loading="lazy" src={item.image} alt="" />}
         {!item.image && item.title}
-      </Link>
+      </Anchor>
     </li>
   )
 }
@@ -51,20 +50,13 @@ export function NavLogo({ item, classNames }) {
 export function NavLink({ item, classNames }) {
   return (
     <li className={classNames ? classNames : 'header__nav-item'}>
-      <Link
+      <Anchor
         to={item.link}
-        onClick={event => {
-          if (isExternal(item.link)) {
-            //
-            event.preventDefault()
-            window.open(item.link, '_blank')
-          }
-        }}
         activeClassName="active"
       >
         {item.image && <Img fixed={item.image.childImageSharp.fixed} alt="" />}
         {!item.image && item.title}
-      </Link>
+      </Anchor>
     </li>
   )
 }
@@ -102,7 +94,7 @@ export function NavButton({ item, classNames }) {
   const Button = getButton(button.type)
   return (
     <li className={`header__nav-cta ${classNames}`}>
-      <Button onClick={() => navigate(button.link)}>
+      <Button onClick={() => navigateTo('https://app.uprise.co' || button.link)}>
         {!item.image && button.label}
       </Button>
     </li>

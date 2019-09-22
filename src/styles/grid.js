@@ -3,65 +3,65 @@ import PropTypes from 'prop-types'
 import { backgrounds } from '../constants/colors'
 
 export function Container({ children, className, ...props }) {
-	return (
-		<div className={`${className}`} {...props}>
-			{children}
-		</div>
-	)
+  return (
+    <div className={`${className}`} {...props}>
+      {children}
+    </div>
+  )
 }
 
 Container.defaultProps = {
-	className: ''
+  className: 'container'
 }
 
 export function Row({ children, className, ...props }) {
-	return (
-		<div className={`row ${className}`} {...props}>
-			{children}
-		</div>
-	)
+  return (
+    <div className={`row ${className}`} {...props}>
+      {children}
+    </div>
+  )
 }
 
 Row.defaultProps = {
-	className: ''
+  className: ''
 }
 
 export function Col({ children, className, ...props }) {
-	return (
-		<div className={`col-12 ${className}`} {...props}>
-			{children}
-		</div>
-	)
+  return (
+    <div className={`col-12 ${className}`} {...props}>
+      {children}
+    </div>
+  )
 }
 
 Col.defaultProps = {
-	className: ''
+  className: ''
 }
 
 export function SectionWrapper({
-	children,
-	bgPrimary,
-	containerFluidProps,
-	containerProps
+  children,
+  bgPrimary,
+  containerFluidProps,
+  containerProps
 }) {
-	return (
-		<div
-			className="container-fluid"
-			style={
-				bgPrimary
-					? { backgroundColor: backgrounds.fadedPurple }
-					: { backgroundColor: backgrounds.white }
-			}
-			{...containerFluidProps}
-		>
-			<Container {...containerProps}>{children}</Container>
-		</div>
-	)
+  return (
+    <div
+      className="container-fluid"
+      style={
+        bgPrimary
+          ? { backgroundColor: backgrounds.fadedPurple }
+          : { backgroundColor: backgrounds.white }
+      }
+      {...containerFluidProps}
+    >
+      <Container {...containerProps}>{children}</Container>
+    </div>
+  )
 }
 
 SectionWrapper.propTypes = {
-	children: PropTypes.node.isRequired,
-	// className: PropTypes.string,
-	containerFluidProps: PropTypes.object,
-	containerProps: PropTypes.object
+  children: PropTypes.node.isRequired,
+  // className: PropTypes.string,
+  containerFluidProps: PropTypes.object,
+  containerProps: PropTypes.object
 }
