@@ -51,27 +51,12 @@ exports.createPages = ({ graphql, actions }) => {
           if (entry.node.full_slug === 'blog/') {
             fullSlug = 'blog'
           }
-          const pagePath =
-            entry.node.full_slug == 'home' ? '' : `${fullSlug}/`
-
-          const globalNavi = entries.filter(globalEntry => {
-            return (
-              globalEntry.node.field_component == 'global_navi' &&
-              globalEntry.node.lang == entry.node.lang
-            )
-          })
-          if (!globalNavi.length) {
-            console.warn(
-              'The global navigation item has not been found. Please create a content item with the content type global_navi in Storyblok.'
-            )
-            // throw new Error('The global navigation item has not been found. Please create a content item with the content type global_navi in Storyblok.')
-          }
+          const pagePath = entry.node.full_slug == 'home' ? '' : `${fullSlug}/`
 
           createPage({
             path: `/${pagePath}`,
             component: storyblokEntry,
             context: {
-              // globalNavi: globalNavi[0].node,
               story: entry.node
             }
           })

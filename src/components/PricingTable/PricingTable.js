@@ -10,7 +10,7 @@ import { PLAN_TYPES, PLANS } from '../../constants/pricingPlans'
 const types = Object.keys(PLAN_TYPES)
 
 const PricingTableWrapper = Styled.div`
-  overflow: scroll;
+  overflow: auto;
 
   tr, td {
     box-sizing: border-box;
