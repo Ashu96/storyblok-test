@@ -149,3 +149,11 @@ export function useMobile() {
 
   return isMobile
 }
+
+export function getDateWithoutTime(date) {
+  let dateWithoutTime = date
+  if (typeof date === 'string' && date.split(' ').length === 2) {
+    dateWithoutTime = date.split(' ')[0]
+  }
+  return dateWithoutTime
+}

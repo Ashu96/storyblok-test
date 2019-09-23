@@ -4,6 +4,7 @@ import Styled from 'styled-components'
 // import Img from 'gatsby-image'
 import format from 'date-fns/format'
 import { navigate } from 'gatsby'
+import { getDateWithoutTime } from '../../utils'
 import { backgrounds, extended, primary } from '../../constants/colors'
 import { BodyText, Note } from '../../styles/text'
 
@@ -56,33 +57,38 @@ const BlogCardContainer = Styled.div`
 `
 
 function BlogCard({ title, media, body, date, category, slug }) {
-	return (
-		<BlogCardContainer
-			role="button"
-			tabIndex="0"
-			onClick={() => navigate(`/blog/${slug}`)}
-		>
-			<div className="media">{media && <img src={media} alt="" />}</div>
-			{/* <div className="media">{media && <Img fluid={media} alt="" />}</div> */}
-			<div className="content">
-				<BodyText className="title" bold color={primary.charcoal}>
-					{title}
-				</BodyText>
-				<Note className="body" color={extended.charcoal.one}>
-					{body}
-				</Note>
-				<div className="meta">
-					<Note color={extended.charcoal.three}>
-          {format(new Date(date), 'MMMM dd, yyyy')} | {category}
-					</Note>
-				</div>
-			</div>
-		</BlogCardContainer>
-	)
+  return (
+    <BlogCardContainer
+      role="button"
+      tabIndex="0"
+      onClick={() => navigate(`/blog/${slug}`)}
+    >
+      <div className="media">{media && <img src={media} alt="" />}</div>
+      {/* <div className="media">{media && <Img fluid={media} alt="" />}</div> */}
+      <div className="content">
+        <BodyText className="title" bold color={primary.charcoal}>
+          {title}
+        </BodyText>
+        <Note className="body" color={extended.charcoal.one}>
+          {body}
+        </Note>
+        <div className="meta">
+          <Note color={extended.charcoal.three}>
+            {format(new Date(getDateWithoutTime(date)), 'MMMM dd, yyyy')} |{' '}
+            {category}
+          </Note>
+        </div>
+      </div>
+    </BlogCardContainer>
+  )
 }
 
 export default BlogCard
 
 BlogCard.propTypes = {
-	title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired
+}
+
+BlogCard.defaultProps = {
+  date: new Date()
 }

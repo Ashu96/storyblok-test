@@ -4,6 +4,7 @@ import Styled from 'styled-components'
 import ReactMarkdown from 'react-markdown'
 import format from 'date-fns/format'
 // import RelatedPosts from '../components/Blog/RelatedPosts'
+import { getDateWithoutTime } from '../../utils'
 import { Heading1, BodyText } from '../../styles/text'
 import { Row, Col } from '../../styles/grid'
 import { backgrounds, primary, extended } from '../../constants/colors'
@@ -96,14 +97,14 @@ const ContentWrapper = Styled.div`
 
 function Blog({ blok }) {
   const { title, date, content, media, category = 'Category 1' } = blok
-  console.log({ content, date })
   return (
     <BlogContentContainer>
       <Row className="justify-content-center">
         <Col className="col-lg-9 content">
           <Heading1 textCenter>{title}</Heading1>
           <BodyText textCenter className="mgn-t-20">
-            {format(new Date(date), 'MMMM dd, yyyy')} | {category}
+            {format(new Date(getDateWithoutTime(date)), 'MMMM dd, yyyy')} |{' '}
+            {category}
           </BodyText>
 
           {/* <Img
@@ -111,7 +112,12 @@ function Blog({ blok }) {
             className="mgn-t-100 mgn-b-40"
             alt="nesting"
           /> */}
-          <img loading='lazy' src={media} className="mgn-t-100 mgn-b-40 media" alt="nesting" />
+          <img
+            loading="lazy"
+            src={media}
+            className="mgn-t-100 mgn-b-40 media"
+            alt="nesting"
+          />
           <ContentWrapper>
             <ReactMarkdown source={content.original} />
           </ContentWrapper>

@@ -6,6 +6,7 @@ import format from 'date-fns/format'
 import { backgrounds, extended } from '../../constants/colors'
 import { Col } from '../../styles/grid'
 import { Heading1, BodyText } from '../../styles/text'
+import { getDateWithoutTime } from '../../utils'
 
 const FeaturedBlogContainer = Styled.div`
   /* margin: 100px 0px; */
@@ -68,7 +69,8 @@ function FeaturedBlogCard({ title, media, body, date, category, slug }) {
           <BodyText className="body">{body}</BodyText>
           <div className="meta">
             <BodyText color={extended.charcoal.two}>
-              {format(new Date(date), 'MMMM dd, yyyy')} | {category}
+              {format(new Date(getDateWithoutTime(date)), 'MMMM dd, yyyy')} |{' '}
+              {category}
             </BodyText>
           </div>
         </div>
@@ -87,6 +89,6 @@ FeaturedBlogCard.defaultProps = {
   media: require('../../images/learn-what-hr.svg'),
   title: `Learn what HR Managers think is the best EAP Strategy`,
   body: `Uprise recently surveyed a group of 47 HR and WHS managers and asked about their views on mental health and EAP strategy. Those surveyed were from mostly whi…`,
-  date: 'June 13, 2019',
+  date: new Date(),
   category: 'Wellbeing'
 }
