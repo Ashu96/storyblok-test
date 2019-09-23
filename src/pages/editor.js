@@ -2,7 +2,9 @@ import React from 'react'
 import Components from '../components/components.js'
 import SbEditable from 'storyblok-react'
 import config from '../../gatsby-config'
-// import Navi from '../components/navi.js'
+import '../fonts/proxima-nova-web-fonts/fonts.css'
+import '../components/layout.css'
+import '../styles/bootstrap-grid-utils.css'
 
 const loadStoryblokBridge = function(cb) {
   let sbConfigs = config.plugins.filter(item => {
@@ -111,6 +113,7 @@ class StoryblokEntry extends React.Component {
           key: content._uid,
           blok: content
         })}
+        <Footer />
       </SbEditable>
     )
   }
