@@ -99,9 +99,11 @@ const HeroBannerWrapper = Styled.div`
     @media (min-width: 768px) {
       flex: ${props => (props.splitScreen ? '0 0 50%' : '0 0 100%')};
       max-width: ${props => (props.splitScreen ? '50%' : '100%')};
-
+      /* min-height on image isn't working on IE11 */
+      /* Reason: Maybe image is loading afterwards */
+      min-height: 446px;
       & img {
-        min-height: 446px;
+        /* min-height: 446px;       */
       }
     }
   }
