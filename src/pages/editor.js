@@ -1,5 +1,6 @@
 import React from 'react'
 import Components from '../components/components.js'
+import Footer from '../components/footer'
 import SbEditable from 'storyblok-react'
 import config from '../../gatsby-config'
 import '../fonts/proxima-nova-web-fonts/fonts.css'
