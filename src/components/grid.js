@@ -63,7 +63,8 @@ function Grid(props) {
               {React.createElement(Components(blok.component), {
                 key: blok._uid,
                 blok: blok,
-                splitScreen
+                splitScreen,
+                ...blok
               })}
             </Col>
           ))}

@@ -215,7 +215,7 @@ const MenuContainer = Styled.div`
     left: 0px;
     padding: 24px;
     transform: ${props =>
-      props.open ? `translateX(0px)` : `translateX(-300px)`};
+      props.open ? `translateX(0px)` : `translateX(-100vw)`};
     transition: 250ms all ease-in;
   }
 
@@ -228,7 +228,7 @@ const MenuContainer = Styled.div`
     opacity: ${props => (props.open ? 0.6 : 0)};
     z-index: ${props => (props.open ? 5 : 0)};
     transform: ${props =>
-      props.open ? `translateX(0px)` : `translateX(-300px)`};
+      props.open ? `translateX(0px)` : `translateX(-100vw)`};
     transition: 250ms opacity ease-in;
   }
 

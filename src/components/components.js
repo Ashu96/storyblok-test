@@ -33,6 +33,7 @@ import Button from './Button'
 import PricingTable from './PricingTable'
 import {SECTION_TYPES} from '../constants'
 import RelatedPosts from './Blog/RelatedPosts'
+import TrainingCard from './TrainingCard'
 
 const ComponentList = {
   page: Page,
@@ -71,7 +72,8 @@ const ComponentList = {
   [SECTION_TYPES.LEGAL_SUPPORT]: LegalSupport,
   [SECTION_TYPES.BUTTON]: Button,
   [SECTION_TYPES.PRICING_TABLE]: PricingTable,
-  [SECTION_TYPES.RELATED_POST]: RelatedPosts
+  [SECTION_TYPES.RELATED_POST]: RelatedPosts,
+  [SECTION_TYPES.TRAINING_CARD]: TrainingCard
 }
 
 const Components = (type) => {
