@@ -56,18 +56,24 @@ const HeaderContainer = Styled.header`
     }
   }
 
+  & .nav--right {
+    width: 100%;
+    justify-content: flex-end;
+
+    & li:last-child {
+      margin: 0px;
+    }
+  }
+
   & .header__nav-dropdown {
     z-index: 1;
     position: relative;
     & .header__nav-item--icon {
       transform: rotate(90deg);
+    } 
+    & ul li {
+      width: 100%;
     }
-    /* &:hover .header__nav-item--icon {
-      transform: rotate(-90deg);
-    }
-    &:hover > .dropdown {
-      opacity: 1;
-    } */
   }
 
   & .header__nav-cta {
@@ -79,10 +85,6 @@ const HeaderContainer = Styled.header`
       height: 40px;
       padding: 6px 16px;
     }
-
-    /* & button:first-child {
-      margin-right: 16px;
-    } */
 
     @media (min-width: 768px) {
       display: flex;
@@ -121,7 +123,7 @@ function Header({ bgPrimary, navItems }) {
       <HeaderContainer>
         <Row>
           <Col className="col-md-8">
-            <ul>
+            <ul className="nav nav--left">
               {leftHSNavItems.map(item => {
                 console.log({ item })
                 const NavItem = getNavItem(item)
@@ -136,7 +138,7 @@ function Header({ bgPrimary, navItems }) {
             </ul>
           </Col>
           <Col className="col-md-4">
-            <ul>
+            <ul className="nav nav--right">
               {rightHSNavItems.map(item => {
                 const NavItem = getNavItem(item)
                 return (
@@ -249,7 +251,7 @@ const MenuContainer = Styled.div`
       margin: 0px;
       margin-top: 24px;
 
-      & a {
+      & a, .link {
         color: ${extended.charcoal.one};
         text-decoration: none;
         font-size: 18px;
@@ -259,6 +261,10 @@ const MenuContainer = Styled.div`
       }
       & button {
         width: 100%;
+      }
+      & ul {
+        list-style: none;
+        padding: 0px;
       }
     }
   }
