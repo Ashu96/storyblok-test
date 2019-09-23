@@ -4,17 +4,12 @@ import Styled from 'styled-components'
 import Img from 'gatsby-image'
 import { navigate } from 'gatsby'
 import Icon from '../Icon'
-// import { OutLineButton, PrimaryButton } from '../../styles/buttons'
-// import { SectionWrapper, Row, Col } from '../../styles/grid'
-// import { backgrounds } from '../../constants/colors'
 import { Heading1, Heading4, BodyText } from '../../styles/text'
 import { getButton } from '../../utils'
 
 const HeroBannerWrapper = Styled.div`
 
   text-align: ${props => (props.splitScreen ? 'left' : 'center')};
-  /* padding-top: 100px;
-  padding-bottom: ${props => (props.noMedia ? '0px' : '100px')}; */
 
   & .hero__heading {
     display: flex;
@@ -28,6 +23,7 @@ const HeroBannerWrapper = Styled.div`
     align-items: ${props => (props.splitScreen ? 'start' : 'center')};;
     flex: 0 0 100%;
     max-width: 100%;
+    min-height: ${props => props.onlyCTA ? '50px' : '200px'};
     
     & p {
       @media (min-width: 768px) {
@@ -56,7 +52,7 @@ const HeroBannerWrapper = Styled.div`
 
 
   & .hero__cta-container {
-    margin-top: 40px;
+    margin-top: ${props => (props.onlyCTA ? '0px' : '40px')};
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -115,40 +111,49 @@ function HeroBanner({
   body,
   action,
   image,
-  bgPrimary,
   splitScreen,
   media,
   points
 }) {
   const noMedia = !image && !media
+  const onlyCTA = noMedia && !title && !subTitle && !body && !points
+
   return (
-    <HeroBannerWrapper splitScreen={splitScreen} noMedia={noMedia}>
+    <HeroBannerWrapper
+      splitScreen={splitScreen}
+      noMedia={noMedia}
+      onlyCTA={onlyCTA}
+    >
       <div className="hero__heading">
         <div className="hero__content">
-          <Heading1 className="text--semi-bold mgn-b-10">{title}</Heading1>
-          <Heading4 className="text--brand mgn-b-20">{subTitle}</Heading4>
-          <BodyText>{body}</BodyText>
-          {
-            points &&
+          {title && (
+            <Heading1 className="text--semi-bold mgn-b-10">{title}</Heading1>
+          )}
+          {subTitle && (
+            <Heading4 className="text--brand mgn-b-20">{subTitle}</Heading4>
+          )}
+          {body && <BodyText>{body}</BodyText>}
+          {points &&
             points.split(',').map(point => {
               return (
-                <div className='point'>
-                  <Icon name='tick'/>
+                <div className="point">
+                  <Icon name="tick" />
                   <BodyText>{point}</BodyText>
                 </div>
               )
-            })
-          }
-          <div className="hero__cta-container">
-            {action.map(item => {
-              const Button = getButton(item.type)
-              return (
-                <Button key={item._uid} onClick={() => navigate(item.link)}>
-                  {item.label}
-                </Button>
-              )
             })}
-          </div>
+          {action && !!action.length && (
+            <div className="hero__cta-container">
+              {action.map(item => {
+                const Button = getButton(item.type)
+                return (
+                  <Button key={item._uid} onClick={() => navigate(item.link)}>
+                    {item.label}
+                  </Button>
+                )
+              })}
+            </div>
+          )}
         </div>
         {image && (
           <div className="hero__image-container">
@@ -157,7 +162,7 @@ function HeroBanner({
         )}
         {media && (
           <div className="hero__image-container">
-            {media && <img loading='lazy' src={media} alt={'hero'} />}
+            {media && <img loading="lazy" src={media} alt={'hero'} />}
           </div>
         )}
       </div>
@@ -172,5 +177,5 @@ HeroBanner.propTypes = {
   points: PropTypes.string
 }
 HeroBanner.defaultProps = {
-  title: 'Uprise',
+  title: 'Uprise'
 }
