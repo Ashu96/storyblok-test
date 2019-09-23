@@ -16,12 +16,10 @@ const HeadingWithSingleMediaAndButtonWrapper = Styled.div`
 
     & p {
       text-align: ${props => (props.splitScreen ? 'left' : 'center')};
+      width: 100%;
     }
 
     & h2 {
-      /* padding: 0 ${props => props.paddingHorizontal}; */
-      /* padding: ${props =>
-        props.splitScreen ? '0px' : `0px ${props.paddingHorizontal}`}; */
       text-align: ${props => (props.splitScreen ? 'left' : 'center')};
       margin-bottom: 24px;
     }
@@ -38,12 +36,6 @@ const HeadingWithSingleMediaAndButtonWrapper = Styled.div`
     & .action {
       margin-top: 50px
       width: 100%;
-    }
-
-    & .with-padding {
-      /* padding: 0px ${props => props.paddingHorizontal}; */
-      /* padding: ${props =>
-        props.splitScreen ? '0px' : `0px ${props.paddingHorizontal}`}; */
     }
 
     @media (min-width: 768px) {
@@ -65,13 +57,16 @@ const HeadingWithSingleMediaAndButtonWrapper = Styled.div`
 
 `
 
-function HeadingWithSingleMediaAndButton({ blok, splitScreen }) {
-  const { title, image, body, action, paddingHorizontal } = blok
-  console.log({ action })
+function HeadingWithSingleMediaAndButton({
+  title,
+  image,
+  body,
+  action,
+  paddingHorizontal,
+  splitScreen
+}) {
   const [primaryAction] = action
-  console.log({ primaryAction })
   const Button = getButton(primaryAction && primaryAction.type)
-  console.log({ paddingHorizontal })
 
   return (
     <HeadingWithSingleMediaAndButtonWrapper
@@ -112,8 +107,10 @@ function HeadingWithSingleMediaAndButton({ blok, splitScreen }) {
 export default HeadingWithSingleMediaAndButton
 
 HeadingWithSingleMediaAndButton.propTypes = {
-  title: PropTypes.string.isRequired
-}
-HeadingWithSingleMediaAndButton.defaultTypes = {
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  image: PropTypes.string,
+  body: PropTypes.string,
+  action: PropTypes.array,
+  splitScreen: PropTypes.bool,
+  paddingHorizontal: PropTypes.string
 }
