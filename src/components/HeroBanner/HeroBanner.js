@@ -155,7 +155,7 @@ function HeroBanner({
         )}
         {media && (
           <div className="hero__image-container">
-            {media && <img loading='lazy' loading='lazy' src={media} alt={'hero'} />}
+            {media && <img loading='lazy' src={media} alt={'hero'} />}
           </div>
         )}
       </div>

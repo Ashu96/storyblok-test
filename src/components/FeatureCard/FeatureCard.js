@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import Styled from 'styled-components'
 import { backgrounds } from '../../constants/colors'
 import { Heading3, BodyText } from '../../styles/text'
@@ -45,7 +45,6 @@ const FeatureCardWrapper = Styled.div`
 
 function FeatureCard({ blok }) {
   const { title, media, body, shortContent } = blok
-  // const shortContent = body.length < 100
 
   return (
     <FeatureCardWrapper shortContent={shortContent}>
@@ -61,9 +60,9 @@ function FeatureCard({ blok }) {
 
 export default FeatureCard
 
-FeatureCard.propTypes = {
-  title: PropTypes.string.isRequired
-}
-FeatureCard.defaultTypes = {
-  title: PropTypes.string.isRequired
-}
+// FeatureCard.propTypes = {
+//   title: PropTypes.string.isRequired
+// }
+// FeatureCard.defaultTypes = {
+//   title: PropTypes.string.isRequired
+// }

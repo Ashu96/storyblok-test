@@ -52,6 +52,7 @@ function Grid(props) {
         <Row style={hasPath ? { position: 'relative' } : {}}>
           {props.blok.columns.map(blok => (
             <Col
+              key={blok._uid}
               className={cols}
               style={
                 blok.component === 'path'

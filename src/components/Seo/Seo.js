@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 
 function Seo({ blok }) {
@@ -74,9 +74,9 @@ function Seo({ blok }) {
 
 export default Seo
 
-Seo.propTypes = {
-  title: PropTypes.string.isRequired
-}
-Seo.defaultTypes = {
-  title: PropTypes.string.isRequired
-}
+// Seo.propTypes = {
+//   title: PropTypes.string.isRequired
+// }
+// Seo.defaultTypes = {
+//   title: PropTypes.string.isRequired
+// }

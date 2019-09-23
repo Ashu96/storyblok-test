@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Styled from 'styled-components'
 import { navigate } from 'gatsby'
-import { Row, Col } from '../../styles/grid'
+import { Col } from '../../styles/grid'
 import { RoundButton } from '../../styles/buttons'
 import { getSlugFromTitle } from '../../utils'
 
@@ -27,10 +27,6 @@ const CategoryMenuContainer = Styled.div`
 `
 
 function CategoryMenu({ categories, activeCategory }) {
-  // const menu = categories.edges.map(({ node }) => ({
-  // 	...node,
-  // 	isActive: node.strapiId === activeCategory
-  // }))
   const menu = categories.map((cat, index) => ({
     id: index,
     slug: getSlugFromTitle(cat),

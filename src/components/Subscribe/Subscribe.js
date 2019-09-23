@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import Styled from 'styled-components'
 import { PrimaryButton } from '../../styles/buttons'
 import { Row, Col } from '../../styles/grid'
@@ -77,9 +77,9 @@ function Subscribe({ blok }) {
 
 export default Subscribe
 
-Subscribe.propTypes = {
-  title: PropTypes.string.isRequired
-}
-Subscribe.defaultTypes = {
-  title: PropTypes.string.isRequired
-}
+// Subscribe.propTypes = {
+//   title: PropTypes.string.isRequired
+// }
+// Subscribe.defaultTypes = {
+//   title: PropTypes.string.isRequired
+// }

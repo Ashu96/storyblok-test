@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import Styled from 'styled-components'
 // import { getPublicURL } from '../../utils'
 import { Heading2 } from '../../styles/text'
@@ -30,14 +30,14 @@ function MultipleMediaWithCaption({ blok }) {
 
 export default MultipleMediaWithCaption
 
-MultipleMediaWithCaption.propTypes = {
-	title: PropTypes.string.isRequired,
-	images: PropTypes.array.isRequired,
-}
+// MultipleMediaWithCaption.propTypes = {
+// 	title: PropTypes.string.isRequired,
+// 	images: PropTypes.array.isRequired,
+// }
 
-MultipleMediaWithCaption.defaultProps = {
-	images: []
-}
+// MultipleMediaWithCaption.defaultProps = {
+// 	images: []
+// }
 
 
 const ListContainer = Styled.ul`
@@ -73,8 +73,8 @@ const ListItem = Styled.li`
 function List({ images }) {
 	return (
 		<ListContainer>
-			{images.map(image => (
-				<ListItem key={image.name}>
+			{images.map((image, index) => (
+				<ListItem key={image.name + index}>
 					<img loading='lazy'
             src={image.filename}
 						// src={getPublicURL(image.url || image.publicURL)}

@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import Styled from 'styled-components'
 import { backgrounds } from '../../constants/colors'
 import { PrimaryButton } from '../../styles/buttons'
@@ -144,9 +144,9 @@ function ContactForm({ blok }) {
 
 export default ContactForm
 
-ContactForm.propTypes = {
-  title: PropTypes.string.isRequired
-}
-ContactForm.defaultTypes = {
-  title: PropTypes.string.isRequired
-}
+// ContactForm.propTypes = {
+//   title: PropTypes.string.isRequired
+// }
+// ContactForm.defaultTypes = {
+//   title: PropTypes.string.isRequired
+// }

@@ -6,13 +6,16 @@ import Icon from '../Icon'
 import { getButton, getSlugFromTitle, navigateTo } from '../../utils'
 import { backgrounds, primary, extended } from '../../constants/colors'
 
-const DropDown = Styled.div`
+const DropDown = Styled.ul`
   opacity: 0;
   height: 1px;
   border-radius: 5px;
   background-color: ${backgrounds.white};
   transition: opacity 150ms ease-in;
   transition: transform 200ms ease-in;
+  
+  display: flex;
+  flex-direction: column;
 
   & .menu-item {
     padding: 12px 16px;
@@ -70,7 +73,7 @@ export function NavDropDown({ item, navItems, classNames }) {
         toggleOpen(!open)
       }}
     >
-      <a>
+      <div className="link">
         {/* {item.image && <Img fixed={item.image.childImageSharp.fixed} alt="" />} */}
         {!item.image && item.title}
         {item.type === 'DROP_DOWN' && (
@@ -81,7 +84,7 @@ export function NavDropDown({ item, navItems, classNames }) {
             className="header__nav-item--icon"
           />
         )}
-      </a>
+      </div>
       <DropDownMenu
         items={navItems}
         open={open}
@@ -121,12 +124,13 @@ export function DropDownMenu({ id, items, open, isClicked }) {
       })
     }
   }, [open, id, isClicked])
+  console.log({ dropdown: items })
   return (
     <DropDown id={id} className="dropdown" open={open}>
       {items.map(item => (
         <NavLink
           classNames={`menu-item menu-item--${id}`}
-          key={item.key}
+          key={item._uid}
           item={item}
         />
       ))}

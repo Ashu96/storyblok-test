@@ -10,7 +10,7 @@ const PaperFormWrapper = Styled.div`
 `
 
 function PaperForm({ blok }) {
-  const { formId, html } = blok
+  const { formId } = blok
 
   React.useEffect(() => {
     const script = document.createElement('script')

@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Styled from 'styled-components'
 import { Heading3, Heading4, Note } from '../../styles/text'
-import { primary, extended, backgrounds } from '../../constants/colors'
+import { extended, backgrounds } from '../../constants/colors'
 
 const CalendarCardWrapper = Styled.div`
   margin: auto;

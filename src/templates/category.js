@@ -4,7 +4,7 @@ import Header from '../components/Header'
 import CategoryMenu from '../components/Blog/CategoryMenu'
 import CategorySection from '../components/Blog/CategorySection'
 import { backgrounds } from '../constants/colors'
-import { SectionWrapper, Row, Col } from '../styles/grid'
+import { SectionWrapper } from '../styles/grid'
 import { getSlugFromTitle } from '../utils'
 
 function BlogCategory({ navigate, pageContext, path }) {

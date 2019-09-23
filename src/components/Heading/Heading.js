@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import Styled from 'styled-components'
 import Icon from '../Icon'
 import {
@@ -83,9 +83,9 @@ function Heading({ blok }) {
 
 export default Heading
 
-Heading.propTypes = {
-  title: PropTypes.string.isRequired
-}
-Heading.defaultTypes = {
-  title: PropTypes.string.isRequired
-}
+// Heading.propTypes = {
+//   title: PropTypes.string.isRequired
+// }
+// Heading.defaultTypes = {
+//   title: PropTypes.string.isRequired
+// }

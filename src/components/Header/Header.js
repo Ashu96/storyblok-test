@@ -37,7 +37,7 @@ const HeaderContainer = Styled.header`
       margin: 0px;
       margin-right: 30px;
 
-      & a {
+      & a, .link {
         display: flex;
         align-items: center;
         color: ${extended.charcoal.one};
@@ -295,12 +295,12 @@ function Menu({ leftHSNavItems, rightHSNavItems }) {
             className="button"
             aria-label="navigation-menu"
             onClick={() => toggleOpen(!open)}
-          >
-          </button>
+          ></button>
           <div className="list-container">
             <ul className="menu__list">
-              {leftHSNavItems.map(item => {
-                if (item.type !== 'LOGO') {
+              {leftHSNavItems
+                .filter(item => item.type !== 'LOGO')
+                .map(item => {
                   const NavItem = getNavItem(item)
                   return (
                     <NavItem
@@ -310,23 +310,20 @@ function Menu({ leftHSNavItems, rightHSNavItems }) {
                       navItems={item.items}
                     />
                   )
-                }
-              })}
+                })}
             </ul>
             <ul className="menu__list menu__list--bottom">
               {rightHSNavItems.map(item => {
-                if (item.type !== 'LOGO') {
-                  const NavItem = getNavItem(item)
+                const NavItem = getNavItem(item)
 
-                  return (
-                    <NavItem
-                      classNames={`menu__list-item`}
-                      key={item.id || item._uid}
-                      item={item}
-                      navItems={item.items}
-                    />
-                  )
-                }
+                return (
+                  <NavItem
+                    classNames={`menu__list-item`}
+                    key={item.id || item._uid}
+                    item={item}
+                    navItems={item.items}
+                  />
+                )
               })}
             </ul>
           </div>
