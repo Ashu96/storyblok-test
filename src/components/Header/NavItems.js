@@ -1,13 +1,14 @@
 import React from 'react'
 import Img from 'gatsby-image'
 import Styled from 'styled-components'
-import {Anchor} from '../Generic'
+import { Anchor } from '../Generic'
 import Icon from '../Icon'
 import { getButton, getSlugFromTitle, navigateTo } from '../../utils'
 import { backgrounds, primary, extended } from '../../constants/colors'
 
 const DropDown = Styled.div`
-  opacity: 1;
+  opacity: 0;
+  height: 1px;
   border-radius: 5px;
   background-color: ${backgrounds.white};
   transition: opacity 150ms ease-in;
@@ -50,10 +51,7 @@ export function NavLogo({ item, classNames }) {
 export function NavLink({ item, classNames }) {
   return (
     <li className={classNames ? classNames : 'header__nav-item'}>
-      <Anchor
-        to={item.link}
-        activeClassName="active"
-      >
+      <Anchor to={item.link} activeClassName="active">
         {item.image && <Img fixed={item.image.childImageSharp.fixed} alt="" />}
         {!item.image && item.title}
       </Anchor>
@@ -63,10 +61,14 @@ export function NavLink({ item, classNames }) {
 
 export function NavDropDown({ item, navItems, classNames }) {
   const [open, toggleOpen] = React.useState(false)
+  const [isClicked, setIsClicked] = React.useState(false)
   return (
     <li
       className={`header__nav-dropdown ${classNames}`}
-      onClick={() => toggleOpen(!open)}
+      onClick={() => {
+        setIsClicked(true)
+        toggleOpen(!open)
+      }}
     >
       <a>
         {/* {item.image && <Img fixed={item.image.childImageSharp.fixed} alt="" />} */}
@@ -84,6 +86,7 @@ export function NavDropDown({ item, navItems, classNames }) {
         items={navItems}
         open={open}
         id={getSlugFromTitle(item.title)}
+        isClicked={isClicked}
       />
     </li>
   )
@@ -94,29 +97,30 @@ export function NavButton({ item, classNames }) {
   const Button = getButton(button.type)
   return (
     <li className={`header__nav-cta ${classNames}`}>
-      <Button onClick={() => navigateTo('https://app.uprise.co' || button.link)}>
+      <Button
+        onClick={() => navigateTo('https://app.uprise.co' || button.link)}
+      >
         {!item.image && button.label}
       </Button>
     </li>
   )
 }
 
-export function DropDownMenu({ id, items, open }) {
+export function DropDownMenu({ id, items, open, isClicked }) {
   React.useEffect(() => {
-    if (open && window && window.TimelineMax) {
+    if (isClicked && open && window && window.TimelineMax) {
       const tl = new window.TimelineMax({})
-      tl.to(`#${id}`, 0.2, { height: 180 })
-      tl.staggerTo(`.menu-item--${id}`, 0.25, { opacity: 1 }, 0.1)
+      tl.to(`#${id}`, 0.2, { height: 180, autoAlpha: 1 })
+      tl.staggerTo(`.menu-item--${id}`, 0.15, { autoAlpha: 1 }, 0.1)
     }
-    if (!open && window && window.TimelineMax) {
+    if (isClicked && !open && window && window.TimelineMax) {
       const tl = new window.TimelineMax({})
-
-      tl.staggerTo(`.menu-item--${id}`, 0.25, { opacity: 0 }, 0.1)
+      tl.staggerTo(`.menu-item--${id}`, 0.15, { autoAlpha: 0 }, 0.1)
       tl.to(`#${id}`, 0.2, {
         height: 0
       })
     }
-  }, [open, id])
+  }, [open, id, isClicked])
   return (
     <DropDown id={id} className="dropdown" open={open}>
       {items.map(item => (
