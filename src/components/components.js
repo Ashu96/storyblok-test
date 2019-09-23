@@ -32,6 +32,7 @@ import {RequestAccessCode, EapSupport, LegalSupport} from './Forms'
 import Button from './Button'
 import PricingTable from './PricingTable'
 import {SECTION_TYPES} from '../constants'
+import RelatedPosts from './Blog/RelatedPosts'
 
 const ComponentList = {
   page: Page,
@@ -69,7 +70,8 @@ const ComponentList = {
   [SECTION_TYPES.EAP_SUPPORT]: EapSupport,
   [SECTION_TYPES.LEGAL_SUPPORT]: LegalSupport,
   [SECTION_TYPES.BUTTON]: Button,
-  [SECTION_TYPES.PRICING_TABLE]: PricingTable
+  [SECTION_TYPES.PRICING_TABLE]: PricingTable,
+  [SECTION_TYPES.RELATED_POST]: RelatedPosts
 }
 
 const Components = (type) => {
