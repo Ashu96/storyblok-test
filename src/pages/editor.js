@@ -1,7 +1,9 @@
 import React from 'react'
+import SbEditable from 'storyblok-react'
 import Components from '../components/components.js'
 import Footer from '../components/footer'
-import SbEditable from 'storyblok-react'
+import { Vimeo } from '../components/Plugin'
+import { VideoPlayerContext } from '../utils'
 import config from '../../gatsby-config'
 import '../fonts/proxima-nova-web-fonts/fonts.css'
 import '../components/layout.css'
@@ -39,7 +41,7 @@ const getParam = function(val) {
 class StoryblokEntry extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { story: null, globalNavi: { content: {} } }
+    this.state = { playVideo: false, story: null, globalNavi: { content: {} } }
   }
 
   componentDidMount() {
@@ -110,11 +112,20 @@ class StoryblokEntry extends React.Component {
 
     return (
       <SbEditable content={content}>
-        {React.createElement(Components(content.component), {
-          key: content._uid,
-          blok: content
-        })}
-        <Footer />
+        <VideoPlayerContext.Provider
+          value={{
+            playVideo: this.state.playVideo,
+            togglePlayVideo: () =>
+              this.setState(prevState => ({ playVideo: !prevState.playVideo }))
+          }}
+        >
+          {React.createElement(Components(content.component), {
+            key: content._uid,
+            blok: content
+          })}
+          <Footer />
+          <Vimeo />
+        </VideoPlayerContext.Provider>
       </SbEditable>
     )
   }

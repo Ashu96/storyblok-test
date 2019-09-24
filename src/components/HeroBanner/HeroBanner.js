@@ -2,10 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Styled from 'styled-components'
 import Img from 'gatsby-image'
-import { navigate } from 'gatsby'
 import Icon from '../Icon'
 import { Heading1, Heading4, BodyText } from '../../styles/text'
-import { getButton } from '../../utils'
+import { getButton, navigateTo, VideoPlayerContext } from '../../utils'
 
 const HeroBannerWrapper = Styled.div`
 
@@ -23,7 +22,7 @@ const HeroBannerWrapper = Styled.div`
     align-items: ${props => (props.splitScreen ? 'start' : 'center')};;
     flex: 0 0 100%;
     max-width: 100%;
-    min-height: ${props => props.onlyCTA ? '50px' : '200px'};
+    min-height: ${props => (props.onlyCTA ? '50px' : '200px')};
     
     & p {
       @media (min-width: 768px) {
@@ -117,6 +116,7 @@ function HeroBanner({
 }) {
   const noMedia = !image && !media
   const onlyCTA = noMedia && !title && !subTitle && !body && !points
+  const { togglePlayVideo } = React.useContext(VideoPlayerContext)
 
   return (
     <HeroBannerWrapper
@@ -147,7 +147,12 @@ function HeroBanner({
               {action.map(item => {
                 const Button = getButton(item.type)
                 return (
-                  <Button key={item._uid} onClick={() => navigate(item.link)}>
+                  <Button
+                    key={item._uid}
+                    onClick={() =>
+                      navigateTo(item.link, { fn: togglePlayVideo })
+                    }
+                  >
                     {item.label}
                   </Button>
                 )
