@@ -85,6 +85,7 @@ export const Label = Styled.p`
 `
 
 export const ContentWrapper = Styled.div`
+  width: 100%;
   & img {
     width: 100%;
   }

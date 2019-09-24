@@ -5,9 +5,9 @@ import ReactMarkdown from 'react-markdown'
 import format from 'date-fns/format'
 // import RelatedPosts from '../components/Blog/RelatedPosts'
 import { getDateWithoutTime } from '../../utils'
-import { Heading1, BodyText } from '../../styles/text'
+import { Heading1, BodyText, ContentWrapper } from '../../styles/text'
 import { Row, Col } from '../../styles/grid'
-import { backgrounds, primary, extended } from '../../constants/colors'
+import { backgrounds } from '../../constants/colors'
 
 const BlogContentContainer = Styled.div`
   background-color: ${backgrounds.white};
@@ -31,69 +31,70 @@ const BlogContentContainer = Styled.div`
   }
 `
 
-const ContentWrapper = Styled.div`
-  & img {
-    width: 100%;
-  }
+// const ContentWrapper = Styled.div`
 
-  & li {
-    font-family: ${props =>
-      props.bold ? 'Proxima Nova Semibold' : 'Proxima Nova'};
-    font-size: 18px;
-    font-weight: ${props => (props.bold ? 600 : 'normal')};
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.56;
-    letter-spacing: normal;
-    text-align: ${props => (props.textCenter ? 'center' : 'inherit')};
-    color: ${props => (props.color ? props.color : extended.charcoal.one)};
+//   & img {
+//     width: 100%;
+//   }
+
+//   & li {
+//     font-family: ${props =>
+//       props.bold ? 'Proxima Nova Semibold' : 'Proxima Nova'};
+//     font-size: 18px;
+//     font-weight: ${props => (props.bold ? 600 : 'normal')};
+//     font-style: normal;
+//     font-stretch: normal;
+//     line-height: 1.56;
+//     letter-spacing: normal;
+//     text-align: ${props => (props.textCenter ? 'center' : 'inherit')};
+//     color: ${props => (props.color ? props.color : extended.charcoal.one)};
     
-  }
+//   }
 
-  & p {
-    font-family: ${props =>
-      props.bold ? 'Proxima Nova Semibold' : 'Proxima Nova'};
-    font-size: 18px;
-    font-weight: ${props => (props.bold ? 600 : 'normal')};
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.56;
-    letter-spacing: normal;
-    text-align: ${props => (props.textCenter ? 'center' : 'inherit')};
-    color: ${props => (props.color ? props.color : extended.charcoal.one)};
+//   & p {
+//     font-family: ${props =>
+//       props.bold ? 'Proxima Nova Semibold' : 'Proxima Nova'};
+//     font-size: 18px;
+//     font-weight: ${props => (props.bold ? 600 : 'normal')};
+//     font-style: normal;
+//     font-stretch: normal;
+//     line-height: 1.56;
+//     letter-spacing: normal;
+//     text-align: ${props => (props.textCenter ? 'center' : 'inherit')};
+//     color: ${props => (props.color ? props.color : extended.charcoal.one)};
     
-    margin-bottom: 50px;
-  }
+//     margin-bottom: 50px;
+//   }
 
-  & h1, h2, h3, h4 {
-    margin-bottom: 20px;
-  }
+//   & h1, h2, h3, h4 {
+//     margin-bottom: 20px;
+//   }
 
-  & h2 {
-    font-family: 'Proxima Nova Semibold';
-    font-size: 32px;
-    font-weight: 600;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.25;
-    letter-spacing: normal;
-    text-align: ${props => (props.textCenter ? 'center' : 'inherit')};
-    color: ${primary.charcoal};
-  }
+//   & h2 {
+//     font-family: 'Proxima Nova Semibold';
+//     font-size: 32px;
+//     font-weight: 600;
+//     font-style: normal;
+//     font-stretch: normal;
+//     line-height: 1.25;
+//     letter-spacing: normal;
+//     text-align: ${props => (props.textCenter ? 'center' : 'inherit')};
+//     color: ${primary.charcoal};
+//   }
 
-  & h3 {
-    font-family: 'Proxima Nova Semibold';
-    font-size: 24px;
-    font-weight: 600;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.25;
-    letter-spacing: normal;
-    text-align: ${props => (props.textCenter ? 'center' : 'inherit')};
-    color: ${primary.charcoal};Z
-  }
+//   & h3 {
+//     font-family: 'Proxima Nova Semibold';
+//     font-size: 24px;
+//     font-weight: 600;
+//     font-style: normal;
+//     font-stretch: normal;
+//     line-height: 1.25;
+//     letter-spacing: normal;
+//     text-align: ${props => (props.textCenter ? 'center' : 'inherit')};
+//     color: ${primary.charcoal};Z
+//   }
 
-`
+// `
 
 function Blog({ blok }) {
   const { title, date, content, media, category = 'Category 1' } = blok
