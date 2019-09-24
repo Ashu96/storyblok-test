@@ -1,13 +1,13 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Styled from 'styled-components'
-import { Anchor } from './Generic'
-import { primary, backgrounds, extended } from '../constants/colors'
-import { Note } from '../styles/text'
+import { Anchor } from '../Generic'
+import { SectionWrapper, Row, Col } from '../../styles/grid'
+import { Note } from '../../styles/text'
+import { primary, backgrounds, extended } from '../../constants/colors'
+import { MENU, SOCIAL_LINKS } from './utils'
 
-const FooterContainer = Styled.footer`
-  background-color: ${backgrounds.fadedPurple};
-  padding: 80px 0px;
-
+const FooterWrapper = Styled.div`
   & .footer__right {
     margin-top: 40px;
 
@@ -77,67 +77,31 @@ const FooterContainer = Styled.footer`
   }
 `
 
-const footerMenu = [
-  {
-    label: 'contact us',
-    key: 'contact',
-    link: '/contact-us'
-  },
-  {
-    label: 'blog',
-    key: 'blog',
-    link: '/blog'
-  },
-  {
-    label: 'Legal information',
-    key: 'legal',
-    link: '/legal-information'
-  },
-  {
-    label: 'log in',
-    key: 'login',
-    link: 'https://app.uprise.co'
-  },
-  {
-    label: 'book a demo',
-    key: 'demo',
-    link: '/book-demo'
-  },
-  {
-    label: 'careers',
-    key: 'careers',
-    link: '/careers'
-  }
-]
-
-const socialLinks = [
-  {
-    label: require('../images/facebook@3x.png'),
-    key: 'facebook',
-    link: 'https://www.facebook.com/getuprise/'
-  },
-  {
-    label: require('../images/linkedin@3x.png'),
-    key: 'linkedIn',
-    link: 'https://in.linkedin.com/company/uprise'
-  },
-  {
-    label: require('../images/twitter@3x.png'),
-    key: 'twitter',
-    link: 'https://twitter.com/upriseatwork?lang=en'
-  }
-]
-
 function Footer() {
+  const paddingVertical = 100
   return (
-    <FooterContainer className="container-fluid">
-      <div className="container">
-        <div className="row">
-          <div className="col-12 col-lg-6">
-            <div className="row">
-              <div className="col-6">
+    <SectionWrapper
+      containerFluidProps={{
+        className: 'container-fluid',
+        style: {
+          backgroundColor: backgrounds.fadedPurple
+        }
+      }}
+      containerProps={{
+        className: 'container',
+        style: {
+          paddingTop: paddingVertical,
+          paddingBottom: paddingVertical
+        }
+      }}
+    >
+      <FooterWrapper>
+        <Row>
+          <Col className="col-lg-6">
+            <Row>
+              <Col className="col-md-6">
                 <ul className="footer__links">
-                  {footerMenu.map(item => (
+                  {MENU.map(item => (
                     <li key={item.key}>
                       <Note color={primary.purple}>
                         <Anchor to={item.link}>
@@ -147,8 +111,8 @@ function Footer() {
                     </li>
                   ))}
                 </ul>
-              </div>
-              <div className="col-6 footer__company-info">
+              </Col>
+              <Col className="col-md-6 footer__company-info">
                 <ul className="footer__address">
                   <li>
                     <Note color={extended.charcoal.three}>Uprise</Note>
@@ -172,12 +136,12 @@ function Footer() {
                     <Note style={{ fontWeight: 'normal' }}>team@uprise.co</Note>
                   </li>
                 </ul>
-              </div>
-            </div>
-          </div>
-          <div className="col-12 col-lg-6 footer__right">
+              </Col>
+            </Row>
+          </Col>
+          <Col className="col-lg-6 footer__right">
             <div className="footer__social-links">
-              {socialLinks.map(link => (
+              {SOCIAL_LINKS.map(link => (
                 <Anchor
                   to={link.link}
                   key={link.key}
@@ -192,11 +156,18 @@ function Footer() {
             <Note className="copy-rights">
               © 2017 Uprise Services. All rights reserved.
             </Note>
-          </div>
-        </div>
-      </div>
-    </FooterContainer>
+          </Col>
+        </Row>
+      </FooterWrapper>
+    </SectionWrapper>
   )
 }
 
 export default Footer
+
+Footer.propTypes = {
+  title: PropTypes.string.isRequired
+}
+Footer.defaultTypes = {
+  title: PropTypes.string.isRequired
+}

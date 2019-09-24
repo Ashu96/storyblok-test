@@ -1,7 +1,7 @@
 import React from 'react'
 import SbEditable from 'storyblok-react'
 import Components from '../components/components.js'
-import Footer from '../components/footer'
+import Footer from '../components/Footer'
 import { Vimeo } from '../components/Plugin'
 import { VideoPlayerContext } from '../utils'
 import config from '../../gatsby-config'

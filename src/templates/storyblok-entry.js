@@ -1,7 +1,7 @@
 import React from 'react'
 import Components from '../components/components.js'
 import { Vimeo } from '../components/Plugin'
-import Footer from '../components/footer'
+import Footer from '../components/Footer'
 import { VideoPlayerContext } from '../utils'
 import '../components/layout.css'
 import '../fonts/proxima-nova-web-fonts/fonts.css'
