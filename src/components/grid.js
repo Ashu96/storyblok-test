@@ -3,12 +3,15 @@ import Components from './components.js'
 import SbEditable from 'storyblok-react'
 import { SectionWrapper, Row, Col } from '../styles/grid'
 import { extended } from '../constants/colors'
-import {useMobile} from '../utils'
+import { useMobile } from '../utils'
 
 function Grid(props) {
   const hasPath = props.blok.columns.some(col => col.component === 'path')
   const splitScreen = props.blok.columns_in_row * 1 === 2
-  const cols = `col-lg-${12 / props.blok.columns_in_row}`
+  const cols =
+    props.blok.columns_in_row >= 4
+      ? `col-lg-6 col-xl-${12 / props.blok.columns_in_row}`
+      : `col-lg-${12 / props.blok.columns_in_row}`
   const {
     paddingTop,
     paddingBottom,
@@ -35,8 +38,8 @@ function Grid(props) {
           style: {
             paddingTop: paddingTop ? paddingVertical : 0,
             paddingBottom: paddingBottom ? paddingVertical : 0,
-            paddingLeft: paddingLeft ? isMobile ? 24: paddingHorizontal : 0,
-            paddingRight: paddingRight ? isMobile ? 24: paddingHorizontal : 0
+            paddingLeft: paddingLeft ? (isMobile ? 24 : paddingHorizontal) : 0,
+            paddingRight: paddingRight ? (isMobile ? 24 : paddingHorizontal) : 0
           }
         }}
         containerFluidProps={{

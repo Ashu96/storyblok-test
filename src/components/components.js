@@ -34,6 +34,8 @@ import PricingTable from './PricingTable'
 import {SECTION_TYPES} from '../constants'
 import RelatedPosts from './Blog/RelatedPosts'
 import TrainingCard from './TrainingCard'
+import Testimony from './Testimony'
+import FaqCard from './FaqCard'
 
 const ComponentList = {
   page: Page,
@@ -73,7 +75,9 @@ const ComponentList = {
   [SECTION_TYPES.BUTTON]: Button,
   [SECTION_TYPES.PRICING_TABLE]: PricingTable,
   [SECTION_TYPES.RELATED_POST]: RelatedPosts,
-  [SECTION_TYPES.TRAINING_CARD]: TrainingCard
+  [SECTION_TYPES.TRAINING_CARD]: TrainingCard,
+  [SECTION_TYPES.TESTIMONY_CARD]: Testimony,
+  [SECTION_TYPES.FAQ_CARD]: FaqCard
 }
 
 const Components = (type) => {

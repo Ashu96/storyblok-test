@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Styled from 'styled-components'
-import {navigate} from 'gatsby'
+import { navigate } from 'gatsby'
 // import Img from 'gatsby-image'
 import { Heading3, Note } from '../../styles/text'
 // import { PrimaryButton } from '../../styles/buttons'
 import { extended, backgrounds } from '../../constants/colors'
-import {getButton} from '../../utils'
+import { getButton } from '../../utils'
 
 const SupportCardWrapper = Styled.div`
   width: auto;
@@ -47,23 +47,22 @@ const SupportCardWrapper = Styled.div`
 function SupportCard({ blok }) {
   const { title, media, content, action, large } = blok
   const [button] = action
-  const Button = getButton(button.type)
+  const Button = button && getButton(button.type)
 
   return (
     <SupportCardWrapper isContentShort={content.length < 300} large={large}>
-      {media && <img loading='lazy' className="media" src={media} alt="" />}
+      {media && <img loading="lazy" className="media" src={media} alt="" />}
       {/* {media && <Img className="media" fluid={media} alt="" />} */}
       <Heading3 className="title">{title}</Heading3>
       <Note className="content" color={extended.charcoal.one}>
         {content}
       </Note>
 
-      <Button large key={button._uid} onClick={() => navigate(button.link)}>
-        {button.label}
-      </Button>
-      {/* <PrimaryButton large className="action">
-        {action.primary.label}
-      </PrimaryButton> */}
+      {button && (
+        <Button large key={button._uid} onClick={() => navigate(button.link)}>
+          {button.label}
+        </Button>
+      )}
     </SupportCardWrapper>
   )
 }

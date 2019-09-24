@@ -5,7 +5,10 @@ import Icon from '../Icon'
 import { getButton } from '../../utils'
 import { backgrounds, primary } from '../../constants/colors'
 
-const ButtonWrapper = Styled.div``
+const ButtonWrapper = Styled.div`
+  display: flex;
+  justify-content: center;
+`
 
 function Button({ blok }) {
   const { type, label, withIcon } = blok

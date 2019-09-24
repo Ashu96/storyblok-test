@@ -5,8 +5,9 @@ import { backgrounds } from '../../constants/colors'
 import { Heading3, BodyText } from '../../styles/text'
 
 const StaffMemberCardWrapper = Styled.div`
-  width: 320px;
-  min-height: 431px;
+  /* width: 320px;
+  min-height: 431px; */
+  max-width: 320px;
   border-radius: 10px;
   box-shadow: ${props =>
     props.bgPrimary ? 'none' : '0 4px 10px 0 rgba(219, 221, 227, 0.5)'};
@@ -25,9 +26,9 @@ const StaffMemberCardWrapper = Styled.div`
   align-items: center;
 
   & img {
-    width: 100%;
+    width: ${props => (props.largeMedia ? '100%' : 'auto')};
     max-width: 220px;
-    height: ${props => (props.largeMedia ? '220px' : '150px')};
+    max-height: ${props => (props.largeMedia ? '220px' : '150px')};
     margin-bottom: 36px;
   }
 
