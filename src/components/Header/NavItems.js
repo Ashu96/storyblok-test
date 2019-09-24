@@ -101,7 +101,7 @@ export function NavButton({ item, classNames }) {
   return (
     <li className={`header__nav-cta ${classNames}`}>
       <Button
-        onClick={() => navigateTo('https://app.uprise.co' || button.link)}
+        onClick={() => navigateTo(button.link)}
       >
         {!item.image && button.label}
       </Button>
