@@ -15,7 +15,7 @@ function Plugin({ blok }) {
   React.useEffect(() => {
     // eslint-disable-next-line
     window.Calendly.initInlineWidget({
-      url: `${url}?primary_color=7d60ff&&text_color=20272c`,
+      url: `${url}?hide_event_type_details=1&&primary_color=7d60ff&&text_color=20272c`,
       parentElement: document.getElementById('uprise-calendar'),
       prefill: {},
       utm: {}
