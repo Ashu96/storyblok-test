@@ -10,11 +10,6 @@ export const MENU = [
     link: '/blog'
   },
   {
-    label: 'Legal information',
-    key: 'legal',
-    link: '/legal-information'
-  },
-  {
     label: 'Sign in',
     key: 'sign-in',
     link: 'https://app.uprise.co'
@@ -28,6 +23,29 @@ export const MENU = [
     label: 'careers',
     key: 'careers',
     link: '/careers'
+  }
+]
+
+export const LEGAL_INFO= [
+  {
+    label: 'privacy',
+    key: 'privacy',
+    link: '/privacy'
+  },
+  {
+    label: 'terms',
+    key: 'terms',
+    link: '/terms-and-conditions'
+  },
+  {
+    label: 'cookie policy',
+    key: 'cookie-policy',
+    link: '/cookie-policy'
+  },
+  {
+    label: 'data security',
+    key: 'data-security',
+    link: '/data-security/'
   }
 ]
 

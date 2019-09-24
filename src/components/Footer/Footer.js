@@ -5,7 +5,7 @@ import { Anchor } from '../Generic'
 import { SectionWrapper, Row, Col } from '../../styles/grid'
 import { Note } from '../../styles/text'
 import { primary, backgrounds, extended } from '../../constants/colors'
-import { MENU, SOCIAL_LINKS } from './utils'
+import { MENU, SOCIAL_LINKS,LEGAL_INFO } from './utils'
 
 const FooterWrapper = Styled.div`
   & .footer__right {
@@ -18,6 +18,10 @@ const FooterWrapper = Styled.div`
     & .copy-rights {
       font-weight: normal;
       text-align: center;
+    }
+
+    @media (min-width: 1024px) {
+      margin: 0px;
     }
   }
 
@@ -48,11 +52,15 @@ const FooterWrapper = Styled.div`
   }
 
   & .footer__social-links {
+    margin-top: 32px;
+
     display: flex;
     justify-content: space-around;
     margin-bottom: 40px;
 
     @media (min-width: 768px) {
+      margin-top: 0px;
+
       justify-content: center;
       & img {
         margin-left: 40px;
@@ -112,6 +120,23 @@ function Footer() {
                   ))}
                 </ul>
               </Col>
+              <Col className="col-md-6">
+                <ul className="footer__links">
+                  {LEGAL_INFO.map(item => (
+                    <li key={item.key}>
+                      <Note color={primary.purple}>
+                        <Anchor to={item.link}>
+                          {item.label.toUpperCase()}
+                        </Anchor>
+                      </Note>
+                    </li>
+                  ))}
+                </ul>
+              </Col>
+            </Row>
+          </Col>
+          <Col className="col-lg-6 footer__right">
+            <Row>
               <Col className="col-md-6 footer__company-info">
                 <ul className="footer__address">
                   <li>
@@ -137,25 +162,25 @@ function Footer() {
                   </li>
                 </ul>
               </Col>
+              <Col className="col-md-6">
+                <div className="footer__social-links">
+                  {SOCIAL_LINKS.map(link => (
+                    <Anchor
+                      to={link.link}
+                      key={link.key}
+                      target="_blank"
+                      aria-label={link.key}
+                      rel="noopener noreferrer"
+                    >
+                      <img loading="lazy" src={link.label} alt={link.key} />
+                    </Anchor>
+                  ))}
+                </div>
+                <Note className="copy-rights">
+                  © 2017 Uprise Services. All rights reserved.
+                </Note>
+              </Col>
             </Row>
-          </Col>
-          <Col className="col-lg-6 footer__right">
-            <div className="footer__social-links">
-              {SOCIAL_LINKS.map(link => (
-                <Anchor
-                  to={link.link}
-                  key={link.key}
-                  target="_blank"
-                  aria-label={link.key}
-                  rel="noopener noreferrer"
-                >
-                  <img loading="lazy" src={link.label} alt={link.key} />
-                </Anchor>
-              ))}
-            </div>
-            <Note className="copy-rights">
-              © 2017 Uprise Services. All rights reserved.
-            </Note>
           </Col>
         </Row>
       </FooterWrapper>
