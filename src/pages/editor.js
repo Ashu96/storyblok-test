@@ -1,9 +1,11 @@
 import React from 'react'
 import SbEditable from 'storyblok-react'
 import Components from '../components/components.js'
+import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { Vimeo } from '../components/Plugin'
 import { VideoPlayerContext } from '../utils'
+import { backgrounds } from '../constants/colors'
 import config from '../../gatsby-config'
 import '../fonts/proxima-nova-web-fonts/fonts.css'
 import '../components/layout.css'
@@ -107,8 +109,20 @@ class StoryblokEntry extends React.Component {
       return <div></div>
     }
 
-    let content = this.state.story.content
-    // let globalNavi = this.state.globalNavi.content
+    let content = {
+      ...this.state.story.content,
+      // Remove `header` from component list
+      body: this.state.story.content.body.filter(
+        item => item.component !== 'header'
+      )
+    }
+
+    const lastSection =
+      content && content.body && content.body[content.body.length - 1]
+    const footerBackgroundColor =
+      lastSection && lastSection.backgroundColor === '#ffffff'
+        ? backgrounds.fadedPurple
+        : backgrounds.white
 
     return (
       <SbEditable content={content}>
@@ -119,11 +133,12 @@ class StoryblokEntry extends React.Component {
               this.setState(prevState => ({ playVideo: !prevState.playVideo }))
           }}
         >
+          <Header />
           {React.createElement(Components(content.component), {
             key: content._uid,
             blok: content
           })}
-          <Footer />
+          <Footer backgroundColor={footerBackgroundColor} />
           <Vimeo />
         </VideoPlayerContext.Provider>
       </SbEditable>

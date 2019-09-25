@@ -1,11 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Styled from 'styled-components'
-import { navigate } from 'gatsby'
 import Icon from '../Icon'
 import { backgrounds, primary } from '../../constants/colors'
 import { Heading2, BodyText } from '../../styles/text'
-import { getButton } from '../../utils'
+import { getButton, navigateTo } from '../../utils'
 
 const HeadingWithSingleMediaAndButtonWrapper = Styled.div`
 
@@ -85,7 +84,7 @@ function HeadingWithSingleMediaAndButton({
         {primaryAction && (
           <Button
             className="action"
-            onClick={() => navigate(primaryAction.link)}
+            onClick={() => navigateTo(primaryAction.link)}
           >
             {primaryAction.label}
             {primaryAction.withIcon && (

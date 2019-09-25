@@ -1,6 +1,7 @@
 import React from 'react'
 import Components from '../components/components.js'
 import { Vimeo } from '../components/Plugin'
+import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { VideoPlayerContext } from '../utils'
 import { backgrounds } from '../constants/colors'
@@ -32,7 +33,13 @@ class StoryBlokEntry extends React.Component {
   }
 
   render() {
-    let content = this.state.story.content
+    let content = {
+      ...this.state.story.content,
+      // Remove `header` from component list
+      body: this.state.story.content.body.filter(
+        item => item.component !== 'header'
+      )
+    }
 
     const lastSection =
       content && content.body && content.body[content.body.length - 1]
@@ -49,6 +56,7 @@ class StoryBlokEntry extends React.Component {
             this.setState(prevState => ({ playVideo: !prevState.playVideo }))
         }}
       >
+        <Header />
         {React.createElement(Components(content.component), {
           key: content._uid,
           blok: content,

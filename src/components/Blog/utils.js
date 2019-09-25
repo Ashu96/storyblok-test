@@ -34,7 +34,7 @@ export function useBlogCategoryData() {
       const blog = body.find(item => item.component === 'BLOG_POST')
       if (blog) {
         // Save featured blog
-        if (blog.featured) {
+        if (!featuredBlog && blog.featured) {
           featuredBlog = blog
         }
         // Arrange blogs in categories
@@ -53,9 +53,5 @@ export function useBlogCategoryData() {
   })
 
   const categories = Object.keys(categoryMap)
-  return [
-    categories,
-    categoryMap,
-    featuredBlog
-  ]
+  return [categories, categoryMap, featuredBlog]
 }

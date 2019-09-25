@@ -4,6 +4,7 @@ import Styled from 'styled-components'
 import Icon from '../Icon'
 import { Heading2, Note } from '../../styles/text'
 import { PrimaryButton } from '../../styles/buttons'
+import {navigateTo} from '../../utils'
 import { primary, extended, backgrounds } from '../../constants/colors'
 import { PLAN_TYPES, PLANS } from '../../constants/pricingPlans'
 
@@ -151,18 +152,20 @@ const PricingTableHeadWrapper = Styled.div`
 function PricingTableHead() {
   return (
     <PricingTableHeadWrapper>
-      <div className='card'>
-        <img src={require('../../images/group-8.svg')} alt=''/>
+      <div className="card">
+        <img src={require('../../images/group-8.svg')} alt="" />
       </div>
       {types.map(type => {
         const plan = PLANS[type]
 
         return (
           <div className="card">
-            <Heading2 className='name'>{plan.name}</Heading2>
-            <Heading2 className='price'>${plan.price}</Heading2>
+            <Heading2 className="name">{plan.name}</Heading2>
+            <Heading2 className="price">${plan.price}</Heading2>
             <Note color={extended.charcoal.one}>{plan.paymentCycle}</Note>
-            <PrimaryButton>Contact us</PrimaryButton>
+            <PrimaryButton onClick={() => navigateTo('/contact-us')}>
+              Contact us
+            </PrimaryButton>
           </div>
         )
       })}
