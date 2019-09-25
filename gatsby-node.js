@@ -104,22 +104,24 @@ exports.createPages = ({ graphql, actions }) => {
         contents.forEach(content => {
           const { body } = content
           if (Array.isArray(body)) {
-            body.forEach(item => {
-              const blog =
-                item.columns &&
-                item.columns.find(el => el.component === 'BLOG_POST')
-              if (blog) {
+            const blog = body.find(item => item.component === 'BLOG_POST')
+            if (blog) {
+              // Save featured blog
+              if (blog.featured) {
+                featuredBlog = blog
+              }
+              // Arrange blogs in categories
+              blog.category &&
                 blog.category.forEach(cat => {
                   if (categoryMap[cat]) {
-                    // Add to map
+                    // Add to list
                     categoryMap[cat] = [...categoryMap[cat], blog]
                   } else {
-                    // Add to map
+                    // Create list
                     categoryMap[cat] = [blog]
                   }
                 })
-              }
-            })
+            }
           }
         })
 

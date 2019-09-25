@@ -3,10 +3,10 @@ import Styled from 'styled-components'
 // import Img from 'gatsby-image'
 import ReactMarkdown from 'react-markdown'
 import format from 'date-fns/format'
-// import RelatedPosts from '../components/Blog/RelatedPosts'
+import RelatedPosts from './RelatedPosts'
 import { getDateWithoutTime } from '../../utils'
 import { Heading1, BodyText, ContentWrapper } from '../../styles/text'
-import { Row, Col } from '../../styles/grid'
+import { SectionWrapper, Row, Col } from '../../styles/grid'
 import { backgrounds } from '../../constants/colors'
 
 const BlogContentContainer = Styled.div`
@@ -31,100 +31,53 @@ const BlogContentContainer = Styled.div`
   }
 `
 
-// const ContentWrapper = Styled.div`
-
-//   & img {
-//     width: 100%;
-//   }
-
-//   & li {
-//     font-family: ${props =>
-//       props.bold ? 'Proxima Nova Semibold' : 'Proxima Nova'};
-//     font-size: 18px;
-//     font-weight: ${props => (props.bold ? 600 : 'normal')};
-//     font-style: normal;
-//     font-stretch: normal;
-//     line-height: 1.56;
-//     letter-spacing: normal;
-//     text-align: ${props => (props.textCenter ? 'center' : 'inherit')};
-//     color: ${props => (props.color ? props.color : extended.charcoal.one)};
-    
-//   }
-
-//   & p {
-//     font-family: ${props =>
-//       props.bold ? 'Proxima Nova Semibold' : 'Proxima Nova'};
-//     font-size: 18px;
-//     font-weight: ${props => (props.bold ? 600 : 'normal')};
-//     font-style: normal;
-//     font-stretch: normal;
-//     line-height: 1.56;
-//     letter-spacing: normal;
-//     text-align: ${props => (props.textCenter ? 'center' : 'inherit')};
-//     color: ${props => (props.color ? props.color : extended.charcoal.one)};
-    
-//     margin-bottom: 50px;
-//   }
-
-//   & h1, h2, h3, h4 {
-//     margin-bottom: 20px;
-//   }
-
-//   & h2 {
-//     font-family: 'Proxima Nova Semibold';
-//     font-size: 32px;
-//     font-weight: 600;
-//     font-style: normal;
-//     font-stretch: normal;
-//     line-height: 1.25;
-//     letter-spacing: normal;
-//     text-align: ${props => (props.textCenter ? 'center' : 'inherit')};
-//     color: ${primary.charcoal};
-//   }
-
-//   & h3 {
-//     font-family: 'Proxima Nova Semibold';
-//     font-size: 24px;
-//     font-weight: 600;
-//     font-style: normal;
-//     font-stretch: normal;
-//     line-height: 1.25;
-//     letter-spacing: normal;
-//     text-align: ${props => (props.textCenter ? 'center' : 'inherit')};
-//     color: ${primary.charcoal};Z
-//   }
-
-// `
-
 function Blog({ blok }) {
   const { title, date, content, media, category = 'Category 1' } = blok
+  const paddingVertical = 100
   return (
-    <BlogContentContainer>
-      <Row className="justify-content-center">
-        <Col className="col-lg-9 content">
-          <Heading1 textCenter>{title}</Heading1>
-          <BodyText textCenter className="mgn-t-20">
-            {format(new Date(getDateWithoutTime(date)), 'MMMM dd, yyyy')} |{' '}
-            {category}
-          </BodyText>
+    <React.Fragment>
+      <SectionWrapper
+        containerFluidProps={{
+          style: {
+            backgroundColor: backgrounds.fadedPurple
+          }
+        }}
+        containerProps={{
+          style: {
+            paddingTop: paddingVertical,
+            paddingBottom: paddingVertical
+          }
+        }}
+      >
+        <BlogContentContainer>
+          <Row className="justify-content-center">
+            <Col className="col-lg-9 content">
+              <Heading1 textCenter>{title}</Heading1>
+              <BodyText textCenter className="mgn-t-20">
+                {format(new Date(getDateWithoutTime(date)), 'MMMM dd, yyyy')} |{' '}
+                {category}
+              </BodyText>
 
-          {/* <Img
-            fluid={image.childImageSharp.fluid}
-            className="mgn-t-100 mgn-b-40"
-            alt="nesting"
-          /> */}
-          <img
-            loading="lazy"
-            src={media}
-            className="mgn-t-100 mgn-b-40 media"
-            alt="nesting"
-          />
-          <ContentWrapper>
-            <ReactMarkdown source={content.original} />
-          </ContentWrapper>
-        </Col>
-      </Row>
-    </BlogContentContainer>
+              {/* <Img
+              fluid={image.childImageSharp.fluid}
+              className="mgn-t-100 mgn-b-40"
+              alt="nesting"
+            /> */}
+              <img
+                loading="lazy"
+                src={media}
+                className="mgn-t-100 mgn-b-40 media"
+                alt="nesting"
+              />
+              <ContentWrapper>
+                <ReactMarkdown source={content.original} />
+              </ContentWrapper>
+            </Col>
+          </Row>
+        </BlogContentContainer>
+      </SectionWrapper>
+      <RelatedPosts category={category && category.length && category[0]} />
+    </React.Fragment>
   )
 }
 
