@@ -24,6 +24,10 @@ const HeroBannerWrapper = Styled.div`
     max-width: 100%;
     min-height: ${props => (props.onlyCTA ? '50px' : '200px')};
     
+    & h1 {
+      width: 100%;
+    }
+
     & p {
       @media (min-width: 768px) {
         padding: ${props =>

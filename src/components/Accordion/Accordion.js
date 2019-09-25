@@ -4,13 +4,9 @@ import Styled from 'styled-components'
 import Icon from '../Icon'
 import { Heading4, Label } from '../../styles/text'
 import { extended } from '../../constants/colors'
+import { useMobile } from '../../utils'
 
 const AccordionWrapper = Styled.div`
-  /* width: 770px; */
-  /* margin: auto; */
-  /* height: 440px; */
-  --height: 120px;
-
   & .question-container {
     position: relative;
   }
@@ -38,41 +34,34 @@ const AccordionWrapper = Styled.div`
     margin-bottom: 24px;
   }
 
-  @media (min-width: 768px) {
-    --height: 50px;
-  }
-
   @keyframes fadeIn {
     from {
       opacity: 0;
       height: 1px;
-      /* transform: scaleY(0); */
     }
     to {
       opacity: 1;
-      height: var(--height);
-      /* transform: scaleY(1); */
+      height: ${props => props.height};
     }
   }
   @keyframes fadeOut {
     from {
       opacity: 1;
-      height: var(--height);
-      /* transform: scaleY(1); */
+      height: ${props => props.height};
     }
     to {
       opacity: 0;
       height: 1px;
-      /* transform: scaleY(0); */
     }
   }
 `
 
 function Accordion({ question, answer }) {
   const [isOpen, toggleOpen] = React.useState(false)
+  const isMobile = useMobile()
 
   return (
-    <AccordionWrapper isOpen={isOpen}>
+    <AccordionWrapper isOpen={isOpen} height={isMobile ? '120px' : '50px'}>
       <div className="question-container">
         <Heading4 className="question" bold>
           {question}
@@ -85,11 +74,13 @@ function Accordion({ question, answer }) {
           onClick={() => toggleOpen(!isOpen)}
         />
       </div>
-     {true && <div className="answer-container">
-        <Label className="answer" color={extended.charcoal.one}>
-          {answer}
-        </Label>
-      </div>}
+      {true && (
+        <div className="answer-container">
+          <Label className="answer" color={extended.charcoal.one}>
+            {answer}
+          </Label>
+        </div>
+      )}
     </AccordionWrapper>
   )
 }

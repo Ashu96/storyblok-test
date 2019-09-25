@@ -34,6 +34,7 @@ const TextInputContainer = Styled.div`
 }
 
 label {
+  /* opacity: ${props => (props.hasValue ? 1 : 0)}; */
   font-family: ${props =>
     props.bold ? 'Proxima Nova Semibold' : 'Proxima Nova'};
   color: ${extended.charcoal.three};
@@ -42,7 +43,7 @@ label {
   position: absolute;
   pointer-events: none;
   left: 5px;
-  top: 5px;
+  top: ${props => (props.hasValue ? '-14px' : '5px')};
   transition: 0.2s ease all;
   -moz-transition: 0.2s ease all;
   -webkit-transition: 0.2s ease all;
@@ -56,6 +57,7 @@ label {
 }
 
 .floating-input:focus ~ label {
+  opacity: 1;
   top: -14px;
   font-size: 12px;
   color: ${primary.purple};
@@ -68,19 +70,17 @@ label {
   color: ${primary.purple};
 }
 
-.floating-input:placeholder-shown ~ label {
-  /* top: -14px;
-  font-size: 12px;
-  color: red; */
+/* Placeholder doesn't work in IE11 */
+/* .floating-input:placeholder-shown ~ label {
   opacity: 0;
-}
+} */
 
-.floating-input:not(:placeholder-shown) ~ label {
+/* .floating-input:not(:placeholder-shown) ~ label {
   opacity: 1;
   top: -14px;
   font-size: 12px;
   color: ${primary.purple};
-}
+} */
 
 /* active state */
 .floating-input:focus ~ .bar:before,
@@ -158,10 +158,9 @@ label {
 
 export function TextInput({ id, label, isRequired, value, ...restProps }) {
   return (
-    <TextInputContainer>
+    <TextInputContainer hasValue={!!value.length}>
       <div className="floating-label">
         <input
-          placeholder={`${label} ${isRequired ? '*' : ''}`}
           className="floating-input"
           type="text"
           id={id}
@@ -169,7 +168,9 @@ export function TextInput({ id, label, isRequired, value, ...restProps }) {
           value={value}
           {...restProps}
         />
-        <label htmlFor={id}>{label} {isRequired ? ' * ' : ''}</label>
+        <label htmlFor={id}>
+          {label} {isRequired ? ' * ' : ''}
+        </label>
       </div>
     </TextInputContainer>
   )

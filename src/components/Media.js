@@ -6,7 +6,7 @@ const ImageWrapper = Styled.div`
   justify-content: ${props => props.alignHorizontal};
   padding-bottom: ${props => props.paddingBottom};
   & img {
-    max-width: 100%;
+    width: ${props => (props.large ? '100%' : 'auto')};
     max-height: ${props => (props.large ? '100%' : '270px')};
   }
   margin-bottom: 24px;
