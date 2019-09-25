@@ -3,6 +3,7 @@ import Components from '../components/components.js'
 import { Vimeo } from '../components/Plugin'
 import Footer from '../components/Footer'
 import { VideoPlayerContext } from '../utils'
+import { backgrounds } from '../constants/colors'
 import '../components/layout.css'
 import '../fonts/proxima-nova-web-fonts/fonts.css'
 import '../styles/bootstrap-grid-utils.css'
@@ -31,10 +32,15 @@ class StoryBlokEntry extends React.Component {
   }
 
   render() {
-    console.log({ state: this.state })
     let content = this.state.story.content
-    console.count('Render template')
-    console.log({ content })
+
+    const lastSection =
+      content && content.body && content.body[content.body.length - 1]
+    const footerBackgroundColor =
+      lastSection && lastSection.backgroundColor === '#ffffff'
+        ? backgrounds.fadedPurple
+        : backgrounds.white
+
     return (
       <VideoPlayerContext.Provider
         value={{
@@ -48,7 +54,7 @@ class StoryBlokEntry extends React.Component {
           blok: content,
           ...content
         })}
-        <Footer />
+        <Footer backgroundColor={footerBackgroundColor} />
         <Vimeo />
       </VideoPlayerContext.Provider>
     )

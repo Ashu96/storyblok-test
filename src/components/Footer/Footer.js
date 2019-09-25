@@ -5,7 +5,7 @@ import { Anchor } from '../Generic'
 import { SectionWrapper, Row, Col } from '../../styles/grid'
 import { Note } from '../../styles/text'
 import { primary, backgrounds, extended } from '../../constants/colors'
-import { MENU, SOCIAL_LINKS,LEGAL_INFO } from './utils'
+import { MENU, SOCIAL_LINKS, LEGAL_INFO } from './utils'
 
 const FooterWrapper = Styled.div`
   & .footer__right {
@@ -52,11 +52,11 @@ const FooterWrapper = Styled.div`
   }
 
   & .footer__social-links {
-    margin-top: 32px;
+    margin-top: 48px;
 
     display: flex;
     justify-content: space-around;
-    margin-bottom: 40px;
+    margin-bottom: 32px;
 
     @media (min-width: 768px) {
       margin-top: 0px;
@@ -85,14 +85,14 @@ const FooterWrapper = Styled.div`
   }
 `
 
-function Footer() {
+function Footer({ backgroundColor }) {
   const paddingVertical = 100
   return (
     <SectionWrapper
       containerFluidProps={{
         className: 'container-fluid',
         style: {
-          backgroundColor: backgrounds.fadedPurple
+          backgroundColor: backgroundColor
         }
       }}
       containerProps={{
@@ -107,7 +107,7 @@ function Footer() {
         <Row>
           <Col className="col-lg-6">
             <Row>
-              <Col className="col-md-6">
+              <div className="col-6 col-md-6">
                 <ul className="footer__links">
                   {MENU.map(item => (
                     <li key={item.key}>
@@ -119,8 +119,8 @@ function Footer() {
                     </li>
                   ))}
                 </ul>
-              </Col>
-              <Col className="col-md-6">
+              </div>
+              <div className="col-6 col-md-6">
                 <ul className="footer__links">
                   {LEGAL_INFO.map(item => (
                     <li key={item.key}>
@@ -132,7 +132,7 @@ function Footer() {
                     </li>
                   ))}
                 </ul>
-              </Col>
+              </div>
             </Row>
           </Col>
           <Col className="col-lg-6 footer__right">
@@ -191,8 +191,8 @@ function Footer() {
 export default Footer
 
 Footer.propTypes = {
-  title: PropTypes.string.isRequired
+  backgroundColor: PropTypes.string.isRequired
 }
-Footer.defaultTypes = {
-  title: PropTypes.string.isRequired
+Footer.defaultProps = {
+  backgroundColor: backgrounds.fadedPurple
 }

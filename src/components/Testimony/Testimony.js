@@ -12,7 +12,9 @@ const TestimonyWrapper = Styled.div`
   background-color: ${props => props.backgroundColor};
 
   padding: 35px 40px;
-
+  margin: auto;
+  margin-bottom: 32px;
+  
   & .message {
     min-height: 168px
     margin-bottom: 32px;

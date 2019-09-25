@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Styled from 'styled-components'
 import Icon from '../Icon'
-import { getButton } from '../../utils'
+import { getButton, navigateTo } from '../../utils'
 import { backgrounds, primary } from '../../constants/colors'
 
 const ButtonWrapper = Styled.div`
@@ -10,33 +10,32 @@ const ButtonWrapper = Styled.div`
   justify-content: center;
 `
 
-function Button({ blok }) {
-  const { type, label, withIcon } = blok
+function Button({ type, label, link, withIcon }) {
   const Button = getButton(type)
 
-	return (
-		<ButtonWrapper>
-      <Button>
+  return (
+    <ButtonWrapper>
+      <Button onClick={() => navigateTo(link)}>
         {label}
         {withIcon && (
-              <Icon
-                fill={
-                  type === 'PRIMARY'
-                    ? backgrounds.white
-                    : primary.purple
-                }
-              />
-            )}
+          <Icon
+            fill={type === 'PRIMARY' ? backgrounds.white : primary.purple}
+          />
+        )}
       </Button>
-		</ButtonWrapper>
-	)
+    </ButtonWrapper>
+  )
 }
 
 export default Button
 
 Button.propTypes = {
-	title: PropTypes.string.isRequired
+  type: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired,
+  withIcon: PropTypes.bool
 }
-Button.defaultTypes = {
-	title: PropTypes.string.isRequired
+Button.defaultProps = {
+  label: 'button',
+  withIcon: false
 }
