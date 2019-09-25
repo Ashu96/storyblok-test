@@ -1,9 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Styled from 'styled-components'
+import ReactMarkDown from 'react-markdown'
 import Icon from '../Icon'
 import { backgrounds, primary } from '../../constants/colors'
-import { Heading2, BodyText } from '../../styles/text'
+import { Heading2, ContentWrapper } from '../../styles/text'
 import { getButton, navigateTo } from '../../utils'
 
 const HeadingWithSingleMediaAndButtonWrapper = Styled.div`
@@ -80,7 +81,11 @@ function HeadingWithSingleMediaAndButton({
             {/* <Img fluid={image.childImageSharp.fluid} /> */}
           </div>
         )}
-        {body && <BodyText className="with-padding">{body}</BodyText>}
+        {body && (
+          <ContentWrapper className="with-padding">
+            <ReactMarkDown source={body} />
+          </ContentWrapper>
+        )}
         {primaryAction && (
           <Button
             className="action"

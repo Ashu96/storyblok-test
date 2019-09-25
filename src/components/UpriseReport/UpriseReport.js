@@ -41,6 +41,7 @@ const UpriseReportWrapper = Styled.div`
 
   & .report__body {
     padding: 0px;
+    min-height: 46px;
 
     @media (min-width: 768px) {
       padding: 0px 40px;
@@ -48,6 +49,7 @@ const UpriseReportWrapper = Styled.div`
   }
 
   & .report__label {
+    min-height: 46px;
     margin-top: 69px;
     padding: 0px;
 

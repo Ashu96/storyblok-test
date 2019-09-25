@@ -36,7 +36,7 @@ const getColorValue = color => {
 const HeadingWrapper = Styled.div`
   margin-bottom: ${props => `${BASE_SPACING * props.marginBottom}px`};
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: ${props => props.alignHorizontal};
 
   & .icon {

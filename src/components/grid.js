@@ -19,7 +19,7 @@ function Grid(props) {
     paddingRight,
     borderTop,
     borderBottom,
-    // isPaddingHorizontal,
+    isPaddingHorizontal: noPaddingHorizontal,
     paddingHorizontal,
     paddingVertical,
     backgroundColor
@@ -38,8 +38,18 @@ function Grid(props) {
           style: {
             paddingTop: paddingTop ? paddingVertical : 0,
             paddingBottom: paddingBottom ? paddingVertical : 0,
-            paddingLeft: paddingLeft ? (isMobile ? 24 : paddingHorizontal) : 0,
-            paddingRight: paddingRight ? (isMobile ? 24 : paddingHorizontal) : 0
+            paddingLeft:
+              paddingLeft && !noPaddingHorizontal
+                ? isMobile
+                  ? 24
+                  : paddingHorizontal
+                : 0,
+            paddingRight:
+              paddingRight && !noPaddingHorizontal
+                ? isMobile
+                  ? 24
+                  : paddingHorizontal
+                : 0
           }
         }}
         containerFluidProps={{
@@ -48,7 +58,9 @@ function Grid(props) {
             borderBottom: borderBottom
               ? `1px solid ${extended.purple.five}`
               : 'none',
-            backgroundColor: backgroundColor && backgroundColor.trim()
+            backgroundColor: backgroundColor && backgroundColor.trim(),
+            paddingLeft: noPaddingHorizontal ? 0 : 15,
+            paddingRight: noPaddingHorizontal ? 0 : 15
           }
         }}
       >
