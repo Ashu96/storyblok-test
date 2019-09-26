@@ -1,6 +1,7 @@
 import React from 'react'
 import Img from 'gatsby-image'
 import Styled from 'styled-components'
+import { TimelineMax } from 'gsap/TweenMax'
 import { Anchor } from '../Generic'
 import Icon from '../Icon'
 import { getButton, getSlugFromTitle, navigateTo } from '../../utils'
@@ -100,9 +101,7 @@ export function NavButton({ item, classNames }) {
   const Button = getButton(button.type)
   return (
     <li className={`header__nav-cta ${classNames}`}>
-      <Button
-        onClick={() => navigateTo(button.link)}
-      >
+      <Button onClick={() => navigateTo(button.link)}>
         {!item.image && button.label}
       </Button>
     </li>
@@ -111,13 +110,13 @@ export function NavButton({ item, classNames }) {
 
 export function DropDownMenu({ id, items, open, isClicked }) {
   React.useEffect(() => {
-    if (isClicked && open && window && window.TimelineMax) {
-      const tl = new window.TimelineMax({})
+    if (isClicked && open) {
+      const tl = new TimelineMax({})
       tl.to(`#${id}`, 0.2, { height: 180, autoAlpha: 1 })
       tl.staggerTo(`.menu-item--${id}`, 0.15, { autoAlpha: 1 }, 0.1)
     }
-    if (isClicked && !open && window && window.TimelineMax) {
-      const tl = new window.TimelineMax({})
+    if (isClicked && !open) {
+      const tl = new TimelineMax({})
       tl.staggerTo(`.menu-item--${id}`, 0.15, { autoAlpha: 0 }, 0.1)
       tl.to(`#${id}`, 0.2, {
         height: 0

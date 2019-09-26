@@ -1,12 +1,11 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
+import { TimelineMax } from 'gsap/TweenMax'
 import Styled from 'styled-components'
 import { PrimaryButton } from '../../styles/buttons'
 import { Row, Col } from '../../styles/grid'
 import { TextInput } from '../../styles/inputs'
 import { addContact } from '../../utils/apiCall'
 import { semantic } from '../../constants/colors'
-
 const SubscribeWrapper = Styled.div`
   max-width: 570px;
   margin: auto;
@@ -18,20 +17,22 @@ function Subscribe({ blok }) {
   const [email, setEmail] = React.useState('')
   const [label, setLabel] = React.useState('Sign up')
 
-  const success = new window.TimelineMax({})
-  const error = new window.TimelineMax({})
+  React.useEffect(() => {
+    const success = new TimelineMax({})
+    const error = new TimelineMax({})
 
-  success
-    .to(`#subscribe__primary`, 0.2, {
-      backgroundColor: semantic.success
-    })
-    .pause()
+    success
+      .to(`#subscribe__primary`, 0.2, {
+        backgroundColor: semantic.success
+      })
+      .pause()
 
-  error
-    .to(`#subscribe__primary`, 0.2, {
-      backgroundColor: semantic.error
-    })
-    .pause()
+    error
+      .to(`#subscribe__primary`, 0.2, {
+        backgroundColor: semantic.error
+      })
+      .pause()
+  }, [])
 
   return (
     <SubscribeWrapper>
