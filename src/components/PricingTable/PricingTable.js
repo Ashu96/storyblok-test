@@ -163,8 +163,8 @@ function PricingTableHead() {
             <Heading2 className="name">{plan.name}</Heading2>
             <Heading2 className="price">${plan.price}</Heading2>
             <Note color={extended.charcoal.one}>{plan.paymentCycle}</Note>
-            <PrimaryButton onClick={() => navigateTo('/contact-us')}>
-              Contact us
+            <PrimaryButton onClick={() => navigateTo('/book-demo')}>
+              Book demo
             </PrimaryButton>
           </div>
         )

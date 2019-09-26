@@ -17,10 +17,10 @@ function Subscribe({ blok }) {
   const [email, setEmail] = React.useState('')
   const [label, setLabel] = React.useState('Sign up')
 
-  React.useEffect(() => {
-    const success = new TimelineMax({})
-    const error = new TimelineMax({})
+  const success = new TimelineMax({})
+  const error = new TimelineMax({})
 
+  React.useEffect(() => {
     success
       .to(`#subscribe__primary`, 0.2, {
         backgroundColor: semantic.success
@@ -32,7 +32,7 @@ function Subscribe({ blok }) {
         backgroundColor: semantic.error
       })
       .pause()
-  }, [])
+  }, [success, error])
 
   return (
     <SubscribeWrapper>
