@@ -125,6 +125,7 @@ function HeroBanner({
 
   const fluidProps = getFluidGatsbyImage(media, {
     maxWidth: 900,
+    toFormat: 'webp'
   })
 
   return (

@@ -1,5 +1,7 @@
 import React from 'react'
 // import PropTypes from 'prop-types'
+import Img from 'gatsby-image'
+import { getFixedGatsbyImage } from 'gatsby-storyblok-image'
 import Styled from 'styled-components'
 import { backgrounds } from '../../constants/colors'
 import { Heading3, BodyText } from '../../styles/text'
@@ -45,13 +47,16 @@ const FeatureCardWrapper = Styled.div`
 
 function FeatureCard({ blok }) {
   const { title, media, body, shortContent } = blok
-
+  const fixedProps = getFixedGatsbyImage(media, {
+    width: 250,
+    toFormat: 'webp'
+  })
   return (
     <FeatureCardWrapper shortContent={shortContent}>
       {title && <Heading3 className="title">{title}</Heading3>}
       <div className="image-container">
-        {media && <img loading="lazy" src={media} alt={title} />}
-        {/* {media && <Img fluid={media} alt={title} />} */}
+        {/* {media && <img loading="lazy" src={media} alt={title} />} */}
+        {media && <Img fixed={fixedProps} alt={title} />}
       </div>
       <BodyText>{body}</BodyText>
     </FeatureCardWrapper>

@@ -79,7 +79,8 @@ function SingleMediaWithCaptionAndParagraph({
 }) {
   const fluidProps = getFluidGatsbyImage(media, {
     maxWidth: 570,
-    useBase64: true
+    useBase64: true,
+    toFormat: 'webp'
   })
 
   return (
