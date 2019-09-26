@@ -20,12 +20,13 @@ function BlogHome() {
       />
       {categories.map((category, idx) => {
         const blogs = categoryMap[category]
+        const showAll = blogs.length >= 6
         return (
           <CategorySection
             key={`category-section-${idx}`}
             title={category}
-            blogs={blogs}
-            showAll={false}
+            blogs={blogs.slice(0, 6)}
+            showAll={showAll}
           />
         )
       })}

@@ -33,7 +33,11 @@ const BlogCardContainer = Styled.div`
 
     & .title {
       margin-bottom: 5px;
-      min-height: 65px;
+      min-height: 60px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
     & .body {

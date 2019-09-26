@@ -13,7 +13,7 @@ function RelatedPosts({ category }) {
 
   const blogs =
     categoryMap[category] && categoryMap[category].length > 3
-      ? categoryMap[category].slice(3)
+      ? categoryMap[category].slice(0, 3)
       : categoryMap[category]
 
   return (
