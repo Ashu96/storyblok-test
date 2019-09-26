@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Styled from 'styled-components'
 import Img from 'gatsby-image'
+import { getFluidGatsbyImage } from 'gatsby-storyblok-image'
 import Icon from '../Icon'
 import { Heading1, Heading4, BodyText } from '../../styles/text'
 import { getButton, navigateTo, VideoPlayerContext } from '../../utils'
@@ -122,6 +123,10 @@ function HeroBanner({
   const onlyCTA = noMedia && !title && !subTitle && !body && !points
   const { togglePlayVideo } = React.useContext(VideoPlayerContext)
 
+  const fluidProps = getFluidGatsbyImage(media, {
+    maxWidth: 900,
+  })
+
   return (
     <HeroBannerWrapper
       splitScreen={splitScreen}
@@ -164,14 +169,9 @@ function HeroBanner({
             </div>
           )}
         </div>
-        {image && (
+        {fluidProps && (
           <div className="hero__image-container">
-            {image && <Img fluid={image.childImageSharp.fluid} alt={'hero'} />}
-          </div>
-        )}
-        {media && (
-          <div className="hero__image-container">
-            {media && <img loading="lazy" src={media} alt={'hero'} />}
+            {fluidProps && <Img fluid={fluidProps} alt={'hero'} />}
           </div>
         )}
       </div>

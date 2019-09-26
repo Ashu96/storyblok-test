@@ -1,7 +1,8 @@
 import React from 'react'
 // import PropTypes from 'prop-types'
+import Img from 'gatsby-image'
 import Styled from 'styled-components'
-// import { getPublicURL } from '../../utils'
+import { getFixedGatsbyImage } from 'gatsby-storyblok-image'
 import { Heading2 } from '../../styles/text'
 
 const MultipleMediaWithCaptionWrapper = Styled.div`
@@ -18,14 +19,13 @@ const MultipleMediaWithCaptionWrapper = Styled.div`
 `
 
 function MultipleMediaWithCaption({ blok }) {
-  
   const { title, images } = blok
-	return (
-		<MultipleMediaWithCaptionWrapper>
-			<Heading2>{title}</Heading2>
-			<List images={images} />
-		</MultipleMediaWithCaptionWrapper>
-	)
+  return (
+    <MultipleMediaWithCaptionWrapper>
+      <Heading2>{title}</Heading2>
+      <List images={images} />
+    </MultipleMediaWithCaptionWrapper>
+  )
 }
 
 export default MultipleMediaWithCaption
@@ -38,7 +38,6 @@ export default MultipleMediaWithCaption
 // MultipleMediaWithCaption.defaultProps = {
 // 	images: []
 // }
-
 
 const ListContainer = Styled.ul`
   list-style: none;
@@ -71,17 +70,18 @@ const ListItem = Styled.li`
 `
 
 function List({ images }) {
-	return (
-		<ListContainer>
-			{images.map((image, index) => (
-				<ListItem key={image.name + index}>
-					<img loading='lazy'
-            src={image.filename}
-						// src={getPublicURL(image.url || image.publicURL)}
-						alt="featured in"
-					/>
-				</ListItem>
-			))}
-		</ListContainer>
-	)
+  return (
+    <ListContainer>
+      {images.map((image, index) => {
+        const fixedProps = getFixedGatsbyImage(image.filename, {
+          width: 155
+        })
+        return (
+          <ListItem key={image.name + index}>
+            <Img fixed={fixedProps} alt={image.name} />
+          </ListItem>
+        )
+      })}
+    </ListContainer>
+  )
 }

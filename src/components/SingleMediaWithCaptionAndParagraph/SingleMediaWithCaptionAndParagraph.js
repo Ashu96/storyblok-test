@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Styled from 'styled-components'
+import { getFluidGatsbyImage } from 'gatsby-storyblok-image'
+import Img from 'gatsby-image'
 import ReactMarkdown from 'react-markdown'
 import { Col } from '../../styles/grid'
 import { Heading2, BodyText, Note, ContentWrapper } from '../../styles/text'
@@ -22,6 +24,10 @@ const SingleMediaWithCaptionAndParagraphWrapper = Styled.div`
     margin: auto;
     margin-bottom: 32px;
 
+    & .gatsby-image-wrapper {
+      width: 100%;
+    }
+
     @media (min-width: 1024px) {
       margin-bottom: 0px;
     }
@@ -35,12 +41,12 @@ const SingleMediaWithCaptionAndParagraphWrapper = Styled.div`
     background-color: ${primary.purple};
     position: absolute;
     border-radius: 50%;
-    left: ${props => !props.textFirst ? '-16px' : 'inherit'};
-    right: ${props => props.textFirst ? '0' : 'inherit'};
+    left: ${props => (!props.textFirst ? '-16px' : 'inherit')};
+    right: ${props => (props.textFirst ? '0' : 'inherit')};
     top: 10px;
 
     @media (min-width: 768px) {
-      display: ${props => props.timeline ? 'block' : 'none'};
+      display: ${props => (props.timeline ? 'block' : 'none')};
     }
   }
 
@@ -57,7 +63,7 @@ const SingleMediaWithCaptionAndParagraphWrapper = Styled.div`
       margin-bottom: 20px;
     }
     @media (min-width: 768px) {
-      padding-left: ${props => props.textFirst ? '0px' : '50px'};
+      padding-left: ${props => (props.textFirst ? '0px' : '50px')};
     }
   }
 `
@@ -71,6 +77,11 @@ function SingleMediaWithCaptionAndParagraph({
   timeline,
   content
 }) {
+  const fluidProps = getFluidGatsbyImage(media, {
+    maxWidth: 570,
+    useBase64: true
+  })
+
   return (
     <SingleMediaWithCaptionAndParagraphWrapper
       className="row"
@@ -79,8 +90,7 @@ function SingleMediaWithCaptionAndParagraph({
     >
       <Col className="col-12 col-lg-6 align-self-center">
         <div className="media">
-          {media && <img loading='lazy' src={media} alt={title} />}
-          {/* {image && <Img fluid={image} alt={title} />} */}
+          {fluidProps && <Img fluid={fluidProps} alt={title} />}
         </div>
       </Col>
       <Col className="col-lg-6 align-self-center info">

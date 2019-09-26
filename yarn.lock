@@ -5466,6 +5466,11 @@ gatsby-source-storyblok@^0.2.4:
     json-stringify-safe "^5.0.1"
     storyblok-js-client "^1.0.22"
 
+gatsby-storyblok-image@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/gatsby-storyblok-image/-/gatsby-storyblok-image-0.2.2.tgz#bcf530e38d49b0d383af5f1ec6110f861d0831bf"
+  integrity sha512-l2/AA7IksreCoV5F0E7vYNJwMSKU1SEiIPITJtxy6yOTPptWENWPp468H2xXH6vVldDHP8j45lCFceFTgltg9A==
+
 gatsby-telemetry@^1.1.21:
   version "1.1.21"
   resolved "https://registry.yarnpkg.com/gatsby-telemetry/-/gatsby-telemetry-1.1.21.tgz#62ec244c49c6f8de2d418c65b6ed2d1ef2d6fac7"
