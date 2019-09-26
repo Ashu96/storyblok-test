@@ -90,7 +90,7 @@ export const ContentWrapper = Styled.div`
     width: 100%;
   }
   & ul {
-    max-width: ${props => props.contained ? '370px' : 'inherit'};
+    max-width: ${props => (props.contained ? '370px' : 'inherit')};
   }
 
   & li {
@@ -148,6 +148,10 @@ export const ContentWrapper = Styled.div`
     letter-spacing: normal;
     text-align: ${props => (props.textCenter ? 'center' : 'inherit')};
     color: ${primary.charcoal};Z
+  }
+
+  & a {
+    overflow-wrap: break-word;
   }
 
 `

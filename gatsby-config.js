@@ -40,6 +40,12 @@ module.exports = {
       options: {
         precachePages: [`/about-us/`, `/projects/*`]
       }
+    },
+    {
+      resolve: 'gatsby-plugin-page-transitions',
+      options: {
+        transitionTime: 500
+      }
     }
   ]
 }
