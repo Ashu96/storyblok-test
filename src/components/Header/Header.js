@@ -210,13 +210,14 @@ const MenuContainer = Styled.div`
     background-color: ${backgrounds.white};
     color: ${primary.purple};
     width: 75%;
+    max-width: 360px;
     height: 100vh;
     top: 0px;
     left: 0px;
     padding: 24px;
     transform: ${props =>
       props.open ? `translateX(0px)` : `translateX(-100vw)`};
-    transition: 250ms all ease-in;
+    transition: 200ms all ease-out;
   }
 
   & .menu__overlay {
@@ -229,7 +230,8 @@ const MenuContainer = Styled.div`
     z-index: ${props => (props.open ? 5 : 0)};
     transform: ${props =>
       props.open ? `translateX(0px)` : `translateX(-100vw)`};
-    transition: 250ms opacity ease-in;
+    transition: 200ms opacity ease-out;
+    transition: 200ms opacity ease-in 0.05;
   }
 
   & .list-container {

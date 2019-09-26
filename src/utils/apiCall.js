@@ -39,7 +39,4 @@ export function saveToGoogleSheet(data = {}) {
   )}&Referrer=${encodeURIComponent(referrer)}`
 
   return fetch(url)
-    .then(res => res.json())
-    .then(res => console.log({ res }))
-    .catch(error => console.error(error))
 }

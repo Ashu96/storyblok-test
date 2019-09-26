@@ -18,7 +18,8 @@ const ContactFormWrapper = Styled.div`
     border-radius: ${props => (props.whiteBox ? '10px' : '0px')};
     box-shadow: ${props =>
       props.whiteBox ? '0 2px 4px 0 rgba(219, 221, 227, 0.5)' : 'none'};
-    background-color: ${props => props.whiteBox ? backgrounds.white : 'inherit'};
+    background-color: ${props =>
+      props.whiteBox ? backgrounds.white : 'inherit'};
     margin-bottom: 24px;
   }
 
@@ -28,8 +29,8 @@ const ContactFormWrapper = Styled.div`
 `
 
 function ContactForm({ blok }) {
-  console.log({ blok })
   const { whiteBox } = blok
+  const [label, setLabel] = React.useState('Submit')
   const [contactInfo, setContactInfo] = React.useState({
     firstName: '',
     lastName: '',
@@ -46,7 +47,21 @@ function ContactForm({ blok }) {
 
   return (
     <ContactFormWrapper whiteBox={whiteBox}>
-      <form onSubmit={event => event.preventDefault()}>
+      <form
+        onSubmit={event => {
+          event.preventDefault()
+          saveToGoogleSheet(contactInfo)
+            .then(res => res.json())
+            .then(res => {
+              console.log({ res })
+              setLabel('Thank you!')
+            })
+            .catch(error => {
+              console.error(error)
+              setLabel('Something went wrong!')
+            })
+        }}
+      >
         <div className="fields">
           <Row>
             <Col className="col-md-6">
@@ -127,12 +142,8 @@ function ContactForm({ blok }) {
         <div className="action">
           <Row>
             <Col>
-              <PrimaryButton
-                large
-                onClick={() => saveToGoogleSheet(contactInfo)}
-              >
-                {' '}
-                Submit
+              <PrimaryButton disabled={label === 'Thank you!'} large>
+                {label}
               </PrimaryButton>
             </Col>
           </Row>
