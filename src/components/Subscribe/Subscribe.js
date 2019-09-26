@@ -5,6 +5,7 @@ import { PrimaryButton } from '../../styles/buttons'
 import { Row, Col } from '../../styles/grid'
 import { TextInput } from '../../styles/inputs'
 import { addContact } from '../../utils/apiCall'
+import { semantic } from '../../constants/colors'
 
 const SubscribeWrapper = Styled.div`
   max-width: 570px;
@@ -15,28 +16,75 @@ function Subscribe({ blok }) {
   const [firstName, setFirstName] = React.useState('')
   const [lastName, setLastName] = React.useState('')
   const [email, setEmail] = React.useState('')
+  const [label, setLabel] = React.useState('Sign up')
+
+  const success = new window.TimelineMax({})
+  const error = new window.TimelineMax({})
+
+  success
+    .to(`#subscribe__primary`, 0.2, {
+      backgroundColor: semantic.success
+    })
+    .pause()
+
+  error
+    .to(`#subscribe__primary`, 0.2, {
+      backgroundColor: semantic.error
+    })
+    .pause()
+
   return (
     <SubscribeWrapper>
-      <form onSubmit={event => event.preventDefault()}>
+      <form
+        onSubmit={event => {
+          event.preventDefault()
+          // TODO: Add validation
+          addContact({
+            email,
+            attributes: {
+              FIRSTNAME: firstName,
+              LASTNAME: lastName
+            }
+          })
+            .then(res => res.json())
+            .then(res => {
+              console.log({ res })
+              if (res.id) {
+                // Success
+                setLabel('Thank you!')
+                success.play()
+              } else {
+                // something went wrong
+                setLabel('Something went wrong!')
+                error.play()
+              }
+            })
+            .catch(error => console.log(`Error: ${error}`))
+        }}
+      >
         <Row>
-          {blok.firstName && <Col className="col-md-6">
-            <TextInput
-              value={firstName}
-              onChange={({ target: { value } }) => setFirstName(value)}
-              id="firstName"
-              label="First Name"
-              isRequired
-            />
-          </Col>}
-          {blok.lastName && <Col className="col-md-6">
-            <TextInput
-              value={lastName}
-              onChange={({ target: { value } }) => setLastName(value)}
-              id="lastName"
-              label="Last Name"
-              isRequired
-            />
-          </Col>}
+          {blok.firstName && (
+            <Col className="col-md-6">
+              <TextInput
+                value={firstName}
+                onChange={({ target: { value } }) => setFirstName(value)}
+                id="firstName"
+                label="First Name"
+                isRequired
+              />
+            </Col>
+          )}
+          {blok.lastName && (
+            <Col className="col-md-6">
+              <TextInput
+                value={lastName}
+                onChange={({ target: { value } }) => setLastName(value)}
+                id="lastName"
+                label="Last Name"
+                isRequired
+              />
+            </Col>
+          )}
         </Row>
         <Row>
           <Col className="col-6">
@@ -53,20 +101,11 @@ function Subscribe({ blok }) {
         <Row className="mgn-t-20">
           <Col>
             <PrimaryButton
-              onClick={() => {
-                // TODO: Add validation
-                addContact({
-                  email,
-                  attributes: {
-                    FIRSTNAME: firstName,
-                    LASTNAME: lastName
-                  }
-                })
-              }}
+              id="subscribe__primary"
               large
+              disabled={label === 'Thank you!'}
             >
-              {' '}
-              Sign Up
+              {label}
             </PrimaryButton>
           </Col>
         </Row>
