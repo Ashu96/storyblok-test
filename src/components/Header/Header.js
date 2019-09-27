@@ -3,7 +3,7 @@ import React from 'react'
 import Styled from 'styled-components'
 import Icon from '../Icon'
 import { backgrounds, primary, extended } from '../../constants/colors'
-import { SectionWrapper, Row, Col } from '../../styles/grid'
+import { SectionWrapper, Col } from '../../styles/grid'
 import { getNavItem } from '../../utils'
 
 const HeaderContainer = Styled.header`
@@ -110,18 +110,17 @@ function Header({ bgPrimary, navItems }) {
   return (
     <SectionWrapper
       className="container-fluid"
-      bgPrimary={bgPrimary}
       containerFluidProps={{
         style: {
-          borderBottom: isMobile ? `1px solid ${extended.purple.five}` : 'none'
+          borderBottom: isMobile ? `1px solid ${extended.purple.five}` : 'none',
+          backgroundColor: bgPrimary ? backgrounds.fadedPurple : backgrounds.white
         }
       }}
       containerProps={{
         className: 'container'
       }}
     >
-      <HeaderContainer>
-        <Row>
+      <HeaderContainer className='row'>
           <Col className="col-md-8">
             <ul className="nav nav--left">
               {leftHSNavItems.map(item => {
@@ -151,7 +150,6 @@ function Header({ bgPrimary, navItems }) {
               })}
             </ul>
           </Col>
-        </Row>
       </HeaderContainer>
       <Menu leftHSNavItems={leftHSNavItems} rightHSNavItems={rightHSNavItems} />
     </SectionWrapper>

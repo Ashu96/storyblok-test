@@ -5,10 +5,8 @@ import { backgrounds } from '../../constants/colors'
 import { Heading3, BodyText } from '../../styles/text'
 
 const StaffMemberCardWrapper = Styled.div`
-  /* width: 320px;
-  min-height: 431px; */
   min-width: ${props => props.hasTitle ? 'inherit' : '320px'};
-  max-width: ${props => props.hasTitle ? '320px' : 'inherit'};
+  max-width: ${props => props.hasTitle ? '320px' : '350px'};
   border-radius: 10px;
   box-shadow: ${props =>
     props.bgPrimary ? 'none' : '0 4px 10px 0 rgba(219, 221, 227, 0.5)'};

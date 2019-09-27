@@ -43,13 +43,13 @@ function Grid(props) {
                 ? isMobile
                   ? 24
                   : paddingHorizontal
-                : 0,
+                : 15,
             paddingRight:
               paddingRight && !noPaddingHorizontal
                 ? isMobile
                   ? 24
                   : paddingHorizontal
-                : 0
+                : 15
           }
         }}
         containerFluidProps={{

@@ -3,9 +3,9 @@ import Components from './components.js';
 import './layout.css'
 
 const Page = (props) => (
-  <div>
+  <React.Fragment>
     {props.blok.body && props.blok.body.map((blok) => React.createElement(Components(blok.component), {key: blok._uid, blok: blok}))}
-  </div>
+  </React.Fragment>
 )
 
 export default Page
