@@ -14,6 +14,15 @@ import {
   NavDropDown
 } from '../components/Header/NavItems'
 
+export function getDimensions(url = "") {
+  const tokens = url.split('/')
+  const resolution = tokens.find(token => token.includes('x'))
+  if (resolution) {
+    return resolution.split('x')
+  }
+  return [150, 150]
+}
+
 export function getButton(type) {
   switch (type) {
     case BUTTON_TYPES.LINK:
