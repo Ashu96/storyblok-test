@@ -120,6 +120,10 @@ export const ContentWrapper = Styled.div`
     color: ${props => (props.color ? props.color : extended.charcoal.one)};
     
     margin-bottom: 50px;
+
+    & a {
+      overflow-wrap: break-word;
+    }
   }
 
   & h1, h2, h3, h4 {
@@ -149,9 +153,4 @@ export const ContentWrapper = Styled.div`
     text-align: ${props => (props.textCenter ? 'center' : 'inherit')};
     color: ${primary.charcoal};Z
   }
-
-  & a {
-    overflow-wrap: break-word;
-  }
-
 `
