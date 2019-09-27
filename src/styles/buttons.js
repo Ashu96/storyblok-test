@@ -16,7 +16,7 @@ const Button = Styled.button`
 `
 
 export const OutLineButton = Styled(Button)`
-  border-radius: 5px;
+  border-radius: 10px;
   color: ${props =>
 		props.secondary ? secondary.electricBlue : primary.purple};
   border: solid 1px ${props =>
@@ -28,7 +28,7 @@ export const LinkButton = Styled(Button)`
 		props.secondary ? secondary.electricBlue : primary.purple};
 `
 export const PrimaryButton = Styled(Button)`
-  border-radius: ${props => (props.large ? '10px' : '5px')}
+  border-radius: 10px;
   border: solid 1px ${props =>
 		props.secondary ? secondary.electricBlue : primary.purple};
   background-color: ${props =>
