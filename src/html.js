@@ -36,6 +36,21 @@ provider in Australia."
         `
             }}
           />
+          <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=UA-69911631-4"
+          ></script>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                <!-- Global site tag (gtag.js) - Google Analytics -->
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'UA-69911631-4');
+              `
+            }}
+          ></script>
         </head>
         <body style={{ visibility: 'hidden' }}>
           <div
