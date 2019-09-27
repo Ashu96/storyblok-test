@@ -46,13 +46,6 @@ module.exports = {
       options: {
         transitionTime: 500
       }
-    },
-    {
-      resolve: 'gatsby-plugin-intercom-spa',
-      options: {
-        app_id: 'ib269xut',
-        include_in_development: true
-      }
     }
   ]
 }

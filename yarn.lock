@@ -5345,13 +5345,6 @@ gatsby-page-utils@^0.0.16:
     micromatch "^3.1.10"
     slash "^3.0.0"
 
-gatsby-plugin-intercom-spa@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-intercom-spa/-/gatsby-plugin-intercom-spa-0.1.0.tgz#fb2825eb6652cd67a87fca2406992af76e8f32e8"
-  integrity sha512-Z656doZ+wcO+0ETnhRjTQke8udYIYJOSJiWJaebw31qPQwNl4Qd+yCO9/EwZPNiex/XXEjsyqQB8NHEQFqIuHw==
-  dependencies:
-    babel-runtime "^6.26.0"
-
 gatsby-plugin-manifest@^2.2.18:
   version "2.2.18"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-manifest/-/gatsby-plugin-manifest-2.2.18.tgz#96bea26e35a8d74ebb74dff8c5c1ae85e7b0c556"
