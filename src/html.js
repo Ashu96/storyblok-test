@@ -51,6 +51,10 @@ provider in Australia."
               `
             }}
           ></script>
+          <link
+            href="https://app.birdseed.io/css/birdseed-embed.css"
+            rel="stylesheet"
+          ></link>
         </head>
         <body style={{ visibility: 'hidden' }}>
           <div
@@ -58,6 +62,14 @@ provider in Australia."
             dangerouslySetInnerHTML={{ __html: this.props.body }}
           />
           {this.props.postBodyComponents}
+          <script
+            type="text/javascript"
+            src="https://app.birdseed.io/widget.js"
+          ></script>
+          <div
+            id="birdseed-widget-container"
+            data-token="35e834e3e52a148f397759a97fc5fe39"
+          ></div>
         </body>
       </html>
     )
