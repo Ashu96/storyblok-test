@@ -121,7 +121,7 @@ function HeroBanner({
 }) {
   const noMedia = !image && !media
   const onlyCTA = noMedia && !title && !subTitle && !body && !points
-  const { togglePlayVideo } = React.useContext(VideoPlayerContext)
+  const { togglePlayVideo, setURL } = React.useContext(VideoPlayerContext)
 
   const fluidProps = getFluidGatsbyImage(media, {
     maxWidth: 900,
@@ -160,7 +160,12 @@ function HeroBanner({
                   <Button
                     key={item._uid}
                     onClick={() =>
-                      navigateTo(item.link, { fn: togglePlayVideo })
+                      navigateTo(item.link, {
+                        fn: () => {
+                          setURL('https://player.vimeo.com/video/219316897')
+                          togglePlayVideo()
+                        }
+                      })
                     }
                   >
                     {item.label}

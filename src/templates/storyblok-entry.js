@@ -31,7 +31,11 @@ class StoryBlokEntry extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = { playVideo: false, ...StoryBlokEntry.prepareStory(props) }
+    this.state = {
+      playVideo: false,
+      url: 'https://player.vimeo.com/video/219316897',
+      ...StoryBlokEntry.prepareStory(props)
+    }
   }
 
   render() {
@@ -52,24 +56,26 @@ class StoryBlokEntry extends React.Component {
 
     return (
       <PageTransition
-        // defaultStyle={{
-        //   transition: 'left 500ms cubic-bezier(0.47, 0, 0.75, 0.72)',
-        //   left: '100%',
-        //   position: 'absolute',
-        //   width: '100%'
-        // }}
-        // transitionStyles={{
-        //   entering: { left: '0%' },
-        //   entered: { left: '0%' },
-        //   exiting: { left: '100%' }
-        // }}
-        // transitionTime={500}
+      // defaultStyle={{
+      //   transition: 'left 500ms cubic-bezier(0.47, 0, 0.75, 0.72)',
+      //   left: '100%',
+      //   position: 'absolute',
+      //   width: '100%'
+      // }}
+      // transitionStyles={{
+      //   entering: { left: '0%' },
+      //   entered: { left: '0%' },
+      //   exiting: { left: '100%' }
+      // }}
+      // transitionTime={500}
       >
         <VideoPlayerContext.Provider
           value={{
             playVideo: this.state.playVideo,
             togglePlayVideo: () =>
-              this.setState(prevState => ({ playVideo: !prevState.playVideo }))
+              this.setState(prevState => ({ playVideo: !prevState.playVideo })),
+            url: this.state.url,
+            setURL: (url) => this.setState({ url })
           }}
         >
           <Header />

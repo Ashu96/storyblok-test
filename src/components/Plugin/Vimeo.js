@@ -18,22 +18,28 @@ const VideoPlayerWrapper = Styled.div`
   }
 `
 
-function Vimeo({ url }) {
-  const { playVideo, togglePlayVideo } = React.useContext(VideoPlayerContext)
+function Vimeo() {
+  const { playVideo, togglePlayVideo, url } = React.useContext(
+    VideoPlayerContext
+  )
 
   if (!playVideo) {
     return null
   }
 
   return (
-    <VideoPlayerWrapper onClick={() => togglePlayVideo()}>
+    <VideoPlayerWrapper
+      onClick={() => {
+        togglePlayVideo()
+      }}
+    >
       <div className="video-player">
         <iframe
           title="uprise tour video"
-          src={url}
+          src={`${url}?autoplay=1&loop=1&autopause=0`}
           width="640"
           height="360"
-          frameborder="0"
+          frameBorder="0"
           allow="autoplay; fullscreen"
           allowFullScreen
         ></iframe>

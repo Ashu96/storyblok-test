@@ -5,6 +5,7 @@ import ReactMarkDown from 'react-markdown'
 import { Row, Col } from '../../styles/grid'
 import { Heading2, BodyText, ContentWrapper } from '../../styles/text'
 import { primary, backgrounds, extended } from '../../constants/colors'
+import { VideoPlayerContext } from '../../utils'
 
 const TrainingCardWrapper = Styled.div`
 
@@ -54,21 +55,39 @@ const TrainingCardWrapper = Styled.div`
   }
 `
 
-function TrainingCard({ title, content, videoDescription, videoPreview }) {
+function TrainingCard({
+  title,
+  content,
+  videoDescription,
+  videoPreview,
+  videoURL = 'https://player.vimeo.com/video/240756358'
+}) {
+  const { togglePlayVideo, setURL } = React.useContext(VideoPlayerContext)
+
   return (
     <TrainingCardWrapper>
       <Row>
         <Col className="col-lg-6 media">
           <div className="wrapper">
-            <img src={videoPreview} alt={title} />
+            <img
+              src={videoPreview}
+              alt={title}
+              onClick={() => {
+                console.log('Clicked!')
+                setURL(videoURL)
+                togglePlayVideo()
+              }}
+            />
             <div className="description">
-              <BodyText color={primary.charcoal} bold>{videoDescription}</BodyText>
+              <BodyText color={primary.charcoal} bold>
+                {videoDescription}
+              </BodyText>
             </div>
           </div>
         </Col>
         <Col className="col-lg-6 text">
           <Heading2>{title}</Heading2>
-          <ContentWrapper className='content'>
+          <ContentWrapper className="content">
             <ReactMarkDown source={content} />
           </ContentWrapper>
         </Col>
