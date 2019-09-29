@@ -12,7 +12,7 @@ const ButtonWrapper = Styled.div`
   justify-content: ${props => props.alignHorizontal};
   & button {
     margin-bottom: 24px;
-    width: 100%;
+    width: ${props => props.size};
   }
 
   & .button--with-image {
@@ -21,13 +21,20 @@ const ButtonWrapper = Styled.div`
   }
 
   @media (min-width: 479px) {
-    & button {
-      width: 'auto'
-    }
+    /* & button {
+      width: auto;
+    } */
   }
 `
 
-function Button({ type, label, link, withIcon, alignHorizontal = 'center' }) {
+function Button({
+  type,
+  label,
+  link,
+  withIcon,
+  alignHorizontal = 'center',
+  size = 'auto'
+}) {
   const data = useStaticQuery(graphql`
     {
       googlePlay: file(relativePath: { eq: "googlePlay.png" }) {
@@ -60,7 +67,11 @@ function Button({ type, label, link, withIcon, alignHorizontal = 'center' }) {
   const Button = getButton(withImage ? 'LINK' : type)
 
   return (
-    <ButtonWrapper alignHorizontal={alignHorizontal} withImage={withImage}>
+    <ButtonWrapper
+      alignHorizontal={alignHorizontal}
+      withImage={withImage}
+      size={size}
+    >
       <Button
         onClick={() => navigateTo(link)}
         className={withImage ? 'button--with-image' : ''}
