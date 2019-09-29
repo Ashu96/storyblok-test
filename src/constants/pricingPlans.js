@@ -34,13 +34,13 @@ export const PLANS = {
   [PLAN_TYPES.Startup]: {
     id: 0,
     name: PLAN_TYPES.Startup,
-    price: 2625,
+    price: 2375,
     paymentCycle: PAYMENT_CYCLE.annually,
     features: [
       {
         id: 0,
         name: FEATURES.hours,
-        value: `25 hrs @$105 p/hr`
+        value: `25 hrs @$95 p/hr`
       },
       {
         id: 1,
@@ -122,13 +122,13 @@ export const PLANS = {
   [PLAN_TYPES.Growth]: {
     id: 1,
     name: PLAN_TYPES.Growth,
-    price: 4900,
+    price: 4500,
     paymentCycle: PAYMENT_CYCLE.annually,
     features: [
       {
         id: 0,
         name: FEATURES.hours,
-        value: `50 hrs @$98 p/hr`
+        value: `50 hrs @$90 p/hr`
       },
       {
         id: 1,
@@ -210,13 +210,13 @@ export const PLANS = {
   [PLAN_TYPES.Thriving]: {
     id: 2,
     name: PLAN_TYPES.Thriving,
-    price: 9100,
+    price: 8500,
     paymentCycle: PAYMENT_CYCLE.annually,
     features: [
       {
         id: 0,
         name: FEATURES.hours,
-        value: `100 hrs @$91 p/hr`
+        value: `100 hrs @$85 p/hr`
       },
       {
         id: 1,
@@ -298,13 +298,13 @@ export const PLANS = {
   [PLAN_TYPES.Established]: {
     id: 3,
     name: PLAN_TYPES.Established,
-    price: 17000,
+    price: 16000,
     paymentCycle: PAYMENT_CYCLE.annually,
     features: [
       {
         id: 0,
         name: FEATURES.hours,
-        value: `50 hrs @$98 p/hr`
+        value: `50 hrs @$80 p/hr`
       },
       {
         id: 1,
