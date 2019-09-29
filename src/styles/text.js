@@ -123,6 +123,8 @@ export const ContentWrapper = Styled.div`
 
     & a {
       overflow-wrap: break-word;
+      color: ${primary.purple};
+      text-decoration: none;
     }
   }
 
