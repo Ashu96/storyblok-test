@@ -85,26 +85,15 @@ const HeroBannerWrapper = Styled.div`
   }
 
   & .hero__image-container {
-    margin: ${props => (props.splitScreen ? '0px' : '50px 0 20px')};
+    margin: ${props => (props.splitScreen ? '0px auto' : '50px auto 20px')};
     width: 100%;
-    
-    & > div {
-      /* min-height: 300px; */
-    }
-    
-    & img {
-      max-width: 100%;
-    }
 
     @media (min-width: 768px) {
       flex: ${props => (props.splitScreen ? '0 0 50%' : '0 0 100%')};
-      max-width: ${props => (props.splitScreen ? '50%' : '100%')};
+      max-width: ${props => (props.splitScreen ? '50%' : '900px')};
       /* min-height on image isn't working on IE11 */
       /* Reason: Maybe image is loading afterwards */
       min-height: 446px;
-      & img {
-        /* min-height: 446px;       */
-      }
     }
   }
 `

@@ -43,7 +43,7 @@ const ListContainer = Styled.ul`
   list-style: none;
   display: flex;
   flex-direction: column;
-  margin-top: 50px;
+  margin-top: 40px;
   padding: 0px;
 
   & li {
@@ -59,14 +59,8 @@ const ListContainer = Styled.ul`
 `
 
 const ListItem = Styled.li`
-  & img {
-    height: 60px;
-    margin-bottom: 16px;
-    @media (min-width: 768px) {
-      margin-right: 40px;
-    }
-    /* margin-right: 69px; */
-  }
+  margin-left: 33px;
+  margin-top: 40px;
 `
 
 function List({ images }) {
@@ -74,7 +68,7 @@ function List({ images }) {
     <ListContainer>
       {images.map((image, index) => {
         const fixedProps = getFixedGatsbyImage(image.filename, {
-          width: 155
+          width: 137
         })
         return (
           <ListItem key={image.name + index}>
