@@ -60,14 +60,14 @@ const UpriseReportWrapper = Styled.div`
 `
 
 function UpriseReport({ blok }) {
-  const { title, body, after_image, before_image, label } = blok
+  const { title, body, after_image, before_image, label, beforeLabel, afterLabel } = blok
   return (
     <UpriseReportWrapper>
       <Heading3>{title}</Heading3>
       <Label className="report__body">{body}</Label>
       <div className="report__image-container">
         <div>
-          <Heading4>Before</Heading4>
+          <Heading4>{beforeLabel || 'Before'}</Heading4>
           {before_image && (
             <img loading='lazy' alt="chart" src={before_image} />
           )}
@@ -77,7 +77,7 @@ function UpriseReport({ blok }) {
           )}
         </div>
         <div>
-          <Heading4>After</Heading4>
+          <Heading4>{afterLabel || 'After'}</Heading4>
           {after_image && (
             <img loading='lazy' alt="chart" src={after_image} />
           )}
