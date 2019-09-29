@@ -1,12 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Styled from 'styled-components'
-import { navigate } from 'gatsby'
 // import Img from 'gatsby-image'
 import { Heading3, Note } from '../../styles/text'
 // import { PrimaryButton } from '../../styles/buttons'
 import { extended, backgrounds } from '../../constants/colors'
-import { getButton } from '../../utils'
+import { getButton, navigateTo } from '../../utils'
 
 const SupportCardWrapper = Styled.div`
   width: auto;
@@ -59,7 +58,7 @@ function SupportCard({ blok }) {
       </Note>
 
       {button && (
-        <Button large key={button._uid} onClick={() => navigate(button.link)}>
+        <Button large key={button._uid} onClick={() => navigateTo(button.link)}>
           {button.label}
         </Button>
       )}
