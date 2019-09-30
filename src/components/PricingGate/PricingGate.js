@@ -10,7 +10,6 @@ import { PrimaryButton } from '../../styles/buttons'
 import { backgrounds } from '../../constants/colors'
 
 const PricingGateWrapper = Styled.div`
-  width: 100%;
   height: 100vh;
 
   & .col-12 {
@@ -28,15 +27,16 @@ const PricingGateWrapper = Styled.div`
   }
 
   & form {
-    width: 770px;
+    width: 100%;
+    max-width: 770px;
     height: 215px;
     border-radius: 10px;
     box-shadow: 0 4px 10px 0 rgba(219, 221, 227, 0.5);
     background-color: #ffffff;
 
-    padding: 40px;
+    padding: 24px;
     margin: 0px auto;
-    margin-bottom: 120px;
+    margin-bottom: 80px;
   }
 
   & .uprise-logo {
@@ -47,6 +47,13 @@ const PricingGateWrapper = Styled.div`
 
     & img {
       width: 24px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    & form {
+      margin-bottom: 120px;
+      padding: 40px;
     }
   }
 `
