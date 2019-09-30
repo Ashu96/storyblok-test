@@ -1,5 +1,5 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 import Img from 'gatsby-image'
 import { getFixedGatsbyImage } from 'gatsby-storyblok-image'
 import Styled from 'styled-components'
@@ -8,7 +8,7 @@ import { Heading3, BodyText } from '../../styles/text'
 
 const FeatureCardWrapper = Styled.div`
   width: auto;
-  height: ${props => (props.shortContent ? '490px' : '590px')};
+  min-height: ${props => (props.shortContent ? '490px' : '590px')};
   background-color: ${backgrounds.fadedPurple};
   padding: 40px;
   text-align: center;
@@ -17,14 +17,11 @@ const FeatureCardWrapper = Styled.div`
 
   & .title {
     margin-bottom: 40px;
+    min-height: 60px;
   }
 
   & .image-container {
     margin-bottom: 40px;
-    & img {
-      height: 171px;
-      width: 100%;
-    }
   }
 
   & .heading {
@@ -34,40 +31,57 @@ const FeatureCardWrapper = Styled.div`
     margin-bottom: 64px;
   }
 
+  & .body {
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
   @media (min-width: 768px) {
     min-width: 300px;
-    height: ${props => (props.shortContent ? '447px' : '590px')};
+    min-height: ${props => (props.shortContent ? '447px' : '590px')};
   }
 
   @media (min-width: 1220px) {
     width: 345px;
-    height: ${props => (props.shortContent ? '447px' : '590px')};
+    min-height: ${props => (props.shortContent ? '447px' : '590px')};
   }
 `
 
-function FeatureCard({ blok }) {
-  const { title, media, body, shortContent } = blok
+function FeatureCard({ title, media, body, shortContent }) {
   const fixedProps = getFixedGatsbyImage(media, {
     width: 250,
     toFormat: 'webp'
   })
+
   return (
     <FeatureCardWrapper shortContent={shortContent}>
       {title && <Heading3 className="title">{title}</Heading3>}
       <div className="image-container">
-        {/* {media && <img loading="lazy" src={media} alt={title} />} */}
-        {media && <Img fixed={fixedProps} alt={title} />}
+        {media && (
+          <Img
+            fixed={fixedProps}
+            alt={title}
+            imgStyle={{ objectFit: 'contain' }}
+            objectFit="cover"
+            objectPosition="50% 50%"
+          />
+        )}
       </div>
-      <BodyText>{body}</BodyText>
+      <BodyText className="body">{body}</BodyText>
     </FeatureCardWrapper>
   )
 }
 
 export default FeatureCard
 
-// FeatureCard.propTypes = {
-//   title: PropTypes.string.isRequired
-// }
-// FeatureCard.defaultTypes = {
-//   title: PropTypes.string.isRequired
-// }
+FeatureCard.propTypes = {
+  title: PropTypes.string,
+  media: PropTypes.string,
+  body: PropTypes.string.isRequired,
+  shortContent: PropTypes.bool,
+}
+FeatureCard.defaultTypes = {
+  shortContent: false
+}
