@@ -82,7 +82,7 @@ function PricingGate() {
               event.preventDefault()
               try {
                 localStorage.setItem('upriseEmail', 'saved')
-                addContact(email)
+                addContact({ email, listIds: [44] })
                 navigateTo('/pricing')
               } catch (error) {
                 console.log({ error })

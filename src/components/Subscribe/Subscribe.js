@@ -45,7 +45,8 @@ function Subscribe({ blok }) {
             attributes: {
               FIRSTNAME: firstName,
               LASTNAME: lastName
-            }
+            },
+            listIds: [4]
           })
             .then(res => res.json())
             .then(res => {
