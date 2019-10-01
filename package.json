@@ -13,6 +13,7 @@
     "gatsby-plugin-react-helmet": "^3.0.0",
     "gatsby-plugin-sharp": "^2.0.7",
     "gatsby-source-filesystem": "^2.0.4",
+    "gatsby-source-google-sheets": "^1.1.1",
     "gatsby-source-storyblok": "^0.2.4",
     "gatsby-storyblok-image": "^0.2.2",
     "gatsby-transformer-sharp": "^2.2.13",
