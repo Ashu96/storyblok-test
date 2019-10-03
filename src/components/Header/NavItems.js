@@ -75,12 +75,11 @@ export function NavDropDown({ item, navItems, classNames }) {
       }}
     >
       <div className="link">
-        {/* {item.image && <Img fixed={item.image.childImageSharp.fixed} alt="" />} */}
         {!item.image && item.title}
         {item.type === 'DROP_DOWN' && (
           <Icon
-            name="chevron"
-            rotate={open ? -90 : 90}
+            name="arrow"
+            rotate={open ? 180 : 0}
             fill={extended.charcoal.three}
             className="header__nav-item--icon"
           />

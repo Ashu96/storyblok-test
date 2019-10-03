@@ -5,8 +5,14 @@ import { getFluidGatsbyImage } from 'gatsby-storyblok-image'
 import Img from 'gatsby-image'
 import ReactMarkdown from 'react-markdown'
 import { Col } from '../../styles/grid'
-import { Heading2, BodyText, Note, ContentWrapper } from '../../styles/text'
-import { primary } from '../../constants/colors'
+import {
+  Heading2,
+  Heading3,
+  BodyText,
+  Note,
+  ContentWrapper
+} from '../../styles/text'
+import { primary, extended } from '../../constants/colors'
 
 const SingleMediaWithCaptionAndParagraphWrapper = Styled.div`
   flex-direction: ${props => (props.textFirst ? 'row-reverse' : 'row')};
@@ -23,6 +29,17 @@ const SingleMediaWithCaptionAndParagraphWrapper = Styled.div`
     justify-content: center;
     margin: auto;
     margin-bottom: 32px;
+    position: relative;
+
+    & .oval {
+      position: absolute;
+      /* height: 200%; */
+      max-height: 800px;
+      top: -50%;
+      left: ${props => props.textFirst ? 'inherit' : '-50%'};
+      right: ${props => props.textFirst ? '-50%' : 'inherit'};
+      transform: ${props => props.textFirst ? 'none' : 'rotate(180deg)'};
+    }
 
     & .gatsby-image-wrapper {
       width: 100%;
@@ -54,13 +71,18 @@ const SingleMediaWithCaptionAndParagraphWrapper = Styled.div`
     position: relative;
     margin-top: 16px;
 
+    & .step {
+      font-weight: 600;
+      color: ${extended.charcoal.two};
+    }
+
     & p {
       margin-bottom: 10px;
     }
 
-    & h2 {
+    & .heading {
       text-align: left;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
     @media (min-width: 768px) {
       padding-left: ${props => (props.textFirst ? '0px' : '50px')};
@@ -75,7 +97,8 @@ function SingleMediaWithCaptionAndParagraph({
   showStepNumber,
   media,
   timeline,
-  content
+  content,
+  showOval = false
 }) {
   const fluidProps = getFluidGatsbyImage(media, {
     maxWidth: 570,
@@ -83,20 +106,32 @@ function SingleMediaWithCaptionAndParagraph({
     toFormat: 'webp'
   })
 
+  const Heading = showStepNumber ? Heading2 : Heading3
+
   return (
     <SingleMediaWithCaptionAndParagraphWrapper
       className="row"
       textFirst={stepNumber % 2 === 0}
       timeline={timeline}
+      showOval={showOval}
     >
       <Col className="col-12 col-lg-6 align-self-center">
         <div className="media">
+          {showOval && (
+            <img
+              className="oval"
+              src={require('../../images/oval.svg')}
+              alt=""
+            />
+          )}
           {fluidProps && <Img fluid={fluidProps} alt={title} />}
         </div>
       </Col>
       <Col className="col-lg-6 align-self-center info">
-        {stepNumber && showStepNumber && <Note>{`STEP ${stepNumber}`}</Note>}
-        <Heading2>{title}</Heading2>
+        {stepNumber && showStepNumber && (
+          <Note className="step">{`STEP ${stepNumber}`}</Note>
+        )}
+        <Heading className="heading">{title}</Heading>
         <BodyText>{body}</BodyText>
         {content && (
           <ContentWrapper contained>
