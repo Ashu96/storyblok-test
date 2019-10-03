@@ -120,7 +120,7 @@ function SingleMediaWithCaptionAndParagraph({
           {showOval && (
             <img
               className="oval"
-              src={require('../../images/oval.svg')}
+              src={require('../../images/semi-circle.svg')}
               alt=""
             />
           )}

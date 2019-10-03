@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Styled from 'styled-components'
 import Img from 'gatsby-image'
-import { Heading3, Heading4, Label } from '../../styles/text'
+import { Heading3, Heading4, BodyText, Label } from '../../styles/text'
 
 const UpriseReportWrapper = Styled.div`
   margin: auto;
@@ -15,11 +15,10 @@ const UpriseReportWrapper = Styled.div`
   }
 
   & h3 {
-    margin-bottom: 12px;
+    margin-bottom: 16px;
   }
 
   & .report__image-container {
-    margin-top: 30px
     display: flex;
     flex-direction: column;
 
@@ -42,6 +41,7 @@ const UpriseReportWrapper = Styled.div`
   & .report__body {
     padding: 0px;
     min-height: 46px;
+    margin-bottom: 50px
 
     @media (min-width: 768px) {
       padding: 0px 40px;
@@ -64,7 +64,7 @@ function UpriseReport({ blok }) {
   return (
     <UpriseReportWrapper>
       <Heading3>{title}</Heading3>
-      <Label className="report__body">{body}</Label>
+      <BodyText className="report__body">{body}</BodyText>
       <div className="report__image-container">
         <div>
           <Heading4>{beforeLabel || 'Before'}</Heading4>
