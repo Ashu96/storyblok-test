@@ -33,8 +33,14 @@ const HeadingWithSingleMediaAndButtonWrapper = Styled.div`
       }
     }
 
+    & .markdown {
+      margin-bottom: 30px;
+      & p {
+        margin-bottom: 0px;
+      }
+    }
+
     & .action {
-      margin-top: 50px
       width: 100%;
     }
 
@@ -51,6 +57,10 @@ const HeadingWithSingleMediaAndButtonWrapper = Styled.div`
 
       & .action {
         width: auto;
+      }
+
+      & .action--link {
+        padding-left: 0px;
       }
     }
   }
@@ -82,13 +92,15 @@ function HeadingWithSingleMediaAndButton({
           </div>
         )}
         {body && (
-          <ContentWrapper className="with-padding">
+          <ContentWrapper className="with-padding markdown">
             <ReactMarkDown source={body} />
           </ContentWrapper>
         )}
         {primaryAction && (
           <Button
-            className="action"
+            className={`action ${
+              primaryAction.type === 'LINK' ? 'action--link' : ''
+            }`}
             onClick={() => navigateTo(primaryAction.link)}
           >
             {primaryAction.label}

@@ -24,7 +24,7 @@ export const backgrounds = {
 export const extended = {
 	charcoal: {
 		one: 'rgb(109,108,121)', //#6d6c79
-		two: 'rgb(151,150,160)',
+		two: 'rgb(151,150,160)', // #9796A0
 		three: 'rgb(193,192,197)',
 		four: 'rgb(213,213,216)',
 		five: 'rgb(234,234,236)'

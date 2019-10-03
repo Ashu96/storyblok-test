@@ -8,7 +8,7 @@ import { getNavItem } from '../../utils'
 
 const HeaderContainer = Styled.header`
   height: 70px;
-  display: none;
+  display: none !important;
 
   & .row {
     padding: 15px 0px;
@@ -69,7 +69,7 @@ const HeaderContainer = Styled.header`
     z-index: 1;
     position: relative;
     & .header__nav-item--icon {
-      transform: rotate(90deg);
+      /* transform: rotate(90deg); */
     } 
     & ul li {
       width: 100%;
@@ -92,7 +92,7 @@ const HeaderContainer = Styled.header`
   }
 
   @media (min-width: 1024px) {
-    display: flex;
+    display: flex !important;
   }
 
 `
@@ -169,8 +169,6 @@ Header.defaultProps = {
 export default Header
 
 const MenuContainer = Styled.div`
-  /* color: black; */
-  /* position: relative; */
   height: 52px;
   padding: 15px 0px;
 
@@ -249,7 +247,7 @@ const MenuContainer = Styled.div`
 
     & li {
       margin: 0px;
-      margin-top: 24px;
+      margin-top: 32px;
 
       & a, .link {
         color: ${extended.charcoal.one};

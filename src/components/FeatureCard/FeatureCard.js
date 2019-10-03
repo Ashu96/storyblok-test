@@ -12,7 +12,7 @@ const FeatureCardWrapper = Styled.div`
   background-color: ${backgrounds.fadedPurple};
   padding: 40px;
   text-align: center;
-
+  border-radius: 10px;
   margin-top: 16px;
 
   & .title {
