@@ -66,3 +66,7 @@ export const SOCIAL_LINKS = [
     link: 'https://twitter.com/upriseatwork?lang=en'
   }
 ]
+
+export function toCapitalCase(str) {
+  return `${str[0].toUpperCase()}${str.slice(1)}`
+}

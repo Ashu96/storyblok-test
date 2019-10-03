@@ -5,7 +5,7 @@ import { Anchor } from '../Generic'
 import { SectionWrapper, Row, Col } from '../../styles/grid'
 import { Note } from '../../styles/text'
 import { primary, backgrounds, extended } from '../../constants/colors'
-import { MENU, SOCIAL_LINKS, LEGAL_INFO } from './utils'
+import { MENU, SOCIAL_LINKS, LEGAL_INFO, toCapitalCase } from './utils'
 
 const FooterWrapper = Styled.div`
   & .footer__right {
@@ -109,11 +109,17 @@ function Footer({ backgroundColor }) {
             <Row>
               <div className="col-6 col-md-6">
                 <ul className="footer__links">
+                  <li>
+                    <Note color={extended.charcoal.one} bold>
+                      Company
+                    </Note>
+                  </li>
+
                   {MENU.map(item => (
                     <li key={item.key}>
                       <Note color={primary.purple}>
                         <Anchor to={item.link}>
-                          {item.label.toUpperCase()}
+                          {toCapitalCase(item.label)}
                         </Anchor>
                       </Note>
                     </li>
@@ -122,11 +128,17 @@ function Footer({ backgroundColor }) {
               </div>
               <div className="col-6 col-md-6">
                 <ul className="footer__links">
+                  <li>
+                    <Note color={extended.charcoal.one} bold>
+                      Legal
+                    </Note>
+                  </li>
+
                   {LEGAL_INFO.map(item => (
                     <li key={item.key}>
                       <Note color={primary.purple}>
                         <Anchor to={item.link}>
-                          {item.label.toUpperCase()}
+                          {toCapitalCase(item.label)}
                         </Anchor>
                       </Note>
                     </li>
@@ -140,25 +152,43 @@ function Footer({ backgroundColor }) {
               <Col className="col-md-6 footer__company-info">
                 <ul className="footer__address">
                   <li>
-                    <Note color={extended.charcoal.three}>Uprise</Note>
+                    <Note bold color={extended.charcoal.one}>
+                      Uprise
+                    </Note>
                   </li>
                   <li>
-                    <Note style={{ fontWeight: 'normal' }}>
+                    <Note
+                      color={extended.charcoal.one}
+                      style={{ fontWeight: 'normal' }}
+                    >
                       11 York Street, Sydney,
                     </Note>
                   </li>
                   <li>
-                    <Note style={{ fontWeight: 'normal' }}>
+                    <Note
+                      color={extended.charcoal.one}
+                      style={{ fontWeight: 'normal' }}
+                    >
                       NSW, 2000, Australia
                     </Note>
                   </li>
                 </ul>
                 <ul className="footer__contact">
                   <li>
-                    <Note style={{ fontWeight: 'normal' }}>1300 209 371</Note>
+                    <Note
+                      color={extended.charcoal.one}
+                      style={{ fontWeight: 'normal' }}
+                    >
+                      1300 209 371
+                    </Note>
                   </li>
                   <li>
-                    <Note style={{ fontWeight: 'normal' }}>team@uprise.co</Note>
+                    <Note
+                      color={extended.charcoal.one}
+                      style={{ fontWeight: 'normal' }}
+                    >
+                      team@uprise.co
+                    </Note>
                   </li>
                 </ul>
               </Col>
@@ -176,7 +206,7 @@ function Footer({ backgroundColor }) {
                     </Anchor>
                   ))}
                 </div>
-                <Note className="copy-rights">
+                <Note className="copy-rights" color={extended.charcoal.one}>
                   © 2017 Uprise Services. All rights reserved.
                 </Note>
               </Col>
