@@ -82,6 +82,24 @@ export default {
       </g>
     </svg>
   ),
+  arrow: props => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="11"
+      height="7"
+      viewBox="0 0 11 7"
+      {...props}
+    >
+      <g fill="none" fill-rule="evenodd">
+        <path d="M-2-5h15v16H-2z" />
+        <path
+          fill="#6D6C79"
+          fill-rule="nonzero"
+          d="M5.892 6.337l4.946-4.893a.553.553 0 1 0-.785-.78L5.5 5.173.948.665a.554.554 0 0 0-.786.78l4.946 4.893a.553.553 0 0 0 .784 0z"
+        />
+      </g>
+    </svg>
+  ),
   dot: props => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" {...props}>
       <circle cx="10" cy="10" r="3" fill="#7D60FF" />
