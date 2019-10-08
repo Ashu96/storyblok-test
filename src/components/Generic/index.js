@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import { isExternal } from '../../utils'
+import { isExternal, navigateTo } from '../../utils'
 
 function Anchor({ to, children, activeClassName, ...restProps }) {
   return isExternal(to) ? (
@@ -14,4 +14,13 @@ function Anchor({ to, children, activeClassName, ...restProps }) {
   )
 }
 
-export { Anchor }
+function Redirect({ blok }) {
+  const {to} = blok
+  React.useEffect(() => {
+    navigateTo(to)
+  }, [to])
+  
+  return  null
+}
+
+export { Anchor, Redirect }
