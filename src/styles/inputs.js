@@ -293,3 +293,38 @@ SelectMenu.defaultProps = {
     }
   ]
 }
+
+const CheckBoxWrapper = Styled.div`
+  margin-bottom: 20px;
+  & input {
+    margin-right: 8px;
+  }
+
+`
+
+export function CheckBox({ id, label, required, ...restProps }) {
+  return (
+    <CheckBoxWrapper>
+      <input
+        type="checkbox"
+        className="form-check-input"
+        id={id}
+        {...restProps}
+      />
+      <label className="form-check-label" htmlFor={id}>
+        {required && '*'}
+        {label}
+      </label>
+    </CheckBoxWrapper>
+  )
+}
+
+CheckBox.propTypes = {
+  id: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired
+}
+
+CheckBox.defaultProps = {
+  label: `I have read the Participant Information Sheet or it has been provided to
+  me in a language that I understand`
+}
