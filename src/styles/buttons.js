@@ -11,28 +11,36 @@ const Button = Styled.button`
   height: 50px;
   padding: 11px 16px;
   color: ${primary.purple};
-  cursor: pointer;
   font-size: 18px;
+  cursor: ${props => (props.disabled ? 'not-allowed' : 'pointer')};
 `
 
 export const OutLineButton = Styled(Button)`
   border-radius: 10px;
   color: ${props =>
-		props.secondary ? secondary.electricBlue : primary.purple};
+    props.secondary ? secondary.electricBlue : primary.purple};
   border: solid 1px ${props =>
-		props.secondary ? secondary.electricBlue : primary.purple};
+    props.secondary ? secondary.electricBlue : primary.purple};
 `
 export const LinkButton = Styled(Button)`
   font-size: 16px;
   color: ${props =>
-		props.secondary ? secondary.electricBlue : primary.purple};
+    props.secondary ? secondary.electricBlue : primary.purple};
 `
 export const PrimaryButton = Styled(Button)`
   border-radius: 10px;
   border: solid 1px ${props =>
-		props.secondary ? secondary.electricBlue : primary.purple};
+    props.disabled
+      ? extended.charcoal.two
+      : props.secondary
+      ? secondary.electricBlue
+      : primary.purple};
   background-color: ${props =>
-		props.secondary ? secondary.electricBlue : primary.purple};
+    props.disabled
+      ? extended.charcoal.two
+      : props.secondary
+      ? secondary.electricBlue
+      : primary.purple};
   color: ${backgrounds.white};
   width: ${props => (props.large ? '100%' : 'auto')};
   height: ${props => (props.large ? '60px' : '')};
@@ -45,9 +53,9 @@ export const RoundButton = Styled(Button)`
   line-height: normal;
   letter-spacing: normal;
   color: ${props =>
-		props.isActive ? backgrounds.white : extended.charcoal.one};
+    props.isActive ? backgrounds.white : extended.charcoal.one};
   background-color: ${props =>
-		props.isActive ? primary.purple : backgrounds.white};
+    props.isActive ? primary.purple : backgrounds.white};
 
   border-radius: 25px;
   box-shadow: 0 5px 10px 0 rgba(219, 221, 227, 0.5);

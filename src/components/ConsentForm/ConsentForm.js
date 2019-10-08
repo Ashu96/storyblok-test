@@ -119,10 +119,11 @@ function ConsentForm({ to }) {
 
         <Row className="action-download">
           <Col className="col-lg-3">
-            <OutLineButton>Download</OutLineButton>
+            <OutLineButton disabled={!download}>Download</OutLineButton>
           </Col>
           <Col className="col-lg-3">
             <OutLineButton
+              disabled={!download}
               onClick={() => {
                 window && window.print()
               }}
