@@ -36,6 +36,7 @@ import RelatedPosts from './Blog/RelatedPosts'
 import TrainingCard from './TrainingCard'
 import Testimony from './Testimony'
 import FaqCard from './FaqCard'
+import {Redirect} from './Generic'
 
 const ComponentList = {
   page: Page,
@@ -77,7 +78,8 @@ const ComponentList = {
   [SECTION_TYPES.RELATED_POST]: RelatedPosts,
   [SECTION_TYPES.TRAINING_CARD]: TrainingCard,
   [SECTION_TYPES.TESTIMONY_CARD]: Testimony,
-  [SECTION_TYPES.FAQ_CARD]: FaqCard
+  [SECTION_TYPES.FAQ_CARD]: FaqCard,
+  [SECTION_TYPES.REDIRECT]: Redirect
 }
 
 const Components = (type) => {

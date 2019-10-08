@@ -62,7 +62,7 @@ export function isExternal(url) {
   return url.includes('http')
 }
 
-export function navigateTo(link, { fn } = {}) {
+export function navigateTo(link = '/', { fn } = {}) {
   if (isExternal(link)) {
     window.open(link, '_blank')
   } else if (link.includes('video') && fn) {
