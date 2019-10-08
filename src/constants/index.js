@@ -45,7 +45,8 @@ export const SECTION_TYPES = {
   TRAINING_CARD: 'TRAINING_CARD',
   TESTIMONY_CARD: 'TESTIMONY_CARD',
   FAQ_CARD: 'FAQ_CARD',
-  REDIRECT: 'redirect'
+  REDIRECT: 'redirect',
+  CONSENT_FORM: 'CONSENT_FORM'
 }
 
 export const CARD_TYPES = {

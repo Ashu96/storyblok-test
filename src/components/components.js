@@ -37,6 +37,7 @@ import TrainingCard from './TrainingCard'
 import Testimony from './Testimony'
 import FaqCard from './FaqCard'
 import {Redirect} from './Generic'
+import ConsentForm from './ConsentForm'
 
 const ComponentList = {
   page: Page,
@@ -79,7 +80,8 @@ const ComponentList = {
   [SECTION_TYPES.TRAINING_CARD]: TrainingCard,
   [SECTION_TYPES.TESTIMONY_CARD]: Testimony,
   [SECTION_TYPES.FAQ_CARD]: FaqCard,
-  [SECTION_TYPES.REDIRECT]: Redirect
+  [SECTION_TYPES.REDIRECT]: Redirect,
+  [SECTION_TYPES.CONSENT_FORM]: ConsentForm
 }
 
 const Components = (type) => {
