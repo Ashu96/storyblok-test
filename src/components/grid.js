@@ -2,7 +2,6 @@ import React from 'react'
 import Components from './components.js'
 import SbEditable from 'storyblok-react'
 import { SectionWrapper, Row, Col } from '../styles/grid'
-import { extended } from '../constants/colors'
 import { useMobile } from '../utils'
 
 function Grid(props) {
@@ -54,10 +53,10 @@ function Grid(props) {
         }}
         containerFluidProps={{
           style: {
-            borderTop: borderTop ? `1px solid ${extended.purple.five}` : 0,
-            borderBottom: borderBottom
-              ? `1px solid ${extended.purple.five}`
-              : 'none',
+            borderTopLeftRadius: borderTop ? 10 : 0,
+            borderTopRightRadius: borderTop ? 10 : 0,
+            borderBottomLeftRadius: borderBottom ? 10 : 0,
+            borderBottomRightRadius: borderBottom ? 10 : 0,
             backgroundColor: backgroundColor && backgroundColor.trim(),
             paddingLeft: noPaddingHorizontal ? 0 : 15,
             paddingRight: noPaddingHorizontal ? 0 : 15

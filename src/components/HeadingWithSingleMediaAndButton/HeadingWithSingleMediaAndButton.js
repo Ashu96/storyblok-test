@@ -21,7 +21,7 @@ const HeadingWithSingleMediaAndButtonWrapper = Styled.div`
 
     & h2 {
       text-align: ${props => (props.splitScreen ? 'left' : 'center')};
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
 
     & .media {
@@ -34,7 +34,7 @@ const HeadingWithSingleMediaAndButtonWrapper = Styled.div`
     }
 
     & .markdown {
-      margin-bottom: 30px;
+      margin-bottom: 40px;
       & p {
         margin-bottom: 0px;
       }
