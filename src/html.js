@@ -53,7 +53,9 @@ provider in Australia."
           ></script>
           <link
             href="https://app.birdseed.io/css/birdseed-embed.css"
-            rel="stylesheet"
+            rel="preload"
+            as="style"
+            onload="this.onload=null;this.rel='stylesheet'"
           ></link>
         </head>
         <body style={{ visibility: 'hidden' }}>
