@@ -108,10 +108,16 @@ export function NavButton({ item, classNames }) {
 }
 
 export function DropDownMenu({ id, items, open, isClicked }) {
+  
+  const heightOfMenuItem = 42 + 12 // height + margin
+
   React.useEffect(() => {
     if (isClicked && open) {
       const tl = new TimelineMax({})
-      tl.to(`#${id}`, 0.2, { height: 140, autoAlpha: 1 })
+      tl.to(`#${id}`, 0.2, {
+        height: items.length * heightOfMenuItem + 12,
+        autoAlpha: 1
+      })
       tl.staggerTo(`.menu-item--${id}`, 0.15, { autoAlpha: 1 }, 0.1)
     }
     if (isClicked && !open) {
@@ -122,7 +128,6 @@ export function DropDownMenu({ id, items, open, isClicked }) {
       })
     }
   }, [open, id, isClicked])
-  console.log({ dropdown: items })
   return (
     <DropDown id={id} className="dropdown" open={open}>
       {items.map(item => (

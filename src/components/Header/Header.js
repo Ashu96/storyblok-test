@@ -73,6 +73,9 @@ const HeaderContainer = Styled.header`
     } 
     & ul li {
       width: 100%;
+      & a {
+        white-space: nowrap;
+      }
     }
   }
 
