@@ -125,5 +125,5 @@ export function useHeader() {
 export function logger(message) {
   var css = `color: #27ae60; font-size: 18px;`
 
-  console.log('%cExample %s', css, message)
+  console.log('%c %s', css, message)
 }

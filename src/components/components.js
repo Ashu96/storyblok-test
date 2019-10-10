@@ -22,7 +22,7 @@ import StaffMemberCard from './StaffMemberCard'
 import Subscribe from './Subscribe'
 import ContactForm from './ContactForm'
 import Static from './Static'
-import Plugin, { PaperForm } from './Plugin'
+import Plugin, { PaperForm, Code } from './Plugin'
 import Path from './Path'
 import CollateralCard from './CollateralCard'
 import Carousel from './Carousel'
@@ -81,7 +81,8 @@ const ComponentList = {
   [SECTION_TYPES.TESTIMONY_CARD]: Testimony,
   [SECTION_TYPES.FAQ_CARD]: FaqCard,
   [SECTION_TYPES.REDIRECT]: Redirect,
-  [SECTION_TYPES.CONSENT_FORM]: ConsentForm
+  [SECTION_TYPES.CONSENT_FORM]: ConsentForm,
+  [SECTION_TYPES.CODE]: Code
 }
 
 const Components = (type) => {
