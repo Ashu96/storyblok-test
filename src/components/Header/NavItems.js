@@ -73,6 +73,11 @@ export function NavDropDown({ item, navItems, classNames }) {
         setIsClicked(true)
         toggleOpen(!open)
       }}
+      // We are using tabIndex to get `onBlur` event
+      tabIndex="0"
+      onBlur={() => {
+        toggleOpen(false)
+      }}
     >
       <div className="link">
         {!item.image && item.title}
@@ -108,14 +113,12 @@ export function NavButton({ item, classNames }) {
 }
 
 export function DropDownMenu({ id, items, open, isClicked }) {
-  
-  const heightOfMenuItem = 42 + 12 // height + margin
 
   React.useEffect(() => {
     if (isClicked && open) {
       const tl = new TimelineMax({})
       tl.to(`#${id}`, 0.2, {
-        height: items.length * heightOfMenuItem + 12,
+        height: items.length * 54 + 12, // 54 is height of menu item and extra 12 for spacing on bottom
         autoAlpha: 1
       })
       tl.staggerTo(`.menu-item--${id}`, 0.15, { autoAlpha: 1 }, 0.1)
@@ -127,7 +130,7 @@ export function DropDownMenu({ id, items, open, isClicked }) {
         height: 0
       })
     }
-  }, [open, id, isClicked])
+  }, [open, id, isClicked, items])
   return (
     <DropDown id={id} className="dropdown" open={open}>
       {items.map(item => (

@@ -68,6 +68,9 @@ const HeaderContainer = Styled.header`
   & .header__nav-dropdown {
     z-index: 1;
     position: relative;
+    /* We are using tabIndex here for getting onBlur event, so that we can close dropdown when blur  */
+    outline: none;
+
     & .header__nav-item--icon {
       /* transform: rotate(90deg); */
     } 
