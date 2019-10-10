@@ -9,18 +9,23 @@ const CodeWrapper = Styled.div`
 `
 
 function Code({ blok }) {
+  const { script, body, source } = blok
+
   React.useEffect(() => {
-    logger('Effect')
-    // const script = document.createElement('script')
-    // document.body.appendChild(script);
-    // script.onload = () => {
-    //     console.log('Loaded...')
-    // }
-    // script.src = "https://paperform.co/__embed"
-  }, [])
-  logger('Render Code')
-  console.count('Render')
-  return <CodeWrapper dangerouslySetInnerHTML={{ __html: blok.body }}></CodeWrapper>
+    if (source) {
+      const script = document.createElement('script')
+      document.body.appendChild(script)
+      script.onload = () => {
+        logger('Loaded')
+      }
+      script.src = source
+    } else {
+      const scriptContent = script.slice(8, -9)
+      window.eval(scriptContent)
+    }
+  }, [source, script])
+
+  return <CodeWrapper dangerouslySetInnerHTML={{ __html: body }}></CodeWrapper>
 }
 
 export default Code
