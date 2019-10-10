@@ -1,6 +1,7 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Default Starter'
+    title: 'Uprise Employee Assistance',
+    siteUrl: `https://uprise.co/`
   },
   plugins: [
     {
@@ -14,6 +15,7 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
+    `gatsby-plugin-sitemap`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {

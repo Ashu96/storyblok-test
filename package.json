@@ -12,6 +12,7 @@
     "gatsby-plugin-page-transitions": "^1.0.8",
     "gatsby-plugin-react-helmet": "^3.0.0",
     "gatsby-plugin-sharp": "^2.0.7",
+    "gatsby-plugin-sitemap": "^2.2.17",
     "gatsby-source-filesystem": "^2.0.4",
     "gatsby-source-google-sheets": "^1.1.1",
     "gatsby-source-storyblok": "^0.2.4",
