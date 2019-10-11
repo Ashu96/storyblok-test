@@ -4,6 +4,7 @@ import Img from 'gatsby-image'
 import Styled from 'styled-components'
 import { getFixedGatsbyImage } from 'gatsby-storyblok-image'
 import { Heading2 } from '../../styles/text'
+import { getDimensions } from '../../utils'
 
 const MultipleMediaWithCaptionWrapper = Styled.div`
   flex-direction: column;
@@ -45,7 +46,6 @@ const ListContainer = Styled.ul`
   flex-direction: column;
   margin-top: 40px;
   padding: 0px;
-
   & li {
     display: flex;
     justify-content: center;
@@ -61,15 +61,18 @@ const ListContainer = Styled.ul`
 const ListItem = Styled.li`
   margin-left: 33px;
   margin-top: 40px;
+  min-width: 137px;
 `
 
 function List({ images }) {
   return (
     <ListContainer>
       {images.map((image, index) => {
+        const [width] = getDimensions(image.filename)
         const fixedProps = getFixedGatsbyImage(image.filename, {
-          width: 137
+          width
         })
+
         return (
           <ListItem key={image.name + index}>
             <Img fixed={fixedProps} alt={image.name} />
