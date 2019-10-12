@@ -18,11 +18,6 @@ provider in Australia."
           />
           {this.props.headComponents}
           <script
-            type="text/javascript"
-            async
-            src="https://assets.calendly.com/assets/external/widget.js"
-          ></script>
-          <script
             dangerouslySetInnerHTML={{
               __html: `
               function setup() {
@@ -53,9 +48,7 @@ provider in Australia."
           ></script>
           <link
             href="https://app.birdseed.io/css/birdseed-embed.css"
-            rel="preload"
-            as="style"
-            onload="this.onload=null;this.rel='stylesheet'"
+            rel="stylesheet"
           ></link>
         </head>
         <body style={{ visibility: 'hidden' }}>

@@ -127,3 +127,29 @@ export function logger(message) {
 
   console.log('%c %s', css, message)
 }
+
+export function useScript(url, options = {}) {
+  const { shouldLoad, onLoad, onError, async, defer } = options
+
+  React.useEffect(() => {
+    if (shouldLoad) {
+      const script = document.createElement('script')
+      document.body.appendChild(script)
+      script.onload = () => {
+        logger('Script loaded successfully!')
+        onLoad && onLoad()
+      }
+      script.onerror = () => {
+        logger('Error occurred while loading script')
+        onError && onError()
+      }
+      if (async) {
+        script.async = true
+      }
+      if (defer) {
+        script.defer = true
+      }
+      script.src = url
+    }
+  }, [url, shouldLoad, onLoad, onError, async, defer])
+}
