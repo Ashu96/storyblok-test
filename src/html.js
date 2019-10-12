@@ -17,6 +17,70 @@ provider in Australia."
             content="width=device-width, initial-scale=1.0"
           />
           {this.props.headComponents}
+          <style
+            dangerouslySetInnerHTML={{
+              __html: `
+            /* Embedded Styles for Bird Seed Widget */
+            /* https://birdseed.io */
+            
+            #bsd-iframe-widget {
+              max-width: 460px;
+              position: fixed;
+              right: 0;
+              bottom: 0;
+              height: 100% !important;
+              border: none;
+              z-index: 9999998;
+              margin-bottom: 0;
+            }
+            
+            #bsd-iframe-widget.bsd-iframe-open {
+              min-height: 300px !important;
+              max-height: 770px !important;
+              width: 460px !important;
+            }
+            
+            #bsd-iframe-widget.bsd-iframe-close {
+              width: 120px !important;
+              height: 120px !important;
+            }
+            
+            #bsd-iframe-widget.bsd-iframe-mobile.bsd-iframe-close {
+              width: 120px !important;
+              height: 120px !important;
+            }
+            
+            
+            @media screen and (max-width: 820px) {
+              #bsd-iframe-widget.bsd-iframe-mobile.bsd-iframe-open {
+                border-radius: 0;
+            
+                max-width: 100% !important;
+                max-height: 100% !important;
+                min-height: 300px !important;
+                bottom: 0;
+                right: 0;
+            
+                height: 100% !important;
+                width: 100% !important;
+            
+                z-index: 1000000000;
+            
+              }
+            }
+            
+            #bsd-iframe-button {
+              right: -0;
+            }
+            
+            /*#bsd-iframe-widget.bsd-iframe-mobile {
+              height: 120px !important;
+              width: 120px !important;
+            }
+            */
+          `
+            }}
+          ></style>
           <script
             dangerouslySetInnerHTML={{
               __html: `
@@ -46,10 +110,6 @@ provider in Australia."
               `
             }}
           ></script>
-          <link
-            href="https://app.birdseed.io/css/birdseed-embed.css"
-            rel="stylesheet"
-          ></link>
         </head>
         <body style={{ visibility: 'hidden' }}>
           <div

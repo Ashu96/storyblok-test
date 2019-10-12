@@ -45,7 +45,7 @@ export function NavLogo({ item, classNames }) {
   return (
     <li className={`header__logo ${classNames}`}>
       <Anchor to={item.link}>
-        {item.image && <img loading="lazy" src={item.image} alt="" />}
+        {item.image && <img loading="lazy" src={item.image} alt="uprise logo" />}
         {!item.image && item.title}
       </Anchor>
     </li>
