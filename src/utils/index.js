@@ -130,9 +130,12 @@ export function logger(message) {
 
 export function useScript(url, options = {}) {
   const { shouldLoad, onLoad, onError, async, defer } = options
-
+  const [isScriptLoaded, setIsScriptLoaded] = React.useState(false)
+ 
   React.useEffect(() => {
-    if (shouldLoad) {
+    if (!isScriptLoaded && shouldLoad) {
+      setIsScriptLoaded(true)
+      
       const script = document.createElement('script')
       document.body.appendChild(script)
       script.onload = () => {
@@ -151,5 +154,5 @@ export function useScript(url, options = {}) {
       }
       script.src = url
     }
-  }, [url, shouldLoad, onLoad, onError, async, defer])
+  }, [isScriptLoaded, url, shouldLoad, onLoad, onError, async, defer])
 }

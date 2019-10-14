@@ -1,6 +1,5 @@
 import React from 'react'
 import Styled from 'styled-components'
-import { PrimaryButton } from '../../styles/buttons'
 import { useScript } from '../../utils'
 
 const PluginWrapper = Styled.div`
@@ -17,9 +16,16 @@ function Plugin({ blok }) {
   const { url } = blok
   const [loadScript, setLoadScript] = React.useState(false)
 
+  React.useEffect(() => {
+    if (!loadScript) {
+      setLoadScript(true)
+    }
+  }, [loadScript])
+
   useScript('https://assets.calendly.com/assets/external/widget.js', {
     shouldLoad: loadScript,
     onLoad: () => {
+      console.count('load')
       // eslint-disable-next-line
       window.Calendly.initInlineWidget({
         url: `${url}?hide_event_type_details=1&&primary_color=7d60ff&&text_color=20272c`,
@@ -32,11 +38,6 @@ function Plugin({ blok }) {
 
   return (
     <PluginWrapper>
-      {!loadScript && (
-        <PrimaryButton onClick={() => setLoadScript(true)}>
-          See calendar
-        </PrimaryButton>
-      )}
       <div className="plugin" id="uprise-calendar" />
     </PluginWrapper>
   )
