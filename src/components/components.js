@@ -38,6 +38,7 @@ import Testimony from './Testimony'
 import FaqCard from './FaqCard'
 import {Redirect} from './Generic'
 import ConsentForm from './ConsentForm'
+import PricingCard from './PricingCard'
 
 const ComponentList = {
   page: Page,
@@ -82,7 +83,8 @@ const ComponentList = {
   [SECTION_TYPES.FAQ_CARD]: FaqCard,
   [SECTION_TYPES.REDIRECT]: Redirect,
   [SECTION_TYPES.CONSENT_FORM]: ConsentForm,
-  [SECTION_TYPES.CODE]: Code
+  [SECTION_TYPES.CODE]: Code,
+  [SECTION_TYPES.PRICING_CARD]: PricingCard
 }
 
 const Components = (type) => {

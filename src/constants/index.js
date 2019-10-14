@@ -47,7 +47,8 @@ export const SECTION_TYPES = {
   FAQ_CARD: 'FAQ_CARD',
   REDIRECT: 'redirect',
   CONSENT_FORM: 'CONSENT_FORM',
-  CODE: 'CODE'
+  CODE: 'CODE',
+  PRICING_CARD: 'PRICING_CARD'
 }
 
 export const CARD_TYPES = {
