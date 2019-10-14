@@ -33,7 +33,8 @@ function Button({
   link,
   withIcon,
   alignHorizontal = 'center',
-  size = 'auto'
+  size = 'auto',
+  className
 }) {
   const data = useStaticQuery(graphql`
     {
@@ -74,7 +75,9 @@ function Button({
     >
       <Button
         onClick={() => navigateTo(link)}
-        className={withImage ? 'button--with-image' : ''}
+        className={
+          withImage ? `${className} button--with-image` : `${className}`
+        }
       >
         {label}
         {withIcon && (

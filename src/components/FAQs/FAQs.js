@@ -1,9 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Styled from 'styled-components'
+
 import Accordion from '../Accordion'
 import questions from './questions'
-import {backgrounds, extended} from '../../constants/colors'
+import { backgrounds, extended } from '../../constants/colors'
 
 const FAQsWrapper = Styled.div`
   max-width: 770px;
@@ -28,13 +29,28 @@ const FAQsWrapper = Styled.div`
   }
 `
 
-function FAQs() {
+function FAQs({ faqs = '' }) {
+  const formattedFAQS = faqs.split(/\r?\n/).filter(item => item.length)
+  const questionAnswers = []
+
+  let key = 0
+  for (let i = 0; i < formattedFAQS.length; i = i + 2) {
+    const entry = {
+      id: key++,
+      question: formattedFAQS[i],
+      answer: formattedFAQS[i + 1]
+    }
+    questionAnswers.push(entry)
+  }
+
+  const defaultQuestions = questionAnswers.length ? questionAnswers : questions
+
   return (
     <FAQsWrapper>
-      {questions.map(question => (
+      {defaultQuestions.map(question => (
         <React.Fragment key={question.id}>
-          <Accordion {...question}/>
-          {question.id < questions.length - 1 && <div className='hr'/>}
+          <Accordion {...question} />
+          {question.id < defaultQuestions.length - 1 && <div className="hr" />}
         </React.Fragment>
       ))}
     </FAQsWrapper>

@@ -4,7 +4,6 @@ import Styled from 'styled-components'
 import Icon from '../Icon'
 import { Heading4, Label } from '../../styles/text'
 import { extended } from '../../constants/colors'
-import { useMobile } from '../../utils'
 
 const AccordionWrapper = Styled.div`
   & .question-container {
@@ -35,34 +34,43 @@ const AccordionWrapper = Styled.div`
   }
 
   @keyframes fadeIn {
-    from {
+    0% {
       opacity: 0;
       height: 1px;
     }
-    to {
+    100% {
       opacity: 1;
-      height: ${props => props.height};
+      height: ${props => `${props.height}px`};
     }
   }
   @keyframes fadeOut {
-    from {
+    0% {
       opacity: 1;
-      height: ${props => props.height};
+      height: ${props => `${props.height}px`};
     }
-    to {
+    100% {
       opacity: 0;
       height: 1px;
     }
   }
 `
 
-function Accordion({ question, answer }) {
+function Accordion({ question, answer, id }) {
   const [isOpen, toggleOpen] = React.useState(false)
-  const isMobile = useMobile()
+  const [height, setHeight] = React.useState(120)
+  
+  React.useEffect(() => {
+    const container = document.querySelector(`.answer-${id}`)
+    if (container) {
+      const { height } = container.getBoundingClientRect()
+      setHeight(height + 24)
+    }
+  }, [isOpen, id])
+
 
   return (
-    <AccordionWrapper isOpen={isOpen} height={isMobile ? '120px' : '50px'}>
-      <div className="question-container">
+    <AccordionWrapper isOpen={isOpen} height={height}>
+      <div className="question-container" onClick={() => toggleOpen(!isOpen)}>
         <Heading4 className="question" bold>
           {question}
         </Heading4>
@@ -71,12 +79,14 @@ function Accordion({ question, answer }) {
           name="chevron"
           rotate={isOpen ? -90 : 90}
           fill={extended.electricPurple.one}
-          onClick={() => toggleOpen(!isOpen)}
         />
       </div>
       {true && (
-        <div className="answer-container">
-          <Label className="answer" color={extended.charcoal.one}>
+        <div className={`answer-container`}>
+          <Label
+            className={`answer answer-${id}`}
+            color={extended.charcoal.one}
+          >
             {answer}
           </Label>
         </div>
