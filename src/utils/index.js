@@ -14,6 +14,19 @@ import {
   NavDropDown
 } from '../components/Header/NavItems'
 
+export function useContainerWidth(selector = 'body', padding = 30) {
+  const [containerWidth, setContainerWidth] = React.useState(0)
+
+  React.useEffect(() => {
+    const el = document.querySelector(selector)
+    if (el) {
+      const { width } = el.getBoundingClientRect()
+      setContainerWidth(width - padding)
+    }
+  }, [selector])
+  return containerWidth
+}
+
 export function getDimensions(url = '') {
   const tokens = url.split('/')
   const resolution = tokens.find(token => token.includes('x'))
@@ -131,11 +144,11 @@ export function logger(message) {
 export function useScript(url, options = {}) {
   const { shouldLoad, onLoad, onError, async, defer } = options
   const [isScriptLoaded, setIsScriptLoaded] = React.useState(false)
- 
+
   React.useEffect(() => {
     if (!isScriptLoaded && shouldLoad) {
       setIsScriptLoaded(true)
-      
+
       const script = document.createElement('script')
       document.body.appendChild(script)
       script.onload = () => {
