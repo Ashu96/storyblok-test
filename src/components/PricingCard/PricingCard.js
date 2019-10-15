@@ -7,11 +7,9 @@ import Heading from '../Heading'
 import PricingSlider from '../PricingTable/PricingSlider'
 import { backgrounds, extended } from '../../constants/colors'
 import { Heading2 } from '../../styles/text'
-import { logger } from '../../utils'
 
 const PricingCardWrapper = Styled.div`
-  width: ${props =>
-    props.fullWidth ? '100%' : props.singleItem ? '570px' : '370px'};
+  width: auto;
   min-height: ${props => (props.fullWidth ? 'auto' : '584px')};
   border-radius: 10px;
   box-shadow: 0 4px 10px 0 rgba(219, 221, 227, 0.5);
@@ -22,7 +20,7 @@ const PricingCardWrapper = Styled.div`
       : props.alignHorizontal === 'flex-start'
       ? '0px auto 0px 0px'
       : '0px 0px 0px auto'};
-  margin-bottom: ${props => (props.fullWidth ? '30px' : '0px')};
+  margin-bottom: 30px;
 
   & .header {
     height: 80px;
@@ -34,7 +32,7 @@ const PricingCardWrapper = Styled.div`
 
 
   & .body {
-    padding: ${props => (props.singleItem ? '24px 70px 40px' : '40px')};
+    padding: 30px;
     & .price {
       font-family: 'Proxima Nova';
       font-size: ${props => (props.pricingSlider ? '76px' : '42px')};
@@ -58,11 +56,6 @@ const PricingCardWrapper = Styled.div`
         margin-bottom: ${props =>
           props.pointIcon === 'dot' ? '12px' : '16px'};
       }
-
-      /* & p:before {
-        content: '*';
-        margin-right: 12px;
-      } */
     }
 
     & .actions {
@@ -82,8 +75,28 @@ const PricingCardWrapper = Styled.div`
       flex-wrap: wrap;
       margin-bottom: 32px;
       & .feature {
-        flex: ${props => (props.fullWidth ? '0 0 33.3333%' : '0 0 100%')};
-        max-width: ${props => (props.fullWidth ? '33.3333%' : '100%')};
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+    }
+  }
+
+  @media (min-width: 1024px) {
+    width: ${props =>
+      props.fullWidth ? '100%' : props.singleItem ? '570px' : '370px'};
+    margin-bottom: ${props => (props.fullWidth ? '30px' : '0px')};
+
+    & .body {
+      padding: ${props => (props.singleItem ? '24px 70px 40px' : '40px')};
+    
+      & .features {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 32px;
+        & .feature {
+          flex: ${props => (props.fullWidth ? '0 0 33.3333%' : '0 0 100%')};
+          max-width: ${props => (props.fullWidth ? '33.3333%' : '100%')};
+        }
       }
     }
   }
