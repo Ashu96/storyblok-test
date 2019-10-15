@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Styled from 'styled-components'
-import ReactMarkDown from 'react-markdown'
 import Button from '../Button'
 import Heading from '../Heading'
 import PricingSlider from '../PricingTable/PricingSlider'
@@ -133,7 +132,6 @@ function PricingCard({
         {features && (
           <div className="features">
             {features.map(feature => {
-              console.log({ feature })
               return (
                 <div className="feature">
                   <Heading blok={feature} />

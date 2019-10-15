@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Styled from 'styled-components'
-import { getFluidGatsbyImage } from 'gatsby-storyblok-image'
+import { getFixedGatsbyImage } from 'gatsby-storyblok-image'
 import Img from 'gatsby-image'
 import ReactMarkdown from 'react-markdown'
 import { Col } from '../../styles/grid'
@@ -13,6 +13,7 @@ import {
   ContentWrapper
 } from '../../styles/text'
 import { primary, extended } from '../../constants/colors'
+import { getDimensions, useContainerWidth } from '../../utils'
 
 const SingleMediaWithCaptionAndParagraphWrapper = Styled.div`
   flex-direction: ${props => (props.textFirst ? 'row-reverse' : 'row')};
@@ -24,7 +25,7 @@ const SingleMediaWithCaptionAndParagraphWrapper = Styled.div`
   }
 
   & .media {
-    width: 80%;
+    width: 100%;
     display: flex;
     justify-content: center;
     margin: auto;
@@ -36,9 +37,9 @@ const SingleMediaWithCaptionAndParagraphWrapper = Styled.div`
       /* height: 200%; */
       max-height: 800px;
       top: -50%;
-      left: ${props => props.textFirst ? 'inherit' : '-50%'};
-      right: ${props => props.textFirst ? '-50%' : 'inherit'};
-      transform: ${props => props.textFirst ? 'none' : 'rotate(180deg)'};
+      left: ${props => (props.textFirst ? 'inherit' : '-50%')};
+      right: ${props => (props.textFirst ? '-50%' : 'inherit')};
+      transform: ${props => (props.textFirst ? 'none' : 'rotate(180deg)')};
     }
 
     & .gatsby-image-wrapper {
@@ -100,9 +101,14 @@ function SingleMediaWithCaptionAndParagraph({
   content,
   showOval = false
 }) {
-  const fluidProps = getFluidGatsbyImage(media, {
-    maxWidth: 570,
-    useBase64: true,
+  const containerWidth = useContainerWidth('.SingleMediaWithCaptionAndParagraphWrapper')
+
+  const [width, height] = getDimensions(media)
+  const aspectRatio = width / height
+
+  const fixedProps = getFixedGatsbyImage(media, {
+    width:
+      aspectRatio < 1.1 ? Math.round(containerWidth * 0.75) : containerWidth,
     toFormat: 'webp'
   })
 
@@ -115,7 +121,7 @@ function SingleMediaWithCaptionAndParagraph({
       timeline={timeline}
       showOval={showOval}
     >
-      <Col className="col-12 col-lg-6 align-self-center">
+      <Col className="col-12 col-lg-6 align-self-center SingleMediaWithCaptionAndParagraphWrapper">
         <div className="media">
           {showOval && (
             <img
@@ -124,7 +130,7 @@ function SingleMediaWithCaptionAndParagraph({
               alt=""
             />
           )}
-          {fluidProps && <Img fluid={fluidProps} alt={title} />}
+          {fixedProps && <Img fixed={fixedProps} alt={title} />}
         </div>
       </Col>
       <Col className="col-lg-6 align-self-center info">
