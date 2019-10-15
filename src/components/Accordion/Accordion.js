@@ -58,7 +58,7 @@ const AccordionWrapper = Styled.div`
 function Accordion({ question, answer, id }) {
   const [isOpen, toggleOpen] = React.useState(false)
   const [height, setHeight] = React.useState(120)
-  
+
   React.useEffect(() => {
     const container = document.querySelector(`.answer-${id}`)
     if (container) {
@@ -66,7 +66,6 @@ function Accordion({ question, answer, id }) {
       setHeight(height + 24)
     }
   }, [isOpen, id])
-
 
   return (
     <AccordionWrapper isOpen={isOpen} height={height}>
@@ -81,16 +80,11 @@ function Accordion({ question, answer, id }) {
           fill={extended.electricPurple.one}
         />
       </div>
-      {true && (
-        <div className={`answer-container`}>
-          <Label
-            className={`answer answer-${id}`}
-            color={extended.charcoal.one}
-          >
-            {answer}
-          </Label>
-        </div>
-      )}
+      <div className={`answer-container`}>
+        <Label className={`answer answer-${id}`} color={extended.charcoal.one}>
+          {answer}
+        </Label>
+      </div>
     </AccordionWrapper>
   )
 }

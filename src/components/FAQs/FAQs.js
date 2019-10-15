@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Styled from 'styled-components'
-
 import Accordion from '../Accordion'
 import questions from './questions'
 import { primary, backgrounds, extended } from '../../constants/colors'
@@ -9,7 +8,6 @@ import { Heading4, Note } from '../../styles/text'
 
 const FAQsWrapper = Styled.div`
   max-width: 770px;
-  /* min-height: 454px; */
   margin: auto;
 
   & .faqs {
@@ -24,7 +22,6 @@ const FAQsWrapper = Styled.div`
       height: 1px;
       background-color: ${extended.purple.four};
       margin: 12px 0px;
-      /* border-top: 1px solid ${backgrounds.fadedPurple}; */
     }
 
     @media (min-width: 768px) {

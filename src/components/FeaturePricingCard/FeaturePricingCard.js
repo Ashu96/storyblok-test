@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Styled from 'styled-components'
 import Icon from '../Icon'
 import Heading from '../Heading'
-import { Heading2, Note } from '../../styles/text'
+import { Heading2, Heading3, Note } from '../../styles/text'
 import { primary, extended, backgrounds } from '../../constants/colors'
 import { getButton, navigateTo } from '../../utils'
 
@@ -33,6 +33,24 @@ const FeaturePricingCardWrapper = Styled.div`
     min-height: 80px;
   }
 
+  & .price {
+    margin: 20px 0px;
+    & .price-money {
+      font-family: 'Proxima Nova';
+      font-size: 42px;
+      font-weight: 600;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      text-align: center;
+      color: #7d60ff;
+    }
+    & .price-label {
+
+    }
+  }
+
   & .body {
     margin-bottom: 32px;
     min-height: 72px;
@@ -58,20 +76,42 @@ const FeaturePricingCardWrapper = Styled.div`
   }
 
   @media (min-width: 768px) {
-    width: ${props => (props.large ? '540px' : '350px')};
-    padding: ${props => (props.large ? '60px 100px' : '35px 45px')};
+    width: ${props =>
+      props.large ? '540px' : props.widthPrice ? '370px' : '350px'};
+    padding: ${props =>
+      props.large ? '60px 100px' : props.widthPrice ? '40px' : '35px 45px'};
   }
 
 `
 
 function FeaturePricingCard({ blok }) {
-  const { title, body, media, actions, features } = blok
+  const { title, body, media, actions, features, price } = blok
+  const [formattedPrice, ...labels] = price.split(' ')
+  const label = labels.join(' ')
   return (
-    <FeaturePricingCardWrapper>
-      <div className="media">
-        <img loading="lazy" src={media} alt="" />
-      </div>
-      <Heading2 className="title">{title}</Heading2>
+    <FeaturePricingCardWrapper widthPrice={price}>
+      {media && (
+        <div className="media">
+          <img loading="lazy" src={media} alt="" />
+        </div>
+      )}
+      {media ? (
+        <Heading2 className="title">{title}</Heading2>
+      ) : (
+        <Heading3 textCenter className="title">
+          {title}
+        </Heading3>
+      )}
+      {price && !media && (
+        <div className="price">
+          <div className="price-money">{formattedPrice}</div>
+          <div className="price-label">
+            <Note textCenter color={primary.purple}>
+              {label}
+            </Note>
+          </div>
+        </div>
+      )}
       <Note className="body" color={extended.charcoal.one}>
         {body}
       </Note>
@@ -80,11 +120,6 @@ function FeaturePricingCard({ blok }) {
           console.log({ feature })
           return (
             <div className="feature">
-              <img
-                loading="lazy"
-                src={require('../../images/icons/tick.svg')}
-                alt=""
-              />
               <Heading blok={feature} />
             </div>
           )
