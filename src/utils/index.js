@@ -23,7 +23,7 @@ export function useContainerWidth(selector = 'body', padding = 30) {
       const { width } = el.getBoundingClientRect()
       setContainerWidth(width - padding)
     }
-  }, [selector])
+  }, [selector, padding])
   return containerWidth
 }
 
