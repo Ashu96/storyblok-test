@@ -25,14 +25,16 @@ function Plugin({ blok }) {
   useScript('https://assets.calendly.com/assets/external/widget.js', {
     shouldLoad: loadScript,
     onLoad: () => {
-      console.count('load')
-      // eslint-disable-next-line
-      window.Calendly.initInlineWidget({
-        url: `${url}?hide_event_type_details=1&&primary_color=7d60ff&&text_color=20272c`,
-        parentElement: document.getElementById('uprise-calendar'),
-        prefill: {},
-        utm: {}
-      })
+      const calendarContainer = document.getElementById('uprise-calendar')
+      if (!calendarContainer.innerHTML) {
+        // eslint-disable-next-line
+        window.Calendly.initInlineWidget({
+          url: `${url}?hide_event_type_details=1&&primary_color=7d60ff&&text_color=20272c`,
+          parentElement: document.getElementById('uprise-calendar'),
+          prefill: {},
+          utm: {}
+        })
+      }
     }
   })
 
