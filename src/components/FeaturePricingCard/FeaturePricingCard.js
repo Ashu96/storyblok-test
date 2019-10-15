@@ -86,8 +86,8 @@ const FeaturePricingCardWrapper = Styled.div`
 
 function FeaturePricingCard({ blok }) {
   const { title, body, media, actions, features, price } = blok
-  const [formattedPrice, ...labels] = price.split(' ')
-  const label = labels.join(' ')
+  const [formattedPrice, ...labels] = price ? price.split(' ') : []
+  const label = labels && labels.join(' ')
   return (
     <FeaturePricingCardWrapper widthPrice={price}>
       {media && (

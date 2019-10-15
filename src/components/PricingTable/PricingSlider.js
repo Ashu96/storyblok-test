@@ -7,10 +7,10 @@ import 'react-rangeslider/lib/index.css'
 
 import { Col } from '../../styles/grid'
 import { backgrounds, primary, extended } from '../../constants/colors'
-import { logger } from '../../utils'
 import { Heading2, BodyText } from '../../styles/text'
 
-function useCost() {
+function useCost({ sheetName }) {
+  const queryName = `allGoogleSheet${sheetName}Row`
   const data = useStaticQuery(graphql`
     {
       allGoogleSheetSheet1Row {
@@ -22,15 +22,32 @@ function useCost() {
           }
         }
       }
+      allGoogleSheetDigitalResilienceTrainingRow {
+        edges {
+          node {
+            employees
+            id
+            cost
+          }
+        }
+      }
     }
   `)
   // Get cost data
-  const { allGoogleSheetSheet1Row } = data
+  console.log({ data })
+  const sheetData = data[queryName]
   let costMap = {}
-  allGoogleSheetSheet1Row.edges.forEach(({ node }) => {
-    costMap[node.employees] = node.cost
-  })
-  return costMap
+  const info = {}
+  sheetData &&
+    sheetData.edges.forEach(({ node }, index) => {
+      if (index === 0) {
+        info.start = node.employees
+      }
+      info.end = node.employees
+
+      costMap[node.employees] = node.cost
+    })
+  return [costMap, info]
 }
 
 const PricingSliderWrapper = Styled.div`
@@ -70,29 +87,31 @@ const PricingSliderWrapper = Styled.div`
   }
 `
 
-function PricingSlider({ label }) {
+function PricingSlider({ label, sheetName }) {
   const [employees, setEmployees] = React.useState(10)
-  const costMap = useCost()
-
-  logger(employees)
+  const [costMap, info] = useCost({ sheetName })
+  const min = info.start
+  const max = info.end
 
   return (
     <PricingSliderWrapper className="row">
       <Col className="col-lg-9">
         <div className="price-info">
-          <Heading2 className="price">{`$ ${costMap[employees]}`}</Heading2>
+          <Heading2 className="price">{`$ ${Math.round(
+            costMap[employees]
+          )}`}</Heading2>
           <BodyText textCenter>{label}</BodyText>
         </div>
         <Slider
-          min={10}
-          max={1000}
+          min={min}
+          max={max}
           step={1}
           value={employees}
           tooltip={true}
           format={v => `${v} users`}
           labels={{
-            10: `10`,
-            1000: `1000`
+            [min]: `${min}`,
+            [max]: `${max}`
           }}
           onChange={value => setEmployees(value)}
         />

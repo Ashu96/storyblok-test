@@ -92,7 +92,8 @@ function PricingCard({
   pointIcon,
   pricingSlider,
   features,
-  fullWidth
+  fullWidth,
+  sheetName
 }) {
   const [first, second] = actions
   const singleItem = canGoFullBleed
@@ -120,7 +121,7 @@ function PricingCard({
             })}
           </div>
         )}
-        {pricingSlider && <PricingSlider label={price} />}
+        {pricingSlider && <PricingSlider label={price} sheetName={sheetName} />}
 
         <div className="actions">
           {first && <Button className="first" {...first} />}
