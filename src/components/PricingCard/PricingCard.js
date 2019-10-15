@@ -16,7 +16,12 @@ const PricingCardWrapper = Styled.div`
   border-radius: 10px;
   box-shadow: 0 4px 10px 0 rgba(219, 221, 227, 0.5);
   background-color: ${backgrounds.white};
-  margin: 0px auto;
+  margin: ${props =>
+    props.alignHorizontal === 'center'
+      ? '0px auto'
+      : props.alignHorizontal === 'flex-start'
+      ? '0px auto 0px 0px'
+      : '0px 0px 0px auto'};
   margin-bottom: ${props => (props.fullWidth ? '30px' : '0px')};
 
   & .header {
@@ -93,16 +98,19 @@ function PricingCard({
   pricingSlider,
   features,
   fullWidth,
-  sheetName
+  sheetName,
+  alignHorizontal
 }) {
   const [first, second] = actions
   const singleItem = canGoFullBleed
+  console.log({ alignHorizontal })
   return (
     <PricingCardWrapper
       pointIcon={pointIcon}
       fullWidth={fullWidth}
       singleItem={singleItem}
       pricingSlider={pricingSlider}
+      alignHorizontal={alignHorizontal}
     >
       <div className="header">
         <Heading2 textCenter={!fullWidth}>{title}</Heading2>
