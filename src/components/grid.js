@@ -78,6 +78,7 @@ function Grid(props) {
                 key: blok._uid,
                 blok: blok,
                 splitScreen,
+                canGoFullBleed: props.blok.columns_in_row == 1,
                 ...blok
               })}
             </Col>

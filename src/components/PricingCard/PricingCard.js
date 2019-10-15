@@ -3,31 +3,36 @@ import PropTypes from 'prop-types'
 import Styled from 'styled-components'
 import ReactMarkDown from 'react-markdown'
 import Button from '../Button'
+import Heading from '../Heading'
+import PricingSlider from '../PricingTable/PricingSlider'
 import { backgrounds, extended } from '../../constants/colors'
 import { Heading2 } from '../../styles/text'
+import { logger } from '../../utils'
 
 const PricingCardWrapper = Styled.div`
-  width: 370px;
-  min-height: 584px;
+  width: ${props =>
+    props.fullWidth ? '100%' : props.singleItem ? '570px' : '370px'};
+  min-height: ${props => (props.fullWidth ? 'auto' : '584px')};
   border-radius: 10px;
   box-shadow: 0 4px 10px 0 rgba(219, 221, 227, 0.5);
   background-color: ${backgrounds.white};
   margin: 0px auto;
+  margin-bottom: ${props => (props.fullWidth ? '30px' : '0px')};
 
   & .header {
     height: 80px;
     background-color: ${extended.purple.five};
-    padding: 20px 0px;
+    padding: 20px 40px;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
   }
 
 
   & .body {
-    padding: 40px;
+    padding: ${props => (props.singleItem ? '24px 70px 40px' : '40px')};
     & .price {
       font-family: 'Proxima Nova';
-      font-size: 42px;
+      font-size: ${props => (props.pricingSlider ? '76px' : '42px')};
       font-weight: 600;
       font-style: normal;
       font-stretch: normal;
@@ -36,7 +41,8 @@ const PricingCardWrapper = Styled.div`
       text-align: center;
       color: #7d60ff;
 
-      margin-bottom: 30px;
+      margin-bottom: ${props =>
+        props.pricingSlider ? '0px' : props.singleItem ? '40px' : '30px'};
     }
     & .markdown {
       & p {
@@ -55,6 +61,9 @@ const PricingCardWrapper = Styled.div`
     }
 
     & .actions {
+      & button {
+        max-width: 370px;
+      }
       & .first {
         margin-bottom: 16px;
       }
@@ -62,20 +71,57 @@ const PricingCardWrapper = Styled.div`
         margin-bottom: 0px;
       }
     }
+   
+    & .features {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+      & .feature {
+        flex: ${props => (props.fullWidth ? '0 0 33.3333%' : '0 0 100%')};
+        max-width: ${props => (props.fullWidth ? '33.3333%' : '100%')};
+      }
+    }
   }
 `
 
-function PricingCard({ title, price, points, actions, pointIcon }) {
+function PricingCard({
+  canGoFullBleed,
+  title,
+  price,
+  actions,
+  pointIcon,
+  pricingSlider,
+  features,
+  fullWidth
+}) {
   const [first, second] = actions
-
+  const singleItem = canGoFullBleed
   return (
-    <PricingCardWrapper pointIcon={pointIcon}>
+    <PricingCardWrapper
+      pointIcon={pointIcon}
+      fullWidth={fullWidth}
+      singleItem={singleItem}
+      pricingSlider={pricingSlider}
+    >
       <div className="header">
-        <Heading2 textCenter>{title}</Heading2>
+        <Heading2 textCenter={!fullWidth}>{title}</Heading2>
       </div>
       <div className="body">
-        {price && <div className="price">{price}</div>}
-        <ReactMarkDown className="markdown" source={points} />
+        {price && !pricingSlider && <div className="price">{price}</div>}
+        {features && (
+          <div className="features">
+            {features.map(feature => {
+              console.log({ feature })
+              return (
+                <div className="feature">
+                  <Heading blok={feature} />
+                </div>
+              )
+            })}
+          </div>
+        )}
+        {pricingSlider && <PricingSlider label={price} />}
+
         <div className="actions">
           {first && <Button className="first" {...first} />}
           {second && <Button className="second" {...second} />}

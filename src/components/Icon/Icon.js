@@ -7,7 +7,7 @@ import ICON_LIST from './IconList'
 // const IconWrapper = Styled.div``
 
 function Icon({ name, fill, width, rotate, ...props }) {
-  const Svg = ICON_LIST[name]
+  const Svg = ICON_LIST[name || 'tick']
   const styles = rotate ? { transform: `rotate(${rotate}deg)` } : {}
 
   return <Svg fill={fill} width={width} style={styles} {...props} />

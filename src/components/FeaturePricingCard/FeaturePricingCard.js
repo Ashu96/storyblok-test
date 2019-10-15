@@ -5,11 +5,11 @@ import Icon from '../Icon'
 import Heading from '../Heading'
 import { Heading2, Note } from '../../styles/text'
 import { primary, extended, backgrounds } from '../../constants/colors'
-import { getButton } from '../../utils'
+import { getButton, navigateTo } from '../../utils'
 
 const FeaturePricingCardWrapper = Styled.div`
   width: auto;
-
+  /* min-height: 789px; */
   margin: 0px auto;
   border-radius: 10px;
   box-shadow: 0 4px 10px 0 rgba(219, 221, 227, 0.5);
@@ -30,10 +30,12 @@ const FeaturePricingCardWrapper = Styled.div`
 
   & .title {
     margin-bottom: 16px;
+    min-height: 80px;
   }
 
   & .body {
     margin-bottom: 32px;
+    min-height: 72px;
     /* min-height: ${props => (props.isContentShort ? '120px' : '360px')} */
   }
 
@@ -44,6 +46,7 @@ const FeaturePricingCardWrapper = Styled.div`
 
   & .features {
     margin-bottom: 32px;
+    min-height: 250px;
     & .feature {
       display: flex;
       align-items: baseline;
@@ -66,7 +69,7 @@ function FeaturePricingCard({ blok }) {
   return (
     <FeaturePricingCardWrapper>
       <div className="media">
-        <img loading='lazy' src={media} alt="" />
+        <img loading="lazy" src={media} alt="" />
       </div>
       <Heading2 className="title">{title}</Heading2>
       <Note className="body" color={extended.charcoal.one}>
@@ -77,7 +80,11 @@ function FeaturePricingCard({ blok }) {
           console.log({ feature })
           return (
             <div className="feature">
-              <img loading='lazy' src={require('../../images/icons/tick.svg')} alt="" />
+              <img
+                loading="lazy"
+                src={require('../../images/icons/tick.svg')}
+                alt=""
+              />
               <Heading blok={feature} />
             </div>
           )
@@ -86,7 +93,7 @@ function FeaturePricingCard({ blok }) {
       {actions.map(action => {
         const Button = getButton(action.type)
         return (
-          <Button className="action">
+          <Button className="action" onClick={() => navigateTo(action.link)}>
             {action.label}
             {action.type === 'LINK' && <Icon fill={primary.purple} />}
           </Button>

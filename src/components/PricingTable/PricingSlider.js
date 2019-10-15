@@ -1,14 +1,14 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 import Styled from 'styled-components'
 import { useStaticQuery, graphql } from 'gatsby'
 import Slider from 'react-rangeslider'
 import 'react-rangeslider/lib/index.css'
 
-import { SectionWrapper, Col } from '../../styles/grid'
+import { Col } from '../../styles/grid'
 import { backgrounds, primary, extended } from '../../constants/colors'
 import { logger } from '../../utils'
-import { Heading2 } from '../../styles/text'
+import { Heading2, BodyText } from '../../styles/text'
 
 function useCost() {
   const data = useStaticQuery(graphql`
@@ -34,14 +34,15 @@ function useCost() {
 }
 
 const PricingSliderWrapper = Styled.div`
-  & .price {
-    font-size: 42px;
-    color: ${primary.purple};
-    text-align: center;
+  justify-content: center;
+  & .price-info {
   }
 
   & .rangeslider {
     background-color: ${backgrounds.fadedPurple};
+    box-shadow: none;
+    margin-top: 70px;
+    margin-bottom: 100px;
   }
 
   & .rangeslider-horizontal .rangeslider__fill {
@@ -50,55 +51,61 @@ const PricingSliderWrapper = Styled.div`
 
   & .rangeslider__labels .rangeslider__label-item {
     font-family: 'Proxima Nova';
-    font-size: 16px;
+    font-size: 18px;
+    top: 8px;
     color: ${extended.charcoal.one};
   }
+
+  & .rangeslider .rangeslider__handle {
+    border: none;
+    background: none;
+    box-shadow: none;
+    &::after {
+      background-color: ${primary.purple};
+    }
+  }
+  & 
 
   @media (min-width: 1024px) {
   }
 `
 
-function PricingSlider() {
+function PricingSlider({ label }) {
   const [employees, setEmployees] = React.useState(10)
   const costMap = useCost()
 
   logger(employees)
 
   return (
-    <SectionWrapper
-      containerFluidProps={{
-        style: {
-          backgroundColor: backgrounds.fadedPurple,
-          padding: '40vh 0px'
-        }
-      }}
-    >
-      <PricingSliderWrapper className="row">
-        <Col>
-          <Slider
-            min={10}
-            max={1000}
-            step={1}
-            value={employees}
-            tooltip={true}
-            labels={{
-              10: `10 Employees`,
-              1000: `1000 Employees`
-            }}
-            onChange={value => setEmployees(value)}
-          />
+    <PricingSliderWrapper className="row">
+      <Col className="col-lg-9">
+        <div className="price-info">
           <Heading2 className="price">{`$ ${costMap[employees]}`}</Heading2>
-        </Col>
-      </PricingSliderWrapper>
-    </SectionWrapper>
+          <BodyText textCenter>{label}</BodyText>
+        </div>
+        <Slider
+          min={10}
+          max={1000}
+          step={1}
+          value={employees}
+          tooltip={true}
+          format={v => `${v} users`}
+          labels={{
+            10: `10`,
+            1000: `1000`
+          }}
+          onChange={value => setEmployees(value)}
+        />
+      </Col>
+    </PricingSliderWrapper>
   )
 }
 
 export default PricingSlider
 
-// PricingSlider.propTypes = {
-//   title: PropTypes.string.isRequired
-// }
-// PricingSlider.defaultTypes = {
-//   title: PropTypes.string.isRequired
-// }
+PricingSlider.propTypes = {
+  label: PropTypes.string.isRequired
+}
+PricingSlider.defaultProps = {
+  label: `per employee / month`
+}
