@@ -2,10 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Styled from 'styled-components'
 import ReactMarkDown from 'react-markdown'
-import Icon from '../Icon'
-import { backgrounds, primary } from '../../constants/colors'
+import Button from '../Button'
 import { Heading2, ContentWrapper } from '../../styles/text'
-import { getButton, navigateTo } from '../../utils'
 
 const HeadingWithSingleMediaAndButtonWrapper = Styled.div`
 
@@ -76,7 +74,7 @@ function HeadingWithSingleMediaAndButton({
   splitScreen
 }) {
   const [primaryAction] = action
-  const Button = getButton(primaryAction && primaryAction.type)
+  // const Button = getButton(primaryAction && primaryAction.type)
 
   return (
     <HeadingWithSingleMediaAndButtonWrapper
@@ -98,22 +96,11 @@ function HeadingWithSingleMediaAndButton({
         )}
         {primaryAction && (
           <Button
+            {...primaryAction}
             className={`action ${
               primaryAction.type === 'LINK' ? 'action--link' : ''
             }`}
-            onClick={() => navigateTo(primaryAction.link)}
-          >
-            {primaryAction.label}
-            {primaryAction.withIcon && (
-              <Icon
-                fill={
-                  primaryAction.type === 'PRIMARY'
-                    ? backgrounds.white
-                    : primary.purple
-                }
-              />
-            )}
-          </Button>
+          />
         )}
       </div>
     </HeadingWithSingleMediaAndButtonWrapper>

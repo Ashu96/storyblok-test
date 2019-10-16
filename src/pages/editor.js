@@ -43,7 +43,12 @@ const getParam = function(val) {
 class StoryblokEntry extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { playVideo: false, story: null, globalNavi: { content: {} } }
+    this.state = {
+      playVideo: false,
+      url: 'https://player.vimeo.com/video/219316897',
+      story: null,
+      globalNavi: { content: {} }
+    }
   }
 
   componentDidMount() {
@@ -130,7 +135,9 @@ class StoryblokEntry extends React.Component {
           value={{
             playVideo: this.state.playVideo,
             togglePlayVideo: () =>
-              this.setState(prevState => ({ playVideo: !prevState.playVideo }))
+              this.setState(prevState => ({ playVideo: !prevState.playVideo })),
+            url: this.state.url,
+            setURL: url => this.setState({ url })
           }}
         >
           <Header />

@@ -40,11 +40,11 @@ const HeadingWrapper = Styled.div`
   justify-content: ${props => props.alignHorizontal};
 
   & .icon {
-    /* width: 6px;
-    border-radius: 50%;
-    height: 6px;
-    background-color: #7d60ff; */
     margin-right: 16px;
+  }
+
+  @media (min-width: 1024px) {
+    padding: ${props => `0px ${props.paddingHorizontal}%`};
   }
 
 `
@@ -59,14 +59,17 @@ function Heading({ blok }) {
     marginBottom,
     withPoint,
     icon,
-    alignHorizontal
+    alignHorizontal,
+    paddingHorizontal
   } = blok
   const Text = getTextComponent(size)
+  console.log({ paddingHorizontal })
   return (
     <HeadingWrapper
       marginBottom={marginBottom}
       showPoint={withPoint}
       alignHorizontal={alignHorizontal}
+      paddingHorizontal={paddingHorizontal}
     >
       {withPoint && <Icon name={icon} className='icon'/>}
       <Text

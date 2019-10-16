@@ -44,6 +44,10 @@ export const PrimaryButton = Styled(Button)`
   color: ${backgrounds.white};
   width: ${props => (props.large ? '100%' : 'auto')};
   height: ${props => (props.large ? '60px' : '')};
+
+  @media (max-width: 768px) {
+    height: auto;
+  }
 `
 export const RoundButton = Styled(Button)`
   font-size: 16px;

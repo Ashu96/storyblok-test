@@ -4,7 +4,7 @@ import Styled from 'styled-components'
 import Img from 'gatsby-image'
 import { useStaticQuery, graphql } from 'gatsby'
 import Icon from '../Icon'
-import { getButton, navigateTo } from '../../utils'
+import { getButton, navigateTo, VideoPlayerContext } from '../../utils'
 import { backgrounds, primary } from '../../constants/colors'
 
 const ButtonWrapper = Styled.div`
@@ -34,7 +34,8 @@ function Button({
   withIcon,
   alignHorizontal = 'center',
   size = 'auto',
-  className
+  className,
+  videoURL
 }) {
   const data = useStaticQuery(graphql`
     {
@@ -66,6 +67,7 @@ function Button({
     : 'appStore'
 
   const Button = getButton(withImage ? 'LINK' : type)
+  const { togglePlayVideo, setURL } = React.useContext(VideoPlayerContext)
 
   return (
     <ButtonWrapper
@@ -74,7 +76,16 @@ function Button({
       size={size}
     >
       <Button
-        onClick={() => navigateTo(link)}
+        onClick={() =>
+          navigateTo(link, {
+            fn: () => {
+              if (videoURL) {
+                setURL(videoURL)
+                togglePlayVideo()
+              }
+            }
+          })
+        }
         className={
           withImage ? `${className} button--with-image` : `${className}`
         }

@@ -36,6 +36,7 @@ const FeatureCardWrapper = Styled.div`
     -webkit-line-clamp: 6;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    text-align: ${props => props.textAlign};
   }
 
   @media (min-width: 768px) {
@@ -49,14 +50,14 @@ const FeatureCardWrapper = Styled.div`
   }
 `
 
-function FeatureCard({ title, media, body, shortContent }) {
+function FeatureCard({ title, media, body, shortContent, textAlign }) {
   const fixedProps = getFixedGatsbyImage(media, {
     width: 250,
     toFormat: 'webp'
   })
 
   return (
-    <FeatureCardWrapper shortContent={shortContent}>
+    <FeatureCardWrapper shortContent={shortContent} textAlign={textAlign}>
       {title && <Heading3 className="title">{title}</Heading3>}
       <div className="image-container">
         {media && (
@@ -80,7 +81,7 @@ FeatureCard.propTypes = {
   title: PropTypes.string,
   media: PropTypes.string,
   body: PropTypes.string.isRequired,
-  shortContent: PropTypes.bool,
+  shortContent: PropTypes.bool
 }
 FeatureCard.defaultTypes = {
   shortContent: false

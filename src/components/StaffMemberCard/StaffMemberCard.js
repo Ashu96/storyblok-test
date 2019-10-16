@@ -1,19 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Styled from 'styled-components'
+import Img from 'gatsby-image'
+import { getFixedGatsbyImage } from 'gatsby-storyblok-image'
 import { backgrounds } from '../../constants/colors'
 import { Heading3, BodyText } from '../../styles/text'
+import { getDimensions, useContainerWidth } from '../../utils'
 
 const StaffMemberCardWrapper = Styled.div`
-  min-width: ${props => props.hasTitle ? 'inherit' : '320px'};
-  max-width: ${props => props.hasTitle ? '320px' : '350px'};
+  min-width: ${props => (props.hasTitle ? 'inherit' : '320px')};
+  max-width: ${props => (props.hasTitle ? '320px' : '350px')};
   border-radius: 10px;
   box-shadow: ${props =>
     props.bgPrimary ? 'none' : '0 4px 10px 0 rgba(219, 221, 227, 0.5)'};
   background-color: ${props =>
     props.bgPrimary ? backgrounds.fadedPurple : backgrounds.white};
 
-  /* padding: 73px 77px 24px 79px; */
   padding: 35px;
   text-align: ${props => props.alignHorizontal};
 
@@ -23,13 +25,6 @@ const StaffMemberCardWrapper = Styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  & img {
-    width: ${props => (props.largeMedia ? '100%' : 'auto')};
-    max-width: 220px;
-    max-height: ${props => (props.largeMedia ? '220px' : '150px')};
-    margin-bottom: 36px;
-  }
 
   & .name {
     margin-bottom: 8px;
@@ -49,6 +44,18 @@ const StaffMemberCardWrapper = Styled.div`
 
 function StaffMemberCard({ blok }) {
   const { name, title, media, bgPrimary, alignHorizontal, largeMedia } = blok
+
+  // const containerWidth = useContainerWidth('.media')
+
+  const [width, height] = getDimensions(media)
+  // const aspectRatio = width / height
+
+  const fixedProps = getFixedGatsbyImage(media, {
+    width,
+    height,
+    toFormat: 'webp'
+  })
+
   return (
     <StaffMemberCardWrapper
       largeMedia={largeMedia}
@@ -56,7 +63,9 @@ function StaffMemberCard({ blok }) {
       alignHorizontal={alignHorizontal}
       hasTitle={title}
     >
-      <img loading="lazy" src={media} alt={name} />
+      <div className="media" style={{ width: '100%', marginBottom: 30 }}>
+        {fixedProps && <Img fixed={fixedProps} alt={title} />}
+      </div>
       <Heading3 className="name">{name}</Heading3>
       {title && <BodyText className="title">{title}</BodyText>}
     </StaffMemberCardWrapper>
