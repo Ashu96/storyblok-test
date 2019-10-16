@@ -1,6 +1,5 @@
 module.exports = {
   siteMetadata: {
-    title: 'Uprise Employee Assistance',
     siteUrl: `https://uprise.co/`
   },
   plugins: [

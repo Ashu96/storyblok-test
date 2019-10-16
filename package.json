@@ -1,8 +1,8 @@
 {
-  "name": "gatsby-storyblok-boilerplate",
-  "description": "Gatsby Storyblok starter",
+  "name": "uprise.co",
+  "description": "Marketing site for Uprise.co",
   "version": "1.0.0",
-  "author": "Alexander Feiglstorfer <delooks@gmail.com>",
+  "author": "Ashutosh ashutosh@uprise.co",
   "dependencies": {
     "date-fns": "^2.0.1",
     "gatsby": "^2.15.3",
@@ -36,7 +36,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "gatsby build",
+    "build": "gatsby clean && gatsby build",
     "develop": "gatsby develop",
     "start": "npm run develop",
     "format": "prettier --write \"src/**/*.js\"",
