@@ -13,9 +13,11 @@ const PluginWrapper = Styled.div`
 `
 
 function Plugin({ blok }) {
-  const { url } = blok
+  const { url, _uid } = blok
   const [loadScript, setLoadScript] = React.useState(false)
-
+  
+  const id = `uprise-calendar-${_uid}`
+  
   React.useEffect(() => {
     if (!loadScript) {
       setLoadScript(true)
@@ -25,12 +27,12 @@ function Plugin({ blok }) {
   useScript('https://assets.calendly.com/assets/external/widget.js', {
     shouldLoad: loadScript,
     onLoad: () => {
-      const calendarContainer = document.getElementById('uprise-calendar')
+      const calendarContainer = document.getElementById(id)
       if (!calendarContainer.innerHTML) {
         // eslint-disable-next-line
         window.Calendly.initInlineWidget({
           url: `${url}?hide_event_type_details=1&&primary_color=7d60ff&&text_color=20272c`,
-          parentElement: document.getElementById('uprise-calendar'),
+          parentElement: calendarContainer,
           prefill: {},
           utm: {}
         })
@@ -40,7 +42,7 @@ function Plugin({ blok }) {
 
   return (
     <PluginWrapper>
-      <div className="plugin" id="uprise-calendar" />
+      <div className="plugin" id={id} />
     </PluginWrapper>
   )
 }
