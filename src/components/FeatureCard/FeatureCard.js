@@ -33,7 +33,7 @@ const FeatureCardWrapper = Styled.div`
 
   & .body {
     display: -webkit-box;
-    -webkit-line-clamp: 6;
+    -webkit-line-clamp: 8;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-align: ${props => props.textAlign};
