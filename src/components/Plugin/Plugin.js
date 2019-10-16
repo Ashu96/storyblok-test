@@ -28,7 +28,7 @@ function Plugin({ blok }) {
     shouldLoad: loadScript,
     onLoad: () => {
       const calendarContainer = document.getElementById(id)
-      if (!calendarContainer.innerHTML) {
+      if (calendarContainer && !calendarContainer.innerHTML) {
         // eslint-disable-next-line
         window.Calendly.initInlineWidget({
           url: `${url}?hide_event_type_details=1&&primary_color=7d60ff&&text_color=20272c`,

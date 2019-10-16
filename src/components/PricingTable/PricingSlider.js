@@ -80,8 +80,7 @@ const PricingSliderWrapper = Styled.div`
     &::after {
       background-color: ${primary.purple};
     }
-  }
-  & 
+  } 
 
   @media (min-width: 1024px) {
   }
