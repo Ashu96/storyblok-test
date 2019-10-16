@@ -1,3 +1,4 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/89111b0b-e02b-47e1-835e-44f51c2f52a9/deploy-status)](https://app.netlify.com/sites/uprise-storyblok/deploys)
 # Introduction
 
 This repo is a marketing site for `Uprise.co` built using Gatsby 
