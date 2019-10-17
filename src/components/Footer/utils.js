@@ -1,5 +1,10 @@
 export const MENU = [
   {
+    label: 'about',
+    key: 'about',
+    link: '/about'
+  },
+  {
     label: 'contact us',
     key: 'contact',
     link: '/contact-us'
