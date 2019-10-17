@@ -115,7 +115,7 @@ function PricingCard({
 }) {
   const [first, second] = actions
   const singleItem = canGoFullBleed
-  console.log({ alignHorizontal })
+  
   return (
     <PricingCardWrapper
       pointIcon={pointIcon}

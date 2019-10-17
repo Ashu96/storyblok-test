@@ -14,6 +14,12 @@ const FeaturePricingCardWrapper = Styled.div`
   border-radius: 10px;
   box-shadow: 0 4px 10px 0 rgba(219, 221, 227, 0.5);
   background-color: ${backgrounds.white};
+  margin: ${props =>
+    props.alignHorizontal === 'center'
+      ? '0px auto'
+      : props.alignHorizontal === 'flex-start'
+      ? '0px auto 0px 0px'
+      : '0px 0px 0px auto'};
   margin-bottom: 24px;
 
   padding: ${props => (props.large ? '30px 50px' : '15px 25px')};
@@ -85,11 +91,14 @@ const FeaturePricingCardWrapper = Styled.div`
 `
 
 function FeaturePricingCard({ blok }) {
-  const { title, body, media, actions, features, price } = blok
+  const { title, body, media, actions, features, price, alignHorizontal } = blok
   const [formattedPrice, ...labels] = price ? price.split(' ') : []
   const label = labels && labels.join(' ')
   return (
-    <FeaturePricingCardWrapper widthPrice={price}>
+    <FeaturePricingCardWrapper
+      widthPrice={price}
+      alignHorizontal={alignHorizontal}
+    >
       {media && (
         <div className="media">
           <img loading="lazy" src={media} alt="" />
