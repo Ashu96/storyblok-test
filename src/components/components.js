@@ -39,6 +39,7 @@ import FaqCard from './FaqCard'
 import {Redirect} from './Generic'
 import ConsentForm from './ConsentForm'
 import PricingCard from './PricingCard'
+import MiniStepCard from './MiniStepCard'
 
 const ComponentList = {
   page: Page,
@@ -84,7 +85,8 @@ const ComponentList = {
   [SECTION_TYPES.REDIRECT]: Redirect,
   [SECTION_TYPES.CONSENT_FORM]: ConsentForm,
   [SECTION_TYPES.CODE]: Code,
-  [SECTION_TYPES.PRICING_CARD]: PricingCard
+  [SECTION_TYPES.PRICING_CARD]: PricingCard,
+  [SECTION_TYPES.MINI_STEP_CARD]: MiniStepCard
 }
 
 const Components = (type) => {
