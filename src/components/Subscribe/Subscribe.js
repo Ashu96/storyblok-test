@@ -4,7 +4,7 @@ import Styled from 'styled-components'
 import { PrimaryButton } from '../../styles/buttons'
 import { Row, Col } from '../../styles/grid'
 import { TextInput } from '../../styles/inputs'
-import { addContact } from '../../utils/apiCall'
+import { addContact, saveToDatabase } from '../../utils/apiCall'
 import { semantic } from '../../constants/colors'
 const SubscribeWrapper = Styled.div`
   max-width: 570px;
@@ -32,8 +32,9 @@ function Subscribe({ blok }) {
         backgroundColor: semantic.error
       })
       .pause()
-  }, [success, error])
-
+    }, [success, error])
+    console.log(`ENV: ${process.env.NODE_ENV}`)
+    
   return (
     <SubscribeWrapper>
       <form
@@ -55,6 +56,13 @@ function Subscribe({ blok }) {
                 // Success
                 setLabel('Thank you!')
                 success.play()
+                saveToDatabase(email, {
+                  firstName,
+                  lastName
+                })
+              } else if (res.code === 'duplicate_parameter') {
+                setLabel('Email is already subscribed!')
+                error.play()
               } else {
                 // something went wrong
                 setLabel('Something went wrong!')
